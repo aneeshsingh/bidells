@@ -1,0 +1,43 @@
+.payment{
+    &-details{
+        font-size: 20px;
+        font-weight: 500;
+        padding-top: 22px;
+        padding-bottom: 22px;
+
+        input{
+            outline: none;
+            border: none !important;
+            background-color: transparent;
+        }
+    }
+
+    &-card{
+        width: 49px;
+
+        img{
+            max-width: 100%;
+            display: block;
+        }
+
+        &-number{
+            input{
+                width: 100%;
+            }
+        }
+
+        &-expire{
+            input{
+                width: 92px;
+                text-align: center;
+            }
+        }
+    
+        &-cvc{
+            input{
+                width: 60px;
+                text-align: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,95 @@
+.header{
+    padding: 10px 0;
+    z-index: 1024;  
+    width: 100%;
+    top: 15px;
+
+    &-controls{
+        .btn{
+            font-family: 'HelveticaNowText';
+            letter-spacing: 1.727px;
+            line-height: 38px;
+            font-weight: 500;   
+            font-size: 14px;
+            height: 40px;
+        }
+    }
+
+    a{
+        color: $secondary;
+    }
+
+    .navbar{
+        max-width: 95%;
+        margin: auto;
+        width: 100%;
+        padding: 0;
+
+        &-nav{
+            a{
+                font-family: 'Sweet Sans Pro';
+                font-weight: normal;
+                color: $secondary;
+                font-size: 18px;
+
+                &.nav-link{
+                    margin: 0 20px;
+                }
+            }
+        }
+
+        &-brand{
+            img{
+                max-width: 60px;
+            }
+        }
+
+        &-back{
+            width: 80px;
+            height: 80px;
+            line-height: 75px;
+            text-align: center;
+            border-radius: 30px;
+            @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+            @include box-shadow(2px 2px 8px rgba(156,169,185,0.5), -2px -2px 8px rgba(255,255,255,0.5));
+        }
+    }
+
+    &-points{
+        width: 85px;
+        color: $dark;
+        height: 60px;
+        padding: 0 5px;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        border-radius: 8px;
+
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+        @include radial-gradient(circle, #FFF900, #F8E71C);
+        @include box-shadow(-2px -2px 16px rgba(198,198,198,0.5), 2px 2px 16px rgba(250,250,250,0.5));
+    }
+
+    &-user{
+        img{
+            height: 50px;
+            max-width: 50px;
+            object-fit: cover;
+            border-radius: 50px;
+            -o-object-fit: cover;
+            object-position: center;
+            -o-object-position: center;
+        }
+    }
+
+    &-dashboard{
+        .navbar{
+            border-radius: 70px;
+            padding: 15px 35px 10px;
+            @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+            @include box-shadow(15px 15px 60px rgba(156,169,185,0.5), -15px -15px 60px rgba(255,255,255,0.5));
+        }
+    }
+}

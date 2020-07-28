@@ -1,0 +1,156 @@
+.form{
+    &-control{
+        height: 65px;
+        font-size: 18px;
+        font-weight: 400;
+        padding: 6px 20px;
+        border-radius: 16px;
+        letter-spacing: -0.6px;
+        font-family: 'Sweet Sans Pro';
+        background-color: $skylight-30;
+        // background: -webkit-linear-gradient(46deg, #EBF3FA, #CBE0F7);
+        // background: -o-linear-gradient(46deg, #EBF3FA, #CBE0F7);
+        // background: linear-gradient(136deg, #EBF3FA, #CBE0F7);
+
+
+        @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+        @include transition(all 0.35s linear);
+
+        &:focus{
+            background-color: rgba($skylight-30, 0.4);
+        }
+
+        &.no-apperance{
+            -webkit-appearance: none;
+            -moz-appearance:    none;
+            appearance:         none;
+        }
+    }
+
+    &-shadow{
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
+
+        &:focus{
+            @include box-shadow(10px 10px 40px rgba(156,169,185,0.1), -10px -10px 40px rgba(255,255,255,0.1), inset 10px 10px 40px rgba(112,122,134,0.1), inset -10px -10px 40px rgba(255,255,255,0.1));
+        }
+    }
+
+    &-outerShadow{
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
+
+        &:focus{
+            @include box-shadow(10px 10px 40px rgba(156,169,185,0.1), -10px -10px 40px rgba(255,255,255,0.1));
+        }
+    }
+
+    &-radius{
+        border-radius: 16px;
+    }
+
+    &-group{
+        margin-bottom: 20px;
+    }
+
+    &-btn{
+        height: 65px;
+    }
+
+    &-btn, &-grad, &-choose label{
+        font-size: 18px;
+        color: $gray-60;
+        font-weight: 400;
+        padding-left: 20px;
+        border-radius: 16px;
+        padding-right: 20px;
+        letter-spacing: -0.6px;
+        text-transform: uppercase;
+        font-family: 'Sweet Sans Pro';
+        @include transition(0.25s all linear);
+
+        @include linear-gradient((136deg, #EBF3FA, #CBE0F7));
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
+
+        &:hover{
+            @include box-shadow(3px 6px 4px rgba(156,169,185,0.5));
+        }
+
+        img{
+            max-width: 18px;
+        }
+    }
+
+    &-label{
+        margin-bottom: 12px;
+        font-weight: 700;
+        color: $gray-60;
+        font-size: 16px;
+    }
+
+    &-choose{
+        input{
+            display: none;
+        }
+        label{
+            width: 100%;
+            height: 65px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 0;
+            line-height: 65px;
+
+            img{
+                vertical-align: text-top;
+                display: inline-block;
+                margin-right: 10px;
+                max-width: 25px;
+            }
+        }
+
+        &-box{
+            label{
+                height: auto;
+                padding-top: 25%;
+                padding-bottom: 25%;
+                line-height: normal;
+            }
+        }
+
+        input.form-check-input:checked + label{
+            @include box-shadow(3px 6px 4px rgba(156,169,185,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
+        }
+    }
+
+    &-bet-amount{
+        border-radius: 16px;        
+        padding: 8px 8px 8px 25px;
+        @include linear-gradient(136deg, #3C3C3C, #010101);
+        @include box-shadow(4px 4px 18px rgba(0,0,0,0.5), -4px -4px 18px rgba(82,82,82,0.5), inset 2px 2px 8px rgba(0,0,0,0.5),  inset -2px -2px 8px rgba(60,60,60,0.5));
+
+        input{
+            width: 100%;
+            outline: none;
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: -0.7499999px;
+
+            &::-webkit-input-placeholder {
+                color: $white;
+            }
+            &:-ms-input-placeholder {
+                color: $white;
+            }
+            &::placeholder {
+                color: $white;
+            }
+        }
+
+        .btn{
+            width: 115px;
+            height: 70px;
+            border-radius: 16px;
+            @include linear-gradient(136deg, #FFFFFF, #A0A0A0);
+            @include box-shadow(2px 2px 8px rgba(198,198,198,0.5), -2px -2px 8px rgba(255,255,255,0.5));
+        }
+    }
+}

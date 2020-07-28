@@ -1,0 +1,15 @@
+// base
+@import './base/variables';
+@import './base/mixins';
+@import './base/common';
+@import './base/form';
+
+// partials
+@import './pages/header';
+@import './pages/footer';
+
+@import './pages/main';
+@import './pages/login';
+@import './pages/about';
+@import './pages/welcome';
+@import './pages/payment';

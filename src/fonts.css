@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'HelveticaNowText';
+    src: url('./fonts/HelveticaNowText-Medium.eot');
+    src: url('./fonts/HelveticaNowText-Medium.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/HelveticaNowText-Medium.woff2') format('woff2'),
+        url('./fonts/HelveticaNowText-Medium.woff') format('woff'),
+        url('./fonts/HelveticaNowText-Medium.ttf') format('truetype'),
+        url('./fonts/HelveticaNowText-Medium.svg#HelveticaNowText-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sweet Sans Pro';
+    src: url('./fonts/SweetSansPro-Regular.eot');
+    src: url('./fonts/SweetSansPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/SweetSansPro-Regular.woff2') format('woff2'),
+        url('./fonts/SweetSansPro-Regular.woff') format('woff'),
+        url('./fonts/SweetSansPro-Regular.ttf') format('truetype'),
+        url('./fonts/SweetSansPro-Regular.svg#SweetSansPro-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sweet Sans Pro';
+    src: url('./fonts/SweetSansPro-Light.eot');
+    src: url('./fonts/SweetSansPro-Light.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/SweetSansPro-Light.woff2') format('woff2'),
+        url('./fonts/SweetSansPro-Light.woff') format('woff'),
+        url('./fonts/SweetSansPro-Light.ttf') format('truetype'),
+        url('./fonts/SweetSansPro-Light.svg#SweetSansPro-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sweet Sans Pro';
+    src: url('./fonts/SweetSansPro-Medium.eot');
+    src: url('./fonts/SweetSansPro-Medium.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/SweetSansPro-Medium.woff2') format('woff2'),
+        url('./fonts/SweetSansPro-Medium.woff') format('woff'),
+        url('./fonts/SweetSansPro-Medium.ttf') format('truetype'),
+        url('./fonts/SweetSansPro-Medium.svg#SweetSansPro-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sweet Sans Pro';
+    src: url('./fonts/SweetSansPro-Bold.eot');
+    src: url('./fonts/SweetSansPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/SweetSansPro-Bold.woff2') format('woff2'),
+        url('./fonts/SweetSansPro-Bold.woff') format('woff'),
+        url('./fonts/SweetSansPro-Bold.ttf') format('truetype'),
+        url('./fonts/SweetSansPro-Bold.svg#SweetSansPro-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}

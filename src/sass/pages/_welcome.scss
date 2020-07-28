@@ -1,0 +1,113 @@
+.infomation_area{
+    h1{
+        margin-bottom: 0.25em;
+    }
+
+    h2{
+        margin-bottom: 0.4em;
+    }
+
+    p.lead{
+        line-height: 1.2;
+        font-size: 32px;
+        max-width: 90%;
+
+        @include maxDevice(1600px){
+            font-size: 25px;
+        }
+    }
+
+    .form-btn{
+        line-height: 75px;
+        max-width: 560px;
+        height: 75px;
+        width: 100%;
+    }
+
+    .oval{
+        position: absolute;
+        max-width: 50%;
+
+        &.welcome-oval{
+            height: 150%;
+        }
+        
+        &.bottom-left{
+            left: 0;
+            top: 20%;   
+        }
+
+        &.center-right{
+            height: 100%;
+            right: 0;
+            top: 0;
+        }
+
+        &.center-left{
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+    }
+}
+
+.video{
+    &-frame{
+        width: 100%;
+        height: 420px;
+        position: relative;
+        padding: 35px 50px;  
+        border-radius: 67px;
+        @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+        @include box-shadow(20px 20px 100px rgba(156,169,185,0.5), -20px -20px 100px rgba(255,255,255,0.5));
+
+        @include maxDevice(1600px){
+            height: 360px;
+        }
+
+        &-title{
+            font-size: 22px;
+            font-weight: 500;
+            font-family: 'HelveticaNowText';
+        }
+
+        &-bottom{
+            font-size: 22px;
+            font-weight: 500;
+            font-family: 'HelveticaNowText';
+        }
+
+        .btn-play{
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 80px;
+            margin: auto;
+            height: 80px;
+            position: absolute;
+            border-radius: 80px;
+            background: $skylight-10;
+            @include box-shadow(6px 6px 26px rgba(156,169,185,0.5), -6px -6px 26px rgba(255,255,255,0.5));
+
+            img{
+                width: 100%;
+                object-fit: none;
+                margin-left: 5px;
+                -o-object-fit: none;
+                object-position: center;
+                -o-object-position: center;
+            }
+        }
+    }
+}
+
+.price{
+    color: $secondary;
+
+    &-duration{
+        color: $gray-90;
+        font-size: 75px;
+        font-weight: 500;
+    }
+}
