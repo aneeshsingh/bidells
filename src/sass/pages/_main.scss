@@ -51,6 +51,10 @@ h1{
         font-size: 24px;
     }
 }
+
+.li-grad{
+    @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+}
     
 .outer-view{
     position: relative;
@@ -113,6 +117,20 @@ h1{
     }
 }
 
+.redeem{
+    &_box{
+        min-height: 300px;
+    }
+
+    &-points{
+        font-weight: 700;
+        color: $gray-50;
+        font-size: 22px;
+        bottom: 25px;
+        left: 30px;
+    }
+}
+
 .post{
     &_box{
         font-weight: 500;
@@ -154,6 +172,13 @@ h1{
         position: absolute;
     }
 
+    &_logo{
+        top: 25px;
+        right: 25px;
+        max-height: 25px;
+        position: absolute;
+    }
+
     &_type{
         color: $gray-10;
         font-size: 14px;
@@ -177,6 +202,32 @@ h1{
         border-bottom: 2px dashed $primary;
     }
 
+    &_results{
+        line-height: 1.4;
+        font-size: 14px;
+        color: $gray-10;
+        font-weight: 500;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 2px dashed rgba(254, 59, 33, 0.363);;
+
+        strong{
+            display: block;
+            font-size: 16px;
+            color: $gray-50;
+        }
+
+        & > div{
+            max-width: 55%;
+            @include flex(0 0 55%);
+
+            &:first-child{
+                max-width: 45%;
+                @include flex(0 0 45%);
+            }
+        }
+    }
+
     &_users{
         img{
             margin-right: 6px;
@@ -196,10 +247,17 @@ h1{
             background-color: $gray-20;
         }
     }
+}
 
-    &-info{
+.heading{
+    &-area{
         font-size: 36px;
+        line-height: 1.2;
         font-weight: 300;
+
+        p{
+            font-weight: 300;
+        }
 
         .post_type{
             font-size: 16px;
@@ -316,7 +374,7 @@ h1{
 }
 
 .place{
-    &-oval-Rcenter, &-oval-Lbottom{
+    &-oval-Rcenter, &-oval-Lbottom, &-oval-Rbottom{
         position: absolute;
     }
     &-oval-Rcenter{
@@ -329,6 +387,12 @@ h1{
         max-width: 50%;
         bottom: 0;
         left: 0;
+    }
+    &-oval-Rbottom{
+        max-height: 60%;
+        max-width: 60%;
+        bottom: 0;
+        right: 0;
     }
 }
 
@@ -401,5 +465,116 @@ h1{
     &-content{
         font-size: 16px;
         font-weight: 500;
+    }
+}
+
+.graph, .leader-data, .box-grid{
+    border-radius: 23px;
+    @include box-shadow(20px 20px 50px rgba(156,169,185,0.5), -20px -20px 50px rgba(255,255,255,0.5));
+
+    &-info{
+        top: 20px;
+        left: 50px;
+        color: $gray-10;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 1px;
+
+        strong{
+            color: $gray-50;
+            font-size: 48px;
+            display: block;
+            line-height: 1;
+        }
+
+        span{
+            color: $secondary-30;
+            font-weight: 700;
+            font-size: 22px;
+        }
+    }
+}
+
+.lead{
+    &-user{
+        img{
+            border-radius: 50px;
+            max-width: 50px;
+            width: 100%;
+        }
+    }
+    &-strip{
+        line-height: 1;
+        font-size: 20px;
+        font-weight: 500;
+        color: $secondary;
+        padding: 15px 30px;
+        border-radius: 55px;
+
+        @include box-shadow(4px 4px 18px rgba(156,169,185,0.5), -4px -4px 18px rgba(255,255,255,0.5));
+        
+        &:hover, &.active{
+            color: $white;
+            @include box-shadow(2px 3px 3px rgba(156,169,185,0.3));
+            @include linear-gradient(125deg, #FC7B45, #FE3A21);
+            
+            span{
+                color: $white;                    
+            }
+        }
+        
+        &.li-grad{
+            @include transition(all 0.2s linear);
+        }
+
+        span{
+            color: $gray-10;
+            font-size: 16px;
+            @include transition(inherit);
+        }
+    }
+}
+
+.nav{
+    &-fill{
+        justify-content: space-between;
+    }
+
+    &-tabs{
+        border-width: 0 !important;
+
+        a{
+            max-width: 31.5%;
+            font-size: 22px;
+            font-weight: 700;
+            padding-top: 25px;
+            color: $secondary-30;
+            padding-bottom: 25px;
+            border-width: 0 !important;
+            letter-spacing: -0.9830848px;
+            border-radius: 19px !important;
+            @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+            @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
+
+            &.active{
+                @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+                @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
+            }
+        }
+    }
+}
+
+.tab{
+    &-content{
+        font-size: 22px;
+        font-weight: 300;
+        margin-top: -20px;
+        border-radius: 19px;
+        @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
+    }
+
+    &-pane{
+        padding: 80px 50px 50px;
     }
 }

@@ -44,7 +44,7 @@ function MyVerticallyCenteredModal(props) {
                 </svg>
             </Button>
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                <iframe title="Bidells Tour" class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
             </div>
         </Modal.Body>
       </Modal>
@@ -78,7 +78,7 @@ function About() {
                                         <Button type="button" variant="play" onClick={() => setModalShow(true)}><img src={Play} alt="play" /></Button>
 
                                         <div className="video-frame-bottom mt-auto d-flex align-items-center justify-content-between">
-                                            <span><img src={VideoIcon} alt="Video Icon" /></span>
+                                            <span><img src={VideoIcon} alt="Video" /></span>
                                             <span>02:00</span>
                                         </div>
                                     </div>

@@ -2,8 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 // Components
@@ -17,6 +16,11 @@ import PersonalDetails  from './components/PersonalDetails';
 import Categories  from './components/Categories';
 import Dashboard  from './components/dashboard';
 import Post  from './components/singlePost';
+import Leaderboard  from './components/Leaderboard';
+import LeaderboardView  from './components/LeaderboardView';
+import AllResults  from './components/AllResults';
+import RedeemPoints  from './components/redeemPoints';
+import RedeemSingle  from './components/RedeemSingle';
 
 function App() {
   return (
@@ -49,6 +53,21 @@ function App() {
           </Route>
           <Route path="/post">
             <Post />
+          </Route>
+          <Route path="/leaderboard">
+            <Leaderboard />
+          </Route>
+          <Route path="/leaderboard-view">
+            <LeaderboardView />
+          </Route>
+          <Route path="/all-results">
+            <AllResults />
+          </Route>
+          <Route path="/redeem-points">
+            <RedeemPoints />
+          </Route>
+          <Route path="/redeem-single">
+            <RedeemSingle />
           </Route>
           <Route path="/">
             <Welcome />

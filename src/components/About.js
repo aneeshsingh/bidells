@@ -28,7 +28,7 @@ function About() {
 
                 <Col>
                     <div className="about_image text-center">
-                        <img src={Image} alt="Image" className="img-fluid" />
+                        <img src={Image} alt="about" className="img-fluid" />
                     </div>
                 </Col>
             </Row>

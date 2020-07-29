@@ -13,7 +13,6 @@ import BgImage from '../assets/call_of_duty.jpg';
 import Ads from '../assets/ads.png';
 import arrowRight from '../assets/arrow-right-solid.png';
 import Ovel from '../assets/oval_01.svg';
-import User from '../assets/user_icon.svg';
 
 function Categories() {
   return (
@@ -71,7 +70,7 @@ function Categories() {
             <Col sm={12} md={6}>
                 <div className="cover-image position-relative d-flex h-100 w-100" style={{ backgroundImage: `url(${BgImage})` }}>
                     <div className="ads-frame mx-auto mt-auto mb-3">
-                        <img src={Ads} alt="Ads Image" />
+                        <img src={Ads} alt="Ads poster" />
                     </div>
                 </div>
             </Col>

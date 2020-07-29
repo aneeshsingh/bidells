@@ -53,6 +53,10 @@
 
     &-btn{
         height: 65px;
+
+        &[href]{
+            line-height: 65px;
+        }
     }
 
     &-btn, &-grad, &-choose label{
@@ -72,6 +76,7 @@
 
         &:hover{
             @include box-shadow(3px 6px 4px rgba(156,169,185,0.5));
+            color: $secondary;
         }
 
         img{
@@ -126,7 +131,7 @@
         @include linear-gradient(136deg, #3C3C3C, #010101);
         @include box-shadow(4px 4px 18px rgba(0,0,0,0.5), -4px -4px 18px rgba(82,82,82,0.5), inset 2px 2px 8px rgba(0,0,0,0.5),  inset -2px -2px 8px rgba(60,60,60,0.5));
 
-        input{
+        input, .submitText{
             width: 100%;
             outline: none;
             font-size: 24px;
@@ -151,6 +156,50 @@
             border-radius: 16px;
             @include linear-gradient(136deg, #FFFFFF, #A0A0A0);
             @include box-shadow(2px 2px 8px rgba(198,198,198,0.5), -2px -2px 8px rgba(255,255,255,0.5));
+        }
+    }
+
+    &-search{
+        .form-control{
+            padding-left: 75px;
+        }
+
+        .search-icon{
+            background-color: transparent !important;
+            left: 30px; 
+            top: 18px;
+        }
+    }
+
+    &-quality{
+        .btn, .form-control{
+            background: none !important;
+            text-align: center;
+            border-width: 0;
+            height: 50px;   
+        }
+        .form-control{
+            color: $secondary-30;
+            font-weight: 500;
+            font-size: 30px;
+        }   
+        .btn{
+            width: 60px;
+            color: $white;
+            line-height: 1;
+            font-size: 28px;
+            border-radius: 6.66px !important;
+            background: -webkit-linear-gradient(136deg, #3C3C3C, #010101) !important;
+            background: -o-linear-gradient(136deg, #3C3C3C, #010101) !important;
+            background: linear-gradient(136deg, #3C3C3C, #010101) !important;
+            @include box-shadow(10px 10px 28px rgba(83,83,83,0.5), -10px -10px 28px rgba(200,200,200,0.5));
+
+            img{
+                margin: auto;
+                display: block;
+                max-width: 80%;
+                filter: invert(1);
+            }
         }
     }
 }

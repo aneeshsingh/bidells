@@ -27,7 +27,7 @@ function SinglePost() {
             <Container fluid="md">
                 <Row className="align-items-end content-area mb-5">
                     <Col md={6}>
-                        <div className="post-info">
+                        <div className="heading-area">
                             <div className="post_type">SPORTS</div>
                             <h1>Randwick Race 8</h1>
                             <p><strong className="d-block">1600m R9 The Star Doncaster Mile</strong> Doncaster Mile 2019 is one of the biggest races on the Australian autumn racing calendar.</p>
@@ -56,7 +56,7 @@ function SinglePost() {
                                 3.40
                             </div>
                             <div className="check-icon ml-5">
-                                <img src={Check} alt="check icon"/>
+                                <img src={Check} alt="check"/>
                             </div>
                         </div>
                     </Col>
@@ -73,7 +73,7 @@ function SinglePost() {
                                 3.40
                             </div>
                             <div className="check-icon ml-5">
-                                <img src={Check} alt="check icon"/>
+                                <img src={Check} alt="check"/>
                             </div>
                         </div>
                     </Col>
@@ -90,7 +90,7 @@ function SinglePost() {
                                 3.40
                             </div>
                             <div className="check-icon ml-5">
-                                <img src={Check} alt="check icon"/>
+                                <img src={Check} alt="check"/>
                             </div>
                         </div>
                     </Col>
@@ -107,7 +107,7 @@ function SinglePost() {
                                 3.40
                             </div>
                             <div className="check-icon ml-5">
-                                <img src={Check} alt="check icon"/>
+                                <img src={Check} alt="check"/>
                             </div>
                         </div>
                     </Col>
@@ -124,7 +124,7 @@ function SinglePost() {
                                 3.40
                             </div>
                             <div className="check-icon ml-5">
-                                <img src={Check} alt="check icon"/>
+                                <img src={Check} alt="check"/>
                             </div>
                         </div>
                     </Col>
@@ -141,7 +141,7 @@ function SinglePost() {
                                 3.40
                             </div>
                             <div className="check-icon ml-5">
-                                <img src={Check} alt="check icon"/>
+                                <img src={Check} alt="check"/>
                             </div>
                         </div>
                     </Col>
@@ -158,7 +158,7 @@ function SinglePost() {
                                 3.40
                             </div>
                             <div className="check-icon ml-5">
-                                <img src={Check} alt="check icon"/>
+                                <img src={Check} alt="check"/>
                             </div>
                         </div>
                     </Col>
@@ -175,7 +175,7 @@ function SinglePost() {
                                 3.40
                             </div>
                             <div className="check-icon ml-5">
-                                <img src={Check} alt="check icon"/>
+                                <img src={Check} alt="check"/>
                             </div>
                         </div>
                     </Col>
@@ -183,14 +183,15 @@ function SinglePost() {
 
                 <Row>
                     <Col md={6} className="mb-4">
-                        <div className="form-bet-amount d-flex">
-                            <input type="text" className="border-0 bg-transparent pl-0" placeholder="Enter your bet amount" />
+                        <div className="form-bet-amount d-flex align-items-center">
+                            {/* <input type="text" className="border-0 bg-transparent pl-0" placeholder="Enter your bet amount" /> */}
+                            <span className="submitText">Enter your bet amount</span>
                             <Button><img src={SubmitArrow} alt="arrow"/></Button>
                         </div>
                     </Col>
                     <Col md={6} className="mb-4">
                         <div className="ads-frame mx-auto mt-auto mb-3">
-                            <img src={Ads} alt="Ads Image" />
+                            <img src={Ads} alt="Ads Poster" />
                         </div>
                     </Col>
                 </Row>

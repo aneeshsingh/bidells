@@ -57,7 +57,7 @@ function UnlimitedAccess() {
             <Col sm={12} md={6}>
                 <div className="cover-image position-relative d-flex h-100 w-100" style={{ backgroundImage: `url(${BgImage})` }}>
                     <div className="ads-frame mx-auto mt-auto mb-3">
-                        <img src={Ads} alt="Ads Image" />
+                        <img src={Ads} alt="Ads Poster" />
                     </div>
                 </div>
             </Col>

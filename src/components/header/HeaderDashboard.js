@@ -1,8 +1,7 @@
 import React from 'react';
 
 import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import Button from 'react-bootstrap/Button'
+import Navbar from 'react-bootstrap/Navbar';
 
  // assets
 import Logo from '../../assets/logo.png';
@@ -15,16 +14,16 @@ function Header() {
             <Navbar.Brand href="./"><img src={Logo} alt="logo" /></Navbar.Brand>
             <div className="ml-auto d-flex align-items-center order-md-2">
                 <div className="header-points">3000</div>
-                <div className="header-user ml-4"><img src={UserPic} alt=""/></div>
+                <div className="header-user ml-4"><img src={UserPic} alt="user"/></div>
             </div>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>
                     <Nav.Link href="/about">Bets</Nav.Link>
-                    <Nav.Link href="#">Leaderboards</Nav.Link>
-                    <Nav.Link href="#">Results</Nav.Link>
-                    <Nav.Link href="#">Shop</Nav.Link>
+                    <Nav.Link href="/leaderboard">Leaderboards</Nav.Link>
+                    <Nav.Link href="/all-results">Results</Nav.Link>
+                    <Nav.Link href="/redeem-points">Shop</Nav.Link>
                     <Nav.Link href="#">Activity</Nav.Link>
                     <Nav.Link href="#">Refer a friend</Nav.Link>
                 </Nav>
