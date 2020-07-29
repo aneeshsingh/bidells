@@ -83,17 +83,17 @@ function SinglePost() {
                             </Col>    
                         </Row>      
 
-                        <div className="mt-5">
-                        <Tabs defaultActiveKey="detail" fill id="tab-redeem">
-                            <Tab eventKey="detail" title="Detail">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, magni? Similique nobis odit, soluta beatae pariatur voluptates optio illum, non recusandae eaque dolore eos veniam earum adipisci unde in minima!</p>
-                            </Tab>
-                            <Tab eventKey="shipping" title="Shipping">
-                                <p>Sed, magni? Similique nobis odit, soluta beatae pariatur voluptates optio illum, non recusandae eaque dolore eos veniam earum adipisci unde inLorem ipsum dolor sit amet consectetur adipisicing elit minima!</p>
-                            </Tab>
-                            <Tab eventKey="payment" title="Payment">
-                                <p>Consectetur adipisicing elit. Sed, magni? Similique nobis odit, soluta beatae pariatur voluptates optio illum, non recusandae eaque dolore eos veniamLorem ipsum dolor sit amet earum adipisci unde in minima!</p>
-                            </Tab>
+                        <div className="mt-5 tabs-content">
+                            <Tabs defaultActiveKey="detail" fill id="tab-redeem">
+                                <Tab eventKey="detail" title="Detail">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, magni? Similique nobis odit, soluta beatae pariatur voluptates optio illum, non recusandae eaque dolore eos veniam earum adipisci unde in minima!</p>
+                                </Tab>
+                                <Tab eventKey="shipping" title="Shipping">
+                                    <p>Sed, magni? Similique nobis odit, soluta beatae pariatur voluptates optio illum, non recusandae eaque dolore eos veniam earum adipisci unde inLorem ipsum dolor sit amet consectetur adipisicing elit minima!</p>
+                                </Tab>
+                                <Tab eventKey="payment" title="Payment">
+                                    <p>Consectetur adipisicing elit. Sed, magni? Similique nobis odit, soluta beatae pariatur voluptates optio illum, non recusandae eaque dolore eos veniamLorem ipsum dolor sit amet earum adipisci unde in minima!</p>
+                                </Tab>
                             </Tabs>
                         </div>
                     </Col>

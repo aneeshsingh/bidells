@@ -21,6 +21,14 @@ import LeaderboardView  from './components/LeaderboardView';
 import AllResults  from './components/AllResults';
 import RedeemPoints  from './components/redeemPoints';
 import RedeemSingle  from './components/RedeemSingle';
+import RedeemCongrats  from './components/RedeemCongrats';
+import RedeemOrder  from './components/RedeemOrder';
+import Activities  from './components/activites';
+import Refer  from './components/refer';
+import ReferSettings  from './components/referSettings';
+import CreateBets  from './components/CreateBets';
+import PointSummary  from './components/PointSummary';
+import CreateRefer  from './components/CreateRefer';
 
 function App() {
   return (
@@ -68,6 +76,30 @@ function App() {
           </Route>
           <Route path="/redeem-single">
             <RedeemSingle />
+          </Route>
+          <Route path="/redeem-congrats">
+            <RedeemCongrats />
+          </Route>
+          <Route path="/redeem-order">
+            <RedeemOrder />
+          </Route>
+          <Route path="/activities">
+            <Activities />
+          </Route>
+          <Route path="/refer">
+            <Refer />
+          </Route>
+          <Route path="/refer-settings">
+            <ReferSettings />
+          </Route>
+          <Route path="/create-bets">
+            <CreateBets />
+          </Route>
+          <Route path="/point-summary">
+            <PointSummary />
+          </Route>
+          <Route path="/create-refer">
+            <CreateRefer />
           </Route>
           <Route path="/">
             <Welcome />

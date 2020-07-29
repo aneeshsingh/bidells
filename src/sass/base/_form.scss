@@ -2,10 +2,10 @@
     &-control{
         height: 65px;
         font-size: 18px;
-        font-weight: 400;
-        padding: 6px 20px;
+        padding: 6px 30px;
         border-radius: 16px;
         letter-spacing: -0.6px;
+        font-weight: 400 !important;
         font-family: 'Sweet Sans Pro';
         background-color: $skylight-30;
         // background: -webkit-linear-gradient(46deg, #EBF3FA, #CBE0F7);
@@ -24,6 +24,16 @@
             -webkit-appearance: none;
             -moz-appearance:    none;
             appearance:         none;
+        }
+
+        &-label{
+            cursor: pointer;
+            line-height: 45px;
+
+            img{
+                display: inline-block;
+                vertical-align: top;
+            }
         }
     }
 
@@ -49,6 +59,16 @@
 
     &-group{
         margin-bottom: 20px;
+
+        h5{
+            font-size: 28px;
+            padding-top: 8px;
+            margin-bottom: 15px;
+        }
+        h6{
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
     }
 
     &-btn{
@@ -63,9 +83,9 @@
         font-size: 18px;
         color: $gray-60;
         font-weight: 400;
-        padding-left: 20px;
+        padding-left: 30px;
         border-radius: 16px;
-        padding-right: 20px;
+        padding-right: 30px;
         letter-spacing: -0.6px;
         text-transform: uppercase;
         font-family: 'Sweet Sans Pro';
@@ -202,4 +222,31 @@
             }
         }
     }
+}
+
+.label{
+    &-box{
+        display: block;
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 1.2;
+        font-weight: 400;
+        border-radius: 16px;
+        padding: 35px 25px 40px;
+        @include transition(0.25s all linear);
+        @include linear-gradient(136deg, #EBF3FA, #CBE0F7); 
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 0 0 0 rgba(0,0,0,0));
+
+        strong{
+            display: block;
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: $secondary-30;
+        }
+    }
+}
+
+input:checked + .label-box{
+    @include box-shadow(3px 6px 4px rgba(156,169,185,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
 }

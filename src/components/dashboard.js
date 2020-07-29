@@ -14,7 +14,7 @@ import Ovel_01 from '../assets/Oval_dashboard_01.svg';
 import Ovel_02 from '../assets/Oval_dashboard_02.svg';
 import News from '../assets/category-bg.png';
 
-function Categories() {
+function Dashbaord() {
   return (
     <div className="outer-view">
         <Header />
@@ -94,4 +94,4 @@ function Categories() {
   );
 }
 
-export default Categories;
+export default Dashbaord;

@@ -84,12 +84,33 @@ strong{
 		@include transition(0.25s all linear);
 	}
 
+	&-reset{
+		box-shadow: none !important;
+		line-height: normal;
+		background: none;
+		outline: none;
+		border: none;
+		height: auto;
+		padding: 0;
+	}
+
+	&-sm{
+		color: $gray;
+		font-size: 14px;
+	}
+
 	&-noshadow{
 		box-shadow: none !important;
 
 		&:hover, &:focus, &:active{
 			box-shadow: none !important;
 		}
+	}
+
+	&-grad{
+		border-radius: 19px;
+		@include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+		@include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
 	}
 
 	&-grad-primary{		
@@ -110,6 +131,27 @@ strong{
 		}
 	}
 
+	&-dark-grad{
+		height: auto;
+		line-height: 1;
+		font-size: 22px;
+		font-weight: 500;
+		padding: 30px 25px;
+		border-radius: 16px;
+		color: $white !important;
+		@include linear-gradient(136deg, #3C3C3C, #010101);
+		@include box-shadow(4px 4px 18px rgba(0,0,0,0.5), -4px -4px 18px rgba(82,82,82,0.5));
+
+		&:hover{
+			@include box-shadow(4px 4px 15px rgba(0,0,0,0.8), -4px -4px 15px rgba(82,82,82,0.8));
+		}
+
+		img{
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+
 	&-price{
 		font-weight: 500;
 		line-height: 1.1;
@@ -117,16 +159,6 @@ strong{
 		small{
 			font-size: 13px;
 		}
-	}
-
-	&-reset{
-		box-shadow: none !important;
-		line-height: normal;
-		background: none;
-		outline: none;
-		border: none;
-		height: auto;
-		padding: 0;
 	}
 
 	&-white{
@@ -140,6 +172,20 @@ strong{
 
 	&-shadow{
 		@include box-shadow(2px 2px 16px rgba(0,0,0, 0.5), -2px -2px 16px rgba(94,94,94, 0.5));
+	}
+	&-code{
+		width: 120px;
+		height: auto;
+		color: $gray;
+		height: 120px;
+		font-size: 20px;
+		font-weight: 400;
+
+		img{
+			display: block;
+			max-height: 26px;
+			margin: 0 auto 10px;
+		}
 	}
 }
 
@@ -178,6 +224,10 @@ h1, h2, h3, h4, h5, h6{
 
 .mh-100{
     min-height: 100vh;
+}
+
+.border-left-dashed{
+	border-left: 2px dashed #979797;
 }
 
 @include maxDevice(767px){

@@ -8,6 +8,16 @@ h1{
     }
 }
 
+h4{
+    color: $secondary-30;
+    font-weight: 700;
+    font-size: 25px;
+
+    @include maxDevice(1400px){
+        font-size: 20px;
+    }
+}
+
 .display{
     &-1{
         line-height: .85;
@@ -131,8 +141,9 @@ h1{
     }
 }
 
-.post{
+.post, .bet{
     &_box{
+        font-size: 18px;
         font-weight: 500;
         position: relative;
         border-radius: 30px;
@@ -209,7 +220,7 @@ h1{
         font-weight: 500;
         margin-top: 10px;
         padding-top: 10px;
-        border-top: 2px dashed rgba(254, 59, 33, 0.363);;
+        border-top: 2px dashed rgba(254, 59, 33, 0.363);
 
         strong{
             display: block;
@@ -249,9 +260,18 @@ h1{
     }
 }
 
+.bet{
+    &_info{
+        padding: 8px 0;
+        margin: 20px 0 10px;
+        border-bottom: 2px dashed rgba(254, 59, 33, 0.4);
+        border-top: 2px dashed rgba(254, 59, 33, 0.4);
+    }
+}
+
 .heading{
     &-area{
-        font-size: 36px;
+        font-size: 35px;
         line-height: 1.2;
         font-weight: 300;
 
@@ -376,6 +396,7 @@ h1{
 .place{
     &-oval-Rcenter, &-oval-Lbottom, &-oval-Rbottom{
         position: absolute;
+        z-index: -1;
     }
     &-oval-Rcenter{
         max-width: 50%;
@@ -544,7 +565,6 @@ h1{
         border-width: 0 !important;
 
         a{
-            max-width: 31.5%;
             font-size: 22px;
             font-weight: 700;
             padding-top: 25px;
@@ -560,21 +580,266 @@ h1{
                 @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
                 @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
             }
+
+            & + a{
+                margin-left: 35px;
+            }
+        }
+    }
+}
+.tab{
+    &-content{
+        margin-top: 45px;
+    }
+}
+.tabs-content{
+    .tab{
+        &-content{
+            font-size: 22px;
+            font-weight: 300;
+            margin-top: -20px;
+            border-radius: 19px;
+            @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+            @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
+        }
+    
+        &-pane{
+            padding: 80px 50px 50px;
         }
     }
 }
 
-.tab{
-    &-content{
-        font-size: 22px;
-        font-weight: 300;
-        margin-top: -20px;
-        border-radius: 19px;
+.activites{
+    &-strip{
+        line-height: 1.1;
+        font-size: 20px;
+        color: $gray-10;
+        font-weight: 500;
+        padding: 15px 35px;
+        border-radius: 14px;
+        letter-spacing: -0.6608974px;
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
+
+        .date{
+            color: $gray;
+        }
+
+        .type{
+            letter-spacing: 2px;
+            font-size: 14px;
+            line-height: 0.8;
+            margin-top: -5px;
+            display: inline-block;
+        }
+
+        p{
+            color: $gray-50;
+            margin-bottom: 7px;
+        }
+    }
+}
+
+.referal{
+    &-box{
+        padding: 40px 35px;
+        border-radius: 19px;
+        @include box-shadow(10px 10px 40px rgba(156,169,185,.5), -10px -10px 40px rgba(255,255,255,0.5));
+
+        h5{
+            margin: 0;
+            color: $gray;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .code{
+            letter-spacing: -1.211645px;
+            color: $secondary-30;
+            font-weight: 500;
+            font-size: 44px;
+        }
+    }
+}
+
+.profile-image{
+    border-radius: 49px;
+    max-width: 49px;
+    width: 100%;
+}
+
+.multistep{
+    &-form{
+        padding: 30px;
+        border-radius: 16px;
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
     }
 
-    &-pane{
-        padding: 80px 50px 50px;
+    &-info{
+        min-height: 420px;
+        position: relative;
+        padding: 60px 25px;
+        border-radius: 16px;
+        @include linear-gradient(136deg, #E0EFFD, #BEDCFD);
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
+
+        .step_count{
+            color: $secondary-30;
+            margin-bottom: 10px;
+            font-weight: 400;
+            font-size: 28px;
+        }
+
+        h2{
+            margin-bottom: 15px;
+        }
+
+        p{
+            font-size: 20px;
+        }
+    }
+
+    &_progress{
+        letter-spacing: -0.5507478px;
+        position: absolute;
+        font-weight: 400;
+        color: $gray-50;
+        font-size: 20px;
+        bottom: 30px;
+        right: 25px;
+        left: 25px;
+
+        &:after{
+            left: 0;
+            bottom: 0;
+            height: 4px;
+            width: 100%;
+            content: "";
+            border-radius: 4px;
+            position: absolute;
+            @include linear-gradient(45deg, #888888, #333333);
+        }
+        span{
+            padding: 3px 5px 12px;
+            position: relative;
+            z-index: 5;
+
+            &:after{
+                left: 0;
+                bottom: 0;
+                opacity: 0;
+                height: 4px;
+                width: 100%;
+                content: "";
+                border-radius: 4px;
+                position: absolute;
+                @include linear-gradient(45deg, #eba087, #f16130);
+            }
+
+            &.active{
+                color: $red;
+
+                &:after{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &-inner{
+        padding: 60px 0px 140px 25px;
+        min-height: 650px;
+    }
+
+    &-heading{
+        font-size: 28px;
+        font-weight: 300;
+
+        h3{
+            color: $secondary-30;
+            font-weight: 700;
+            font-size: 32px;
+        }
+    }
+
+    &-btns{
+        .btn{
+            min-width: 250px; 
+        }
+
+        .col-md-8{
+            margin-top: -100px;
+        }
+    }
+}
+
+.search{
+    &-icon{
+        position: absolute;
+        top: 8px;
+        right: 16px;
+    }
+
+    &-list{
+        padding: 0 20px;
+
+        li{
+            padding: 5px 15px;
+
+            a{
+                text-decoration: none !important;
+                color: $gray-50;
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    &-pic{
+        margin-right: 12px;
+
+        img{
+            max-width: 50px;
+            border-radius: 50px;
+        }
+    }
+}
+
+.custom{
+    &-switch{
+        padding-left: 0;
+
+        .custom-control{
+            &-input{
+                &:checked~.custom-control-label::after{
+                    @include translate(112px, 0);
+                }
+            }
+
+            &-label{
+                &::before{
+                    border-radius: 60px;
+                    width: 180px;
+                    height: 60px;
+                    border-width: 0;
+                    left: 0 !important;
+                    position: relative;
+                    @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+                    @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
+                }
+    
+                &::after{
+                    top: 9px;
+                    left: 9px; 
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50.5px;
+                    @include transition(all 0.35s linear);
+                    @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+                    @include box-shadow(inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
+                }
+            }
+        }
+
     }
 }
