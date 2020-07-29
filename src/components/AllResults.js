@@ -17,6 +17,8 @@ import Ads_02 from '../assets/ads_03.png';
 import Ads_03 from '../assets/ads_04.png';
 import SearchIcon from '../assets/search-solid.svg';
 
+// Commit code
+
 function Leaderboard() {
   return (
     <div className="outer-view">
