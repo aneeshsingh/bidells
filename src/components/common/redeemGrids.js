@@ -20,7 +20,7 @@ class PostGrids extends Component {
                         <img src={Uber} className="post_logo" alt="horse" />
                         <div className="m-auto">
                             <div className="post_type">EXPERIENCE</div>
-                            <h2><Link href="#">Uber Gift Card $50</Link></h2>
+                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
                             <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
                         </div>
 
@@ -32,7 +32,7 @@ class PostGrids extends Component {
                         <img src={TheRestaurant} className="post_logo" alt="horse" />
                         <div className="m-auto">
                             <div className="post_type">EXPERIENCE</div>
-                            <h2><Link href="#">Uber Gift Card $50</Link></h2>
+                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
                             <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
                         </div>
 
@@ -44,7 +44,7 @@ class PostGrids extends Component {
                         <img src={EBGames} className="post_logo" alt="horse" />
                         <div className="m-auto">
                             <div className="post_type">EXPERIENCE</div>
-                            <h2><Link href="#">Uber Gift Card $50</Link></h2>
+                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
                             <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
                         </div>
 
@@ -56,7 +56,7 @@ class PostGrids extends Component {
                         <img src={Uber} className="post_logo" alt="horse" />
                         <div className="m-auto">
                             <div className="post_type">EXPERIENCE</div>
-                            <h2><Link href="#">Uber Gift Card $50</Link></h2>
+                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
                             <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
                         </div>
 
@@ -68,7 +68,7 @@ class PostGrids extends Component {
                         <img src={TheRestaurant} className="post_logo" alt="horse" />
                         <div className="m-auto">
                             <div className="post_type">EXPERIENCE</div>
-                            <h2><Link href="#">Uber Gift Card $50</Link></h2>
+                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
                             <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
                         </div>
 
@@ -80,7 +80,7 @@ class PostGrids extends Component {
                         <img src={EBGames} className="post_logo" alt="horse" />
                         <div className="m-auto">
                             <div className="post_type">EXPERIENCE</div>
-                            <h2><Link href="#">Uber Gift Card $50</Link></h2>
+                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
                             <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
                         </div>
 
@@ -92,7 +92,7 @@ class PostGrids extends Component {
                         <img src={Uber} className="post_logo" alt="horse" />
                         <div className="m-auto">
                             <div className="post_type">EXPERIENCE</div>
-                            <h2><Link href="#">Uber Gift Card $50</Link></h2>
+                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
                             <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
                         </div>
 
@@ -104,7 +104,7 @@ class PostGrids extends Component {
                         <img src={TheRestaurant} className="post_logo" alt="horse" />
                         <div className="m-auto">
                             <div className="post_type">EXPERIENCE</div>
-                            <h2><Link href="#">Uber Gift Card $50</Link></h2>
+                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
                             <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
                         </div>
 
@@ -116,7 +116,7 @@ class PostGrids extends Component {
                         <img src={EBGames} className="post_logo" alt="horse" />
                         <div className="m-auto">
                             <div className="post_type">EXPERIENCE</div>
-                            <h2><Link href="#">Uber Gift Card $50</Link></h2>
+                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
                             <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
                         </div>
 

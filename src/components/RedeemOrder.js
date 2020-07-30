@@ -46,19 +46,19 @@ function RedeemCongrats() {
                                         <Col sm={4} className="mb-3">
                                             <Form.Group>
                                                 <input type="radio" name="orderStatus" id="recieved" className="d-none" />
-                                                <Form.Label className="label-box" for="recieved"><strong>1</strong> We have recieved your order</Form.Label>
+                                                <Form.Label className="label-box" htmlFor="recieved"><strong>1</strong> We have recieved your order</Form.Label>
                                             </Form.Group>
                                         </Col>
                                         <Col sm={4} className="mb-3">
                                             <Form.Group>
                                                 <input type="radio" name="orderStatus" id="dispatched" className="d-none" />
-                                                <Form.Label className="label-box" for="dispatched"><strong>2</strong> Your order has been dispatched</Form.Label>
+                                                <Form.Label className="label-box" htmlFor="dispatched"><strong>2</strong> Your order has been dispatched</Form.Label>
                                             </Form.Group>
                                         </Col>
                                         <Col sm={4} className="mb-3">
                                             <Form.Group>
                                                 <input type="radio" name="orderStatus" id="delivered" className="d-none" />
-                                                <Form.Label className="label-box" for="delivered"><strong>3</strong> Your order has been delivered</Form.Label>
+                                                <Form.Label className="label-box" htmlFor="delivered"><strong>3</strong> Your order has been delivered</Form.Label>
                                             </Form.Group>
                                         </Col>
                                     </Row>
@@ -72,7 +72,7 @@ function RedeemCongrats() {
                             <img src={Uber} className="post_logo" alt="horse" />
                             <div className="m-auto">
                                 <div className="post_type">EXPERIENCE</div>
-                                <h2><Link href="#">Uber Gift Card $50</Link></h2>
+                                <h2><Link to="#">Uber Gift Card $50</Link></h2>
                                 <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
                             </div>
 

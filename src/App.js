@@ -29,6 +29,7 @@ import ReferSettings  from './components/referSettings';
 import CreateBets  from './components/CreateBets';
 import PointSummary  from './components/PointSummary';
 import CreateRefer  from './components/CreateRefer';
+import SiteMap  from './components/SiteMap';
 
 function App() {
   return (
@@ -101,8 +102,11 @@ function App() {
           <Route path="/create-refer">
             <CreateRefer />
           </Route>
-          <Route path="/">
+          <Route path="/welcome">
             <Welcome />
+          </Route>
+          <Route path="/">
+            <SiteMap />
           </Route>
         </Switch>
       </div>

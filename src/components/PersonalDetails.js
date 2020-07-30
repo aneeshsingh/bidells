@@ -28,7 +28,7 @@ function PersonalDetails() {
                         <Col md={8} lg={7}>
                             <div className="mb-4 pb-1">
                                 <h1>We’re nearly there!</h1>
-                                <p class="lead">We need to know a little bit more about you to create your personalised plan.</p>
+                                <p className="lead">We need to know a little bit more about you to create your personalised plan.</p>
                             </div>
                         </Col>
                         <Col md={10} lg={8}>
@@ -37,7 +37,7 @@ function PersonalDetails() {
                                     <Form.Label>Upload your photo</Form.Label>
                                     <div className="form-choose">
                                         <Form.File id="uploadPhoto" className="d-none" />
-                                        <Form.Label className="text-normal text-center" for="uploadPhoto">
+                                        <Form.Label className="text-normal text-center" htmlFor="uploadPhoto">
                                             <img src={User} alt="user" />
                                             Upload Photo
                                         </Form.Label>
@@ -126,7 +126,7 @@ function PersonalDetails() {
                                                 <option value="17">2017</option>
                                                 <option value="18">2018</option>
                                                 <option value="19">2019</option>
-                                                <option value="20" selected>2020</option>
+                                                <option value="20">2020</option>
                                                 <option value="21">2021</option>
                                                 <option value="22">2022</option>
                                                 <option value="23">2023</option>

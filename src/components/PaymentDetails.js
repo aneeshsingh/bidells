@@ -27,7 +27,7 @@ function PaymentDetails() {
                         <Col md={8} lg={7}>
                             <div className="mb-4 pb-1">
                                 <h1>Please enter your payment details</h1>
-                                <p class="lead">Want to give us a try? Select subscriptions offer a 7 day free trial! You will not be charged until the end of your trial and can cancel at any time.</p>
+                                <p className="lead">Want to give us a try? Select subscriptions offer a 7 day free trial! You will not be charged until the end of your trial and can cancel at any time.</p>
                             </div>
                         </Col>
                         <Col md={12} lg={12} className="mb-4">

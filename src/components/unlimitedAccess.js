@@ -26,7 +26,7 @@ function UnlimitedAccess() {
                         <Col md={8} lg={7}>
                             <div className="mb-4 pb-1">
                                 <h1>Unlimited Access Cancel at any time</h1>
-                                <p class="lead">Want to give us a try? Select subscriptions offer a 7 day free trial! You will not be charged until the end of your trial and can cancel at any time.</p>
+                                <p className="lead">Want to give us a try? Select subscriptions offer a 7 day free trial! You will not be charged until the end of your trial and can cancel at any time.</p>
                             </div>
                         </Col>
                         <Col md={10} lg={8}>

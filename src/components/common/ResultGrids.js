@@ -17,7 +17,7 @@ class PostGrids extends Component {
                     <div className="post_box h-100">
                         <img src={HorseRacing} className="post_horseIcon" alt="horse" />
                         <div className="post_type">HORSE RACING</div>
-                        <h2 className="pb-3"><Link href="#">Sydney Roosters V ST George</Link></h2>
+                        <h2 className="pb-3"><Link to="#">Sydney Roosters V ST George</Link></h2>
                         
                         <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
                             <div>
@@ -49,7 +49,7 @@ class PostGrids extends Component {
                     <div className="post_box h-100">
                         <img src={HorseRacing} className="post_horseIcon" alt="horse" />
                         <div className="post_type">NEWS</div>
-                        <h2 className="pb-3"><Link href="#">Sydney Roosters V ST George</Link></h2>
+                        <h2 className="pb-3"><Link to="#">Sydney Roosters V ST George</Link></h2>
                         
                         <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
                             <div>
@@ -81,7 +81,7 @@ class PostGrids extends Component {
                     <div className="post_box h-100">
                         <img src={HorseRacing} className="post_horseIcon" alt="horse" />
                         <div className="post_type">NEWS</div>
-                        <h2 className="pb-3"><Link href="#">Sydney Roosters V ST George</Link></h2>
+                        <h2 className="pb-3"><Link to="#">Sydney Roosters V ST George</Link></h2>
                         
                         <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
                             <div>
@@ -113,7 +113,7 @@ class PostGrids extends Component {
                     <div className="post_box h-100">
                         <img src={HorseRacing} className="post_horseIcon" alt="Icon" />
                         <div className="post_type">NEWS</div>
-                        <h2 className="pb-3"><Link href="#">Sydney Roosters V ST George</Link></h2>
+                        <h2 className="pb-3"><Link to="#">Sydney Roosters V ST George</Link></h2>
                         
                         <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
                             <div>
@@ -145,7 +145,7 @@ class PostGrids extends Component {
                     <div className="post_box h-100">
                         <img src={HorseRacing} className="post_horseIcon" alt="horse" />
                         <div className="post_type">NEWS</div>
-                        <h2 className="pb-3"><Link href="#">Sydney Roosters V ST George</Link></h2>
+                        <h2 className="pb-3"><Link to="#">Sydney Roosters V ST George</Link></h2>
                         
                         <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
                             <div>
@@ -177,7 +177,7 @@ class PostGrids extends Component {
                     <div className="post_box h-100">
                         <img src={HorseRacing} className="post_horseIcon" alt="horse" />
                         <div className="post_type">NEWS</div>
-                        <h2 className="pb-3"><Link href="#">Sydney Roosters V ST George</Link></h2>
+                        <h2 className="pb-3"><Link to="#">Sydney Roosters V ST George</Link></h2>
                         
                         <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
                             <div>
@@ -208,7 +208,7 @@ class PostGrids extends Component {
                 <Col md={4} sm={6} className="mb-4 pb-3">
                     <div className="post_box h-100">
                         <div className="post_type">NEWS</div>
-                        <h2 className="pb-3"><Link href="#">Sydney Roosters V ST George</Link></h2>
+                        <h2 className="pb-3"><Link to="#">Sydney Roosters V ST George</Link></h2>
                         
                         <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
                             <div>
@@ -239,7 +239,7 @@ class PostGrids extends Component {
                 <Col md={4} sm={6} className="mb-4 pb-3">
                     <div className="post_box h-100">
                         <div className="post_type">NEWS</div>
-                        <h2 className="pb-3"><Link href="#">Sydney Roosters V ST George</Link></h2>
+                        <h2 className="pb-3"><Link to="#">Sydney Roosters V ST George</Link></h2>
                         
                         <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
                             <div>
@@ -270,7 +270,7 @@ class PostGrids extends Component {
                 <Col md={4} sm={6} className="mb-4 pb-3">
                     <div className="post_box h-100">
                         <div className="post_type">NEWS</div>
-                        <h2 className="pb-3"><Link href="#">Sydney Roosters V ST George</Link></h2>
+                        <h2 className="pb-3"><Link to="#">Sydney Roosters V ST George</Link></h2>
                         
                         <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
                             <div>

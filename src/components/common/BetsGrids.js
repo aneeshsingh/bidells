@@ -15,7 +15,7 @@ class BetsGrids extends Component {
             <Row>
                 <Col md={4} sm={6} className="mb-4 pb-3">
                     <div className="bet_box h-100">
-                        <h2><Link href="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
+                        <h2><Link to="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed magna eros. Quisque eget lorem nec urna convallis posuere.</p>
 
                         <div className="bet_info d-flex align-items-center justify-content-between">
@@ -35,7 +35,7 @@ class BetsGrids extends Component {
                 </Col>
                 <Col md={4} sm={6} className="mb-4 pb-3">
                     <div className="bet_box h-100">
-                        <h2><Link href="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
+                        <h2><Link to="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed magna eros. Quisque eget lorem nec urna convallis posuere.</p>
 
                         <div className="bet_info d-flex align-items-center justify-content-between">
@@ -55,7 +55,7 @@ class BetsGrids extends Component {
                 </Col>
                 <Col md={4} sm={6} className="mb-4 pb-3">
                     <div className="bet_box h-100">
-                        <h2><Link href="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
+                        <h2><Link to="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed magna eros. Quisque eget lorem nec urna convallis posuere.</p>
 
                         <div className="bet_info d-flex align-items-center justify-content-between">
@@ -75,7 +75,7 @@ class BetsGrids extends Component {
                 </Col>
                 <Col md={4} sm={6} className="mb-4 pb-3">
                     <div className="bet_box h-100">
-                        <h2><Link href="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
+                        <h2><Link to="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed magna eros. Quisque eget lorem nec urna convallis posuere.</p>
 
                         <div className="bet_info d-flex align-items-center justify-content-between">
@@ -95,7 +95,7 @@ class BetsGrids extends Component {
                 </Col>
                 <Col md={4} sm={6} className="mb-4 pb-3">
                     <div className="bet_box h-100">
-                        <h2><Link href="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
+                        <h2><Link to="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed magna eros. Quisque eget lorem nec urna convallis posuere.</p>
 
                         <div className="bet_info d-flex align-items-center justify-content-between">
@@ -115,7 +115,7 @@ class BetsGrids extends Component {
                 </Col>
                 <Col md={4} sm={6} className="mb-4 pb-3">
                     <div className="bet_box h-100">
-                        <h2><Link href="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
+                        <h2><Link to="#">Aneesh vs Nicola, who will win the MAFS</Link></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed magna eros. Quisque eget lorem nec urna convallis posuere.</p>
 
                         <div className="bet_info d-flex align-items-center justify-content-between">

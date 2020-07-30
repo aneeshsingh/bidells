@@ -38,13 +38,13 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Body className="p-0">
             <Button type="button" variant="reset" className="modal-close" onClick={props.onHide}>
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x d-block" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-x d-block" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
                     <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
                 </svg>
             </Button>
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe title="Bidells Tour" class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+            <div className="embed-responsive embed-responsive-16by9">
+                <iframe title="Bidells Tour" className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
             </div>
         </Modal.Body>
       </Modal>

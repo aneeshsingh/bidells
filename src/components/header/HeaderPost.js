@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
 
  // assets
 import UserPic from '../../assets/user_pic.png';
@@ -11,7 +12,7 @@ function Header(props) {
   return (
     <header className="header position-absolute">
         <Navbar expand="md">
-            <div className="navbar-back"><img src={ArrowLeft} alt="arrow"/></div>
+            <Button href="/" className="border-0 navbar-back"><img src={ArrowLeft} alt="arrow"/></Button>
             <div className="ads-frame ml-auto mt-auto mb-3">
                 <img src={Ads} alt="Ads Poster" />
             </div>

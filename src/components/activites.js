@@ -36,7 +36,7 @@ function Leaderboard() {
                         <Col md={8} lg={9} className="mb-2 pr-md-5">
                             <div className="activites-strip align-items-center d-flex mb-4">
                                 <div>
-                                    <span class="type">POINTS REDEEMED</span>
+                                    <span className="type">POINTS REDEEMED</span>
                                     <p>You purchased Restaurant Choice Fine Dining Gift Card $50 for B50000</p>
                                 </div>
                                 <div className="date ml-auto">
@@ -45,7 +45,7 @@ function Leaderboard() {
                             </div>
                             <div className="activites-strip align-items-center d-flex mb-4">
                                 <div>
-                                    <span class="type">POINTS REDEEMED</span>
+                                    <span className="type">POINTS REDEEMED</span>
                                     <p>You finished 10 and won B0 for the Week 4 competition</p>
                                 </div>
                                 <div className="date ml-auto">
@@ -54,7 +54,7 @@ function Leaderboard() {
                             </div>
                             <div className="activites-strip align-items-center d-flex mb-4">
                                 <div>
-                                    <span class="type">POINTS REDEEMED</span>
+                                    <span className="type">POINTS REDEEMED</span>
                                     <p>You placed a bet on Adam Scott for with the odds of .4</p>
                                 </div>
                                 <div className="date ml-auto">
@@ -63,7 +63,7 @@ function Leaderboard() {
                             </div>
                             <div className="activites-strip align-items-center d-flex mb-4">
                                 <div>
-                                    <span class="type">POINTS REDEEMED</span>
+                                    <span className="type">POINTS REDEEMED</span>
                                     <p>Sorry you bid was not successful with 3. All Cylinders (9)</p>
                                 </div>
                                 <div className="date ml-auto">
@@ -72,7 +72,7 @@ function Leaderboard() {
                             </div>
                             <div className="activites-strip align-items-center d-flex mb-4">
                                 <div>
-                                    <span class="type">POINTS REDEEMED</span>
+                                    <span className="type">POINTS REDEEMED</span>
                                     <p>You placed a bet on Sydney Roosters for 2123 with the odds of .25</p>
                                 </div>
                                 <div className="date ml-auto">
@@ -81,7 +81,7 @@ function Leaderboard() {
                             </div>
                             <div className="activites-strip align-items-center d-flex mb-4">
                                 <div>
-                                    <span class="type">POINTS REDEEMED</span>
+                                    <span className="type">POINTS REDEEMED</span>
                                     <p>You placed a bet on St George for with the odds of .75</p>
                                 </div>
                                 <div className="date ml-auto">
@@ -90,7 +90,7 @@ function Leaderboard() {
                             </div>
                             <div className="activites-strip align-items-center d-flex mb-4">
                                 <div>
-                                    <span class="type">POINTS REDEEMED</span>
+                                    <span className="type">POINTS REDEEMED</span>
                                     <p>You placed a bet on 3. All Cylinders (9) for 200 with the odds of .7</p>
                                 </div>
                                 <div className="date ml-auto">
@@ -99,7 +99,7 @@ function Leaderboard() {
                             </div>
                             <div className="activites-strip align-items-center d-flex mb-4">
                                 <div>
-                                    <span class="type">POINTS REDEEMED</span>
+                                    <span className="type">POINTS REDEEMED</span>
                                     <p>You purchased B63000 for $629.37</p>
                                 </div>
                                 <div className="date ml-auto">
@@ -108,7 +108,7 @@ function Leaderboard() {
                             </div>
                             <div className="activites-strip align-items-center d-flex mb-4">
                                 <div>
-                                    <span class="type">POINTS REDEEMED</span>
+                                    <span className="type">POINTS REDEEMED</span>
                                     <p>You purchased B1000 for $9.99</p>
                                 </div>
                                 <div className="date ml-auto">

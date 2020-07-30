@@ -843,3 +843,26 @@ h4{
 
     }
 }
+
+
+
+// sitemap
+.site-map-list{
+    padding-top: 24px;
+    font-weight: 400;
+    font-size: 28px;
+    column-count: 3;
+
+    li{
+        margin-bottom: 15px;
+    }
+    a{
+        color: $secondary;
+    }
+}
+
+svg{
+    line[stroke="#e0e0e0"]{
+        display: none !important;
+    }
+}

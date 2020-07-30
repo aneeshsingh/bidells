@@ -27,7 +27,7 @@ function Categories() {
                         <Col md={8} lg={7}>
                             <div className="mb-4 pb-1">
                                 <h1>We’re nearly there!</h1>
-                                <p class="lead">We need to know a little bit more about you to create your personalised plan.</p>
+                                <p className="lead">We need to know a little bit more about you to create your personalised plan.</p>
                             </div>
                         </Col>
                         <Col md={12} lg={12} className="mb-4">

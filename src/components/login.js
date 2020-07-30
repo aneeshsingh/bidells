@@ -27,7 +27,7 @@ function Login() {
                         <Col md={8} lg={7}>
                             <div className="mb-4 pb-1">
                                 <h1>Lets get started!</h1>
-                                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est justo, ullamcorper et ipsum fringilla, convallis faucibus ex.</p>
+                                <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est justo, ullamcorper et ipsum fringilla, convallis faucibus ex.</p>
                             </div>
                         </Col>
                         <Col md={10} lg={8}>

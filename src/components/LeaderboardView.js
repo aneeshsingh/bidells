@@ -16,7 +16,7 @@ import Ovel_01 from '../assets/Oval_dashboard_01.svg';
 import Ads_02 from '../assets/ads_03.png';
 import LeadUser from '../assets/post_user.png';
 
-function Leaderboard() {
+function LeaderboardView() {
   return (
     <div className="outer-view">
         <Header />
@@ -59,7 +59,7 @@ function Leaderboard() {
                 <div className="pt-4 pb-5">
                     <Row className="justify-content-between">
                         <Col md={8} lg={8} className="mb-4">
-                            <Link href="#" className="lead-strip li-grad d-flex align-items-center mb-4">
+                            <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
                                 <div className="lead-user mr-3">
                                     <img src={LeadUser} alt="user"/>
                                 </div>
@@ -73,7 +73,7 @@ function Leaderboard() {
                                     <span className="d-block">Points</span> 2,145,000
                                 </div>
                             </Link>
-                            <Link href="#" className="lead-strip li-grad d-flex align-items-center mb-4">
+                            <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
                                 <div className="lead-user mr-3">
                                     <img src={LeadUser} alt="user"/>
                                 </div>
@@ -87,7 +87,7 @@ function Leaderboard() {
                                     <span className="d-block">Points</span> 2,145,000
                                 </div>
                             </Link>
-                            <Link href="#" className="lead-strip active li-grad d-flex align-items-center mb-4">
+                            <Link to="#" className="lead-strip active li-grad d-flex align-items-center mb-4">
                                 <div className="lead-user mr-3">
                                     <img src={LeadUser} alt="user"/>
                                 </div>
@@ -101,7 +101,7 @@ function Leaderboard() {
                                     <span className="d-block">Points</span> 2,145,000
                                 </div>
                             </Link>
-                            <Link href="#" className="lead-strip li-grad d-flex align-items-center mb-4">
+                            <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
                                 <div className="lead-user mr-3">
                                     <img src={LeadUser} alt="user"/>
                                 </div>
@@ -115,7 +115,7 @@ function Leaderboard() {
                                     <span className="d-block">Points</span> 2,145,000
                                 </div>
                             </Link>
-                            <Link href="#" className="lead-strip li-grad d-flex align-items-center mb-4">
+                            <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
                                 <div className="lead-user mr-3">
                                     <img src={LeadUser} alt="user"/>
                                 </div>
@@ -129,7 +129,7 @@ function Leaderboard() {
                                     <span className="d-block">Points</span> 2,145,000
                                 </div>
                             </Link>
-                            <Link href="#" className="lead-strip li-grad d-flex align-items-center mb-4">
+                            <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
                                 <div className="lead-user mr-3">
                                     <img src={LeadUser} alt="user"/>
                                 </div>
@@ -143,7 +143,7 @@ function Leaderboard() {
                                     <span className="d-block">Points</span> 2,145,000
                                 </div>
                             </Link>
-                            <Link href="#" className="lead-strip li-grad d-flex align-items-center mb-4">
+                            <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
                                 <div className="lead-user mr-3">
                                     <img src={LeadUser} alt="user"/>
                                 </div>
@@ -175,4 +175,4 @@ function Leaderboard() {
   );
 }
 
-export default Leaderboard;
+export default LeaderboardView;
