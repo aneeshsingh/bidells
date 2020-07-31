@@ -51,7 +51,7 @@ function MyVerticallyCenteredModal(props) {
     );
   }
 
-function About() {
+function Welcome() {
     const [modalShow, setModalShow] = React.useState(false);
     return (
         <div className="outer-view">
@@ -208,4 +208,4 @@ function About() {
     );
 }
 
-export default About;
+export default Welcome;

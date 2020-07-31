@@ -464,15 +464,21 @@ h4{
         .check-icon{
             width: 64px;
             height: 64px;
+            cursor: pointer;
             line-height: 60px;
             text-align: center;
-            border-radius: 35px;            
+            border-radius: 35px;      
+            @include transition(0.25s all linear);      
             @include linear-gradient(136deg, #CBE0F6, #CBE0F7);
             @include box-shadow(3px 3px 13px rgba(156,169,185,0.5));
+
+            img{
+                @include transition(0.25s all linear);
+            }
         }
 
-        &.active{
-            .check-icon{
+        input:checked{
+            & + .check-icon{
                 @include linear-gradient(136deg, #3C3C3C, #010101);
                 @include box-shadow(4px 4px 18px rgba(0,0,0,0.5), -4px -4px 18px rgba(82,82,82,0.5), inset 2px 2px 8px rgba(0,0,0,0.5), inset -2px -2px 8px rgba(60,60,60,0.5));
 

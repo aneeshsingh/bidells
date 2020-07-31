@@ -56,10 +56,10 @@
     }
 
     &-points{
-        width: 85px;
+        min-width: 85px;
         color: $dark;
         height: 60px;
-        padding: 0 5px;
+        padding: 0 10px;
         font-size: 18px;
         font-weight: 700;
         text-align: center;

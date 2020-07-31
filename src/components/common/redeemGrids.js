@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from '../instance/axios';
+
 import {
     Link
   } from "react-router-dom";
@@ -6,126 +8,55 @@ import {
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-// assets
-import Uber from '../../assets/uber-logo.png';
-import TheRestaurant from '../../assets/The-Restaurant-Choice.png';
-import EBGames from '../../assets/Logo_of_EB_Games.png';
+class redeemGrids extends Component {
 
-class PostGrids extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            Products: []
+        }
+    }
+    
+    getProductDate(){
+        axios.get(`/?itemType=getProducts`)
+            .then(res => {
+            const data = res.data;
+            console.log(Object.entries(data));
+            const products = Object.entries(data).map(([key, product], index) => 
+                <Col md={4} sm={6} className="mb-4 pb-3" key={key}>
+                    <div className="post_box redeem_box d-flex py-4 h-100">
+                        <img src={product.productLogo} className="post_logo" alt={product.productType} />
+                        <div className="m-auto w-100">
+                            <div className="post_type">{product.productType}</div>
+                            <h2><Link to={product.productID}>{product.productLabel}</Link></h2>
+                            <p className="mb-0">{product.productShortDescription}</p>
+                        </div>
+                        <div className="redeem-points position-absolute">{product.buttonLabel}</div>
+                    </div>
+                </Col>
+             )
+
+            this.setState({
+                products
+            })
+            
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    componentDidMount() {
+        this.getProductDate();
+    }
+
     render() {
         return (
             <Row>
-                <Col md={4} sm={6} className="mb-4 pb-3">
-                    <div className="post_box redeem_box d-flex py-4 h-100">
-                        <img src={Uber} className="post_logo" alt="horse" />
-                        <div className="m-auto">
-                            <div className="post_type">EXPERIENCE</div>
-                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
-                            <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
-                        </div>
-
-                        <div className="redeem-points position-absolute">50,000</div>
-                    </div>
-                </Col>
-                <Col md={4} sm={6} className="mb-4 pb-3">
-                    <div className="post_box redeem_box d-flex py-4 h-100">
-                        <img src={TheRestaurant} className="post_logo" alt="horse" />
-                        <div className="m-auto">
-                            <div className="post_type">EXPERIENCE</div>
-                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
-                            <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
-                        </div>
-
-                        <div className="redeem-points position-absolute">50,000</div>
-                    </div>
-                </Col>
-                <Col md={4} sm={6} className="mb-4 pb-3">
-                    <div className="post_box redeem_box d-flex py-4 h-100">
-                        <img src={EBGames} className="post_logo" alt="horse" />
-                        <div className="m-auto">
-                            <div className="post_type">EXPERIENCE</div>
-                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
-                            <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
-                        </div>
-
-                        <div className="redeem-points position-absolute">50,000</div>
-                    </div>
-                </Col>
-                <Col md={4} sm={6} className="mb-4 pb-3">
-                    <div className="post_box redeem_box d-flex py-4 h-100">
-                        <img src={Uber} className="post_logo" alt="horse" />
-                        <div className="m-auto">
-                            <div className="post_type">EXPERIENCE</div>
-                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
-                            <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
-                        </div>
-
-                        <div className="redeem-points position-absolute">50,000</div>
-                    </div>
-                </Col>
-                <Col md={4} sm={6} className="mb-4 pb-3">
-                    <div className="post_box redeem_box d-flex py-4 h-100">
-                        <img src={TheRestaurant} className="post_logo" alt="horse" />
-                        <div className="m-auto">
-                            <div className="post_type">EXPERIENCE</div>
-                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
-                            <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
-                        </div>
-
-                        <div className="redeem-points position-absolute">50,000</div>
-                    </div>
-                </Col>
-                <Col md={4} sm={6} className="mb-4 pb-3">
-                    <div className="post_box redeem_box d-flex py-4 h-100">
-                        <img src={EBGames} className="post_logo" alt="horse" />
-                        <div className="m-auto">
-                            <div className="post_type">EXPERIENCE</div>
-                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
-                            <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
-                        </div>
-
-                        <div className="redeem-points position-absolute">50,000</div>
-                    </div>
-                </Col>
-                <Col md={4} sm={6} className="mb-4 pb-3">
-                    <div className="post_box redeem_box d-flex py-4 h-100">
-                        <img src={Uber} className="post_logo" alt="horse" />
-                        <div className="m-auto">
-                            <div className="post_type">EXPERIENCE</div>
-                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
-                            <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
-                        </div>
-
-                        <div className="redeem-points position-absolute">50,000</div>
-                    </div>
-                </Col>
-                <Col md={4} sm={6} className="mb-4 pb-3">
-                    <div className="post_box redeem_box d-flex py-4 h-100">
-                        <img src={TheRestaurant} className="post_logo" alt="horse" />
-                        <div className="m-auto">
-                            <div className="post_type">EXPERIENCE</div>
-                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
-                            <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
-                        </div>
-
-                        <div className="redeem-points position-absolute">50,000</div>
-                    </div>
-                </Col>
-                <Col md={4} sm={6} className="mb-4 pb-3">
-                    <div className="post_box redeem_box d-flex py-4 h-100">
-                        <img src={EBGames} className="post_logo" alt="horse" />
-                        <div className="m-auto">
-                            <div className="post_type">EXPERIENCE</div>
-                            <h2><Link to="#">Uber Gift Card $50</Link></h2>
-                            <p className="mb-0">Get a reliable ride in minutes with the Uber app.</p>
-                        </div>
-
-                        <div className="redeem-points position-absolute">50,000</div>
-                    </div>
-                </Col>
+                {this.state.products}
             </Row>
         );
     }
 }
 
-export default PostGrids;
+export default redeemGrids;
