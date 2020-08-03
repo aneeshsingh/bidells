@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from '../instance/axios';
+import {
+    Link
+  } from "react-router-dom";
 
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
@@ -37,7 +40,7 @@ class HeaderPost extends Component {
             </div>
             <div className="ml-auto d-flex align-items-center order-md-2">
                 <div className="header-points">{this.state.points}</div>
-                <div className="header-user ml-4"><img src={UserPic} alt="User"/></div>
+                <Link to="/user-settings" className="header-user ml-4"><img src={UserPic} alt="User"/></Link>
             </div>
         </Navbar>
     </header>

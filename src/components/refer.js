@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from './instance/axios';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -16,6 +17,21 @@ import SMS from '../assets/sms-solid.png';
 import Envelope from '../assets/envelope-open.png';
 
 class refer extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            referrer: ''
+        }
+    }
+
+    componentDidMount() {
+        axios.get(`/?itemType=getReferralCode&userID=6`)
+            .then(res => {
+            const points = res.data;
+            this.setState({ referrer : points.referrerCode });
+        })
+    }
     render() {
         return (
             <div className="outer-view">
@@ -42,7 +58,7 @@ class refer extends Component {
                                         <Col md={4}>
                                             <div className="referal-box li-grad">
                                                 <h5>Your referrer code</h5>
-                                                <div className="code">hQzgT6</div>
+                                                <div className="code">{this.state.referrer}</div>
                                                 <Button variant="link" size="sm" className="btn-reset">Click to copy</Button>
                                             </div>
                                         </Col>

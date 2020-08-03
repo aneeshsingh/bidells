@@ -14,18 +14,18 @@ import UnlimitedAccess  from './components/unlimitedAccess';
 import PaymentDetails  from './components/PaymentDetails';
 import PersonalDetails  from './components/PersonalDetails';
 import Categories  from './components/Categories';
-import Dashboard  from './components/dashboard';
-import Post  from './components/singlePost';
+import GetAllBets  from './components/GetAllBets';
+import GetBetDetails  from './components/GetBetDetails';
 import Leaderboard  from './components/Leaderboard';
 import LeaderboardView  from './components/LeaderboardView';
-import AllResults  from './components/AllResults';
+import GetResults  from './components/GetResults';
 import RedeemPoints  from './components/redeemPoints';
 import RedeemSingle  from './components/RedeemSingle';
 import RedeemCongrats  from './components/RedeemCongrats';
 import RedeemOrder  from './components/RedeemOrder';
 import Activities  from './components/activites';
 import Refer  from './components/refer';
-import ReferSettings  from './components/referSettings';
+import UserSettings  from './components/userSettings';
 import CreateBets  from './components/CreateBets';
 import PointSummary  from './components/PointSummary';
 import CreateRefer  from './components/CreateRefer';
@@ -57,11 +57,11 @@ function App() {
           <Route path="/categories">
             <Categories />
           </Route>
-          <Route path="/dashboard">
-            <Dashboard />
+          <Route path="/get-all-bets">
+            <GetAllBets />
           </Route>
-          <Route path="/post">
-            <Post />
+          <Route path="/get-bet-details">
+            <GetBetDetails />
           </Route>
           <Route path="/leaderboard">
             <Leaderboard />
@@ -69,8 +69,8 @@ function App() {
           <Route path="/leaderboard-view">
             <LeaderboardView />
           </Route>
-          <Route path="/all-results">
-            <AllResults />
+          <Route path="/get-results">
+            <GetResults />
           </Route>
           <Route path="/redeem-points">
             <RedeemPoints />
@@ -90,8 +90,8 @@ function App() {
           <Route path="/refer">
             <Refer />
           </Route>
-          <Route path="/refer-settings">
-            <ReferSettings />
+          <Route path="/user-settings">
+            <UserSettings />
           </Route>
           <Route path="/create-bets">
             <CreateBets />

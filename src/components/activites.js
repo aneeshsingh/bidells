@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from './instance/axios';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -13,6 +14,44 @@ import Ads_02 from '../assets/ads_03.png';
 import Ads_03 from '../assets/ads_04.png';  
 
 class activites extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            activites: []
+        }
+    }
+
+    getActivites(){
+        axios.get(`/?itemType=getAllUserActivity&userID=6`)
+            .then(res => {
+            const data = res.data;
+            console.log(Object.entries(data));
+            const activites = Object.entries(data).map(([key, activity], index) => 
+                <div className="activites-strip align-items-center d-flex mb-4"  key={key}>
+                    <div>
+                        <span className="type text-uppercase">{activity.userActivityType}</span>
+                        <p>{activity.userActivityName}</p>
+                    </div>
+                    <div className="date ml-auto">
+                        {activity.userActivityDate}
+                    </div>
+                </div>
+             )
+
+            this.setState({
+                activites
+            })
+            
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    componentDidMount() {
+        this.getActivites();
+    }
+
     render() {
         return (
             <div className="outer-view">
@@ -35,88 +74,9 @@ class activites extends Component {
                         <div className="pt-4">
                             <Row className="justify-content-between">
                                 <Col md={8} lg={9} className="mb-2 pr-md-5">
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <p>You purchased Restaurant Choice Fine Dining Gift Card $50 for B50000</p>
-                                        </div>
-                                        <div className="date ml-auto">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <p>You finished 10 and won B0 for the Week 4 competition</p>
-                                        </div>
-                                        <div className="date ml-auto">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <p>You placed a bet on Adam Scott for with the odds of .4</p>
-                                        </div>
-                                        <div className="date ml-auto">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <p>Sorry you bid was not successful with 3. All Cylinders (9)</p>
-                                        </div>
-                                        <div className="date ml-auto">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <p>You placed a bet on Sydney Roosters for 2123 with the odds of .25</p>
-                                        </div>
-                                        <div className="date ml-auto">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <p>You placed a bet on St George for with the odds of .75</p>
-                                        </div>
-                                        <div className="date ml-auto">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <p>You placed a bet on 3. All Cylinders (9) for 200 with the odds of .7</p>
-                                        </div>
-                                        <div className="date ml-auto">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <p>You purchased B63000 for $629.37</p>
-                                        </div>
-                                        <div className="date ml-auto">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <p>You purchased B1000 for $9.99</p>
-                                        </div>
-                                        <div className="date ml-auto">
-                                            02-15-2020
-                                        </div>
-                                    </div>
+                                    {this.state.activites}
                                 </Col>
+                                
                                 <Col md={4} lg={3} className="mb-2">
                                     <div className="ads-portFrame p-md-5 p-sm-4 p-3">
                                         <img src={Ads_03} alt="ads" />

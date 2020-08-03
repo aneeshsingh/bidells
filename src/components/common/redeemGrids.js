@@ -18,7 +18,7 @@ class redeemGrids extends Component {
         }
     }
     
-    getProductDate(){
+    getProductData(){
         axios.get(`/?itemType=getProducts`)
             .then(res => {
             const data = res.data;
@@ -47,7 +47,7 @@ class redeemGrids extends Component {
     }
 
     componentDidMount() {
-        this.getProductDate();
+        this.getProductData();
     }
 
     render() {

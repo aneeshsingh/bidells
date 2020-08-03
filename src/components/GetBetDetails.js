@@ -99,7 +99,7 @@ class singlePost extends Component {
                                         3.40
                                     </div>
                                     <div className="ml-5">
-                                        <input type="checkbox" hidden id="check_01" />
+                                        <input type="radio" name="bets" hidden id="check_01" />
                                         <label htmlFor="check_01" className="check-icon">
                                             <img src={Check} alt="check"/>
                                         </label>
@@ -119,7 +119,7 @@ class singlePost extends Component {
                                         3.40
                                     </div>
                                     <div className="ml-5">
-                                        <input type="checkbox" hidden id="check_02" />
+                                        <input type="radio" name="bets" hidden id="check_02" />
                                         <label htmlFor="check_02" className="check-icon">
                                             <img src={Check} alt="check"/>
                                         </label>
@@ -139,7 +139,7 @@ class singlePost extends Component {
                                         3.40
                                     </div>
                                     <div className="ml-5">
-                                        <input type="checkbox" hidden id="check_03" />
+                                        <input type="radio" name="bets" hidden id="check_03" />
                                         <label htmlFor="check_03" className="check-icon">
                                             <img src={Check} alt="check"/>
                                         </label>
@@ -159,7 +159,7 @@ class singlePost extends Component {
                                         3.40
                                     </div>
                                     <div className="ml-5">
-                                        <input type="checkbox" hidden id="check_04" />
+                                        <input type="radio" name="bets" hidden id="check_04" />
                                         <label htmlFor="check_04" className="check-icon">
                                             <img src={Check} alt="check"/>
                                         </label>
@@ -179,7 +179,7 @@ class singlePost extends Component {
                                         3.40
                                     </div>
                                     <div className="ml-5">
-                                        <input type="checkbox" hidden id="check_05" checked />
+                                        <input type="radio" name="bets" hidden id="check_05" />
                                         <label htmlFor="check_05" className="check-icon">
                                             <img src={Check} alt="check"/>
                                         </label>
@@ -199,7 +199,7 @@ class singlePost extends Component {
                                         3.40
                                     </div>
                                     <div className="ml-5">
-                                        <input type="checkbox" hidden id="check_06" />
+                                        <input type="radio" name="bets" hidden id="check_06" />
                                         <label htmlFor="check_06" className="check-icon">
                                             <img src={Check} alt="check"/>
                                         </label>
@@ -219,7 +219,7 @@ class singlePost extends Component {
                                         3.40
                                     </div>
                                     <div className="ml-5">
-                                        <input type="checkbox" hidden id="check_07" />
+                                        <input type="radio" name="bets" hidden id="check_07" />
                                         <label htmlFor="check_07" className="check-icon">
                                             <img src={Check} alt="check"/>
                                         </label>
@@ -239,7 +239,7 @@ class singlePost extends Component {
                                         3.40
                                     </div>
                                     <div className="ml-5">
-                                        <input type="checkbox" hidden id="check_08" />
+                                        <input type="radio" name="bets" hidden id="check_08" />
                                         <label htmlFor="check_08" className="check-icon">
                                             <img src={Check} alt="check"/>
                                         </label>
@@ -251,8 +251,8 @@ class singlePost extends Component {
                         <Row className="align-items-center">
                             <Col md={6} className="mb-4">
                                 <div className="form-bet-amount d-flex align-items-center">
-                                    {/* <input type="text" className="border-0 bg-transparent pl-0" placeholder="Enter your bet amount" /> */}
-                                    <span className="submitText">Enter your bet amount</span>
+                                    <input type="text" className="border-0 bg-transparent pl-0" placeholder="Enter your bet amount" />
+                                    {/* <span className="submitText">Enter your bet amount</span> */}
                                     <Button><img src={SubmitArrow} alt="arrow"/></Button>
                                 </div>
                             </Col>

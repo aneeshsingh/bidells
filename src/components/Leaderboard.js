@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from './instance/axios';
 import {
     Link
   } from "react-router-dom";
@@ -22,78 +23,111 @@ class Leaderboard extends Component {
         super(props);
 
         this.state = {
-        
-          series: [{
-              name: "Leads",
-              data: [100, 260, 423, 390, 200]
-          }],
-          options: {
-            chart: {
-              type: 'line',
-              zoom: {
-                enabled: false
-              },
-              toolbar: {
-                  show: false
-              }
-            },
-            dataLabels: {
-              enabled: false
-            },
-            stroke: {
-              curve: 'smooth'
-            },
-            title: {
-                enabled: false
-            },
-            grid: {
-                show: false
-            },
-            tooltip: {
-                theme: 'dark',
-            },
-            xaxis: {
-                labels: {
-                    show: false
+            getLeads: [],
+            series: [{
+                name: "Leads",
+                data: [100, 260, 423, 390, 200]
+            }],
+            options: {
+                chart: {
+                    type: 'line',
+                    zoom: {
+                        enabled: false
+                    },
+                    toolbar: {
+                        show: false
+                    }
                 },
-                tooltip:{
+                dataLabels: {
                     enabled: false
                 },
-                crosshairs: {
+                stroke: {
+                    curve: 'smooth'
+                },
+                title: {
+                    enabled: false
+                },
+                grid: {
                     show: false
                 },
-                categories: ['1/11/2020', '2/11/2020', '3/11/2020', '4/11/2020', '5/11/2020'],
-            },
-            yaxis: {
-                labels: {
+                tooltip: {
+                    theme: 'dark',
+                },
+                xaxis: {
+                    labels: {
+                        show: false
+                    },
+                    tooltip:{
+                        enabled: false
+                    },
+                    crosshairs: {
+                        show: false
+                    },
+                    categories: ['1/11/2020', '2/11/2020', '3/11/2020', '4/11/2020', '5/11/2020'],
+                },
+                yaxis: {
+                    labels: {
+                        show: false
+                    }
+                },
+                colors: ['#FE3A21'],
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        gradientToColors: [ '#FC7B45'],
+                        shadeIntensity: 1,
+                        opacityFrom: 1,
+                        opacityTo: 1,
+                        stops: [0, 200, 100, 100]
+                    }
+                },
+                markers: {
+                    size: 6,
+                    colors: ["#FE3A21"],
+                    strokeColors: "transparent",
+                    strokeWidth: 0,
+                    hover:{
+                        size: 10
+                    }
+                },
+                legend: {
                     show: false
                 }
-            },
-            colors: ['#FE3A21'],
-            fill: {
-                type: 'gradient',
-                gradient: {
-                    gradientToColors: [ '#FC7B45'],
-                    shadeIntensity: 1,
-                    opacityFrom: 1,
-                    opacityTo: 1,
-                    stops: [0, 200, 100, 100]
-                }
-            },
-            markers: {
-                size: 6,
-                colors: ["#FE3A21"],
-                strokeColors: "transparent",
-                strokeWidth: 0,
-                hover:{
-                    size: 10
-                }
-            },
-            legend: {
-                show: false
-            }
           },    
         };
+    }
+
+
+    getLeadData(){
+        axios.get(`/?itemType=getAllLeaderboards&userID=6`)
+            .then(res => {
+            const data = res.data;
+            console.log(Object.entries(data));
+            const getLeads = Object.entries(data).map(([key, bets], index) => 
+                <Link to="/leaderboard-view" className="lead-strip li-grad d-flex align-items-center mb-4" key={key}>
+                    <div className="lead-date flex-grow-1">
+                        {bets.week_name}
+                    </div>
+                    <div className="lead-data text-right">
+                        <span className="d-block">Position</span> {bets.position}
+                    </div>
+                    <div className="lead-data text-right ml-md-5 ml-4 pl-md-4">
+                        <span className="d-block">Points</span> {bets.points}
+                    </div>
+                </Link>
+             )
+
+            this.setState({
+                getLeads
+            })
+            
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    componentDidMount() {
+        this.getLeadData();
     }
 
     render() {
@@ -129,7 +163,8 @@ class Leaderboard extends Component {
                         <div className="pt-4 pb-5">
                             <Row className="justify-content-between">
                                 <Col md={8} lg={8} className="mb-4">
-                                    <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
+                                    {this.state.getLeads}                                    
+                                    {/* <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
                                         <div className="lead-date flex-grow-1">
                                             08-19-2020
                                         </div>
@@ -139,73 +174,7 @@ class Leaderboard extends Component {
                                         <div className="lead-data text-right ml-md-5 ml-4 pl-md-4">
                                             <span className="d-block">Points</span> 2,145,000
                                         </div>
-                                    </Link>
-                                    <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
-                                        <div className="lead-date flex-grow-1">
-                                            08-19-2020
-                                        </div>
-                                        <div className="lead-data text-right">
-                                            <span className="d-block">Position</span> 1
-                                        </div>
-                                        <div className="lead-data text-right ml-md-5 ml-4 pl-md-4">
-                                            <span className="d-block">Points</span> 2,145,000
-                                        </div>
-                                    </Link>
-                                    <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
-                                        <div className="lead-date flex-grow-1">
-                                            08-19-2020
-                                        </div>
-                                        <div className="lead-data text-right">
-                                            <span className="d-block">Position</span> 1
-                                        </div>
-                                        <div className="lead-data text-right ml-md-5 ml-4 pl-md-4">
-                                            <span className="d-block">Points</span> 2,145,000
-                                        </div>
-                                    </Link>
-                                    <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
-                                        <div className="lead-date flex-grow-1">
-                                            08-19-2020
-                                        </div>
-                                        <div className="lead-data text-right">
-                                            <span className="d-block">Position</span> 1
-                                        </div>
-                                        <div className="lead-data text-right ml-md-5 ml-4 pl-md-4">
-                                            <span className="d-block">Points</span> 2,145,000
-                                        </div>
-                                    </Link>
-                                    <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
-                                        <div className="lead-date flex-grow-1">
-                                            08-19-2020
-                                        </div>
-                                        <div className="lead-data text-right">
-                                            <span className="d-block">Position</span> 1
-                                        </div>
-                                        <div className="lead-data text-right ml-md-5 ml-4 pl-md-4">
-                                            <span className="d-block">Points</span> 2,145,000
-                                        </div>
-                                    </Link>
-                                    <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
-                                        <div className="lead-date flex-grow-1">
-                                            08-19-2020
-                                        </div>
-                                        <div className="lead-data text-right">
-                                            <span className="d-block">Position</span> 1
-                                        </div>
-                                        <div className="lead-data text-right ml-md-5 ml-4 pl-md-4">
-                                            <span className="d-block">Points</span> 2,145,000
-                                        </div>
-                                    </Link>
-                                    <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4">
-                                        <div className="lead-date flex-grow-1">
-                                            08-19-2020
-                                        </div>
-                                        <div className="lead-data text-right">
-                                            <span className="d-block">Position</span> 1
-                                        </div>
-                                        <div className="lead-data text-right ml-md-5 ml-4 pl-md-4">
-                                            <span className="d-block">Points</span> 2,145,000
-                                        </div>
-                                    </Link>
+                                    </Link> */}
                                 </Col>
                                 <Col md={4} lg={3} className="mb-4">
                                     <Button href="#" block className="form-btn border-0 text-uppercase">SEE ALL TIME LEADERBOARD</Button>
