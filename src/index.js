@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// React Boostrap
+// Package Style
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-phone-input-2/lib/style.css'
 
 // SASS
 import './sass/style.scss';

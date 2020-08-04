@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from './instance/axios';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -26,7 +27,8 @@ class RedeemSingle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            quality: 2
+            quality: 2,
+            redeem: []
         };
     }
 
@@ -36,7 +38,28 @@ class RedeemSingle extends Component {
         })
     }
 
+    getLeadData(){
+        axios.get(`/?itemType=getProductInformation&productID=644&userID=6`)
+            .then(res => {
+            const redeem = res.data;
+            // console.log(Object.entries(redeem));
+
+            this.setState({
+                redeem : redeem,
+                quality : redeem.quantityAvailable
+            })
+            
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    componentDidMount() {
+        this.getLeadData();
+    }
+
     render() {
+        console.log(this.state.redeem);
         return (
             <div className="outer-view">
                 <Header />
@@ -50,7 +73,7 @@ class RedeemSingle extends Component {
                             <Col md={6}>
                                 <div className="heading-area">
                                     <div className="post_type">EXPERIENCE</div>
-                                    <h1>Uber Gift Card $50</h1>
+                                    <h1>{this.state.redeem.title}</h1>
                                     <p>Get a reliable ride in minutes with the Uber app.</p>
                                 </div>
                             </Col>
@@ -87,7 +110,7 @@ class RedeemSingle extends Component {
                                         <div className="box-grid my-3 li-grad p-md-5 p-4">
                                             <div className="box-grid-info py-2">
                                                 <span className="mb-4 d-block">Total</span>
-                                                <strong>100,000</strong>
+                                                <strong>{this.state.redeem.userCurrentPoints}</strong>
                                             </div>
                                         </div>
                                     </Col>
@@ -103,13 +126,13 @@ class RedeemSingle extends Component {
                                 <div className="mt-5 tabs-content">
                                     <Tabs defaultActiveKey="detail" fill id="tab-redeem">
                                         <Tab eventKey="detail" title="Detail">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, magni? Similique nobis odit, soluta beatae pariatur voluptates optio illum, non recusandae eaque dolore eos veniam earum adipisci unde in minima!</p>
+                                            <p>{this.state.redeem.content}</p>
                                         </Tab>
                                         <Tab eventKey="shipping" title="Shipping">
-                                            <p>Sed, magni? Similique nobis odit, soluta beatae pariatur voluptates optio illum, non recusandae eaque dolore eos veniam earum adipisci unde inLorem ipsum dolor sit amet consectetur adipisicing elit minima!</p>
+                                            <p>{this.state.redeem.shippingDetails}</p>
                                         </Tab>
                                         <Tab eventKey="payment" title="Payment">
-                                            <p>Consectetur adipisicing elit. Sed, magni? Similique nobis odit, soluta beatae pariatur voluptates optio illum, non recusandae eaque dolore eos veniamLorem ipsum dolor sit amet earum adipisci unde in minima!</p>
+                                            <p>{this.state.redeem.paymentDetails}</p>
                                         </Tab>
                                     </Tabs>
                                 </div>

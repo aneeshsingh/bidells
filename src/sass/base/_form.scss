@@ -250,3 +250,58 @@
 input:checked + .label-box{
     @include box-shadow(3px 6px 4px rgba(156,169,185,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
 }
+
+.react-tel-input{
+    @include flexbox();
+    @include flex-direction(row-reverse);
+
+    .form-control{
+        width: 100%;
+    }
+
+    .form-control, .selected-flag{
+        height: 65px;
+        font-size: 18px;
+        padding: 6px 30px;
+        letter-spacing: -0.6px;
+        border-radius: 16px !important;
+        @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+    }
+    
+    .country-list{
+        font-size: 16px;
+        @include linear-gradient(136deg, #EBF3FA, #CBE0F7);    
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));    
+    }
+    
+    .flag-dropdown{
+        border-width: 0;
+        margin-right: 15px;
+        position: relative;
+        border-radius: 16px !important;
+        background-color: transparent !important;
+
+        &.open{
+            .selected-flag{
+                @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+            }
+        }
+    }
+    
+    .selected-flag {
+        width: 105px;
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
+        
+        .arrow{
+            left: 32px;
+            border-top-width: 8px;
+            border-left-width: 7px;
+            border-right-width: 7px;
+
+            &.up{
+                border-top-width: 0;
+                border-bottom-width: 8px;
+            }
+        }
+    }
+}
