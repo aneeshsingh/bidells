@@ -13,6 +13,9 @@ import PostGrids from './common/PostGrids';
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';
 import Ovel_02 from '../assets/Oval_dashboard_02.svg';
 import News from '../assets/category-bg.png';
+import Ads from '../assets/ads.png';
+import Oval from '../assets/Ovalpmob-left.svg';
+import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 class GetAllBets extends Component {
     render() {
@@ -20,6 +23,8 @@ class GetAllBets extends Component {
             <div className="outer-view">
                 <Header />                
 
+                <img src={Oval} className="oval-top-left d-block d-md-none" alt="ovel shape" />
+                <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" style={{ top: '0px' }} alt="ovel shape" />
                 <div className="top_offset position-relative">
                     <img src={Ovel_02} className="place-oval-Rcenter" alt="ovel shape" />
                     <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
@@ -88,6 +93,9 @@ class GetAllBets extends Component {
                         <PostGrids />
                     </Container>
 
+                    <div className="ads-frame mx-auto d-block d-md-none mt-auto mb-md-3">
+                        <img src={Ads} alt="Ads poster" />
+                    </div>
                 </div>
                 
             </div>

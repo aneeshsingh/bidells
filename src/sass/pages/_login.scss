@@ -2,4 +2,9 @@
     min-height: 280px;
     background-size: cover;
     background-position: center center;
+
+    @include maxDevice(767px){
+        min-height: auto;
+        background: none !important;
+    }
 }

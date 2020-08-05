@@ -3,8 +3,17 @@ h1{
     font-size: 44px;
     margin-bottom: 15px;
 
-    @include maxDevice(1400px){
-        font-size: 28px;
+    @include maxDevice(991px){
+        font-size: 38px;
+    }
+
+    @include maxDevice(767px){
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+
+    @include maxDevice(479px){
+        font-size: 30px;
     }
 }
 
@@ -12,10 +21,6 @@ h4{
     color: $secondary-30;
     font-weight: 700;
     font-size: 25px;
-
-    @include maxDevice(1400px){
-        font-size: 20px;
-    }
 }
 
 .display{
@@ -28,6 +33,14 @@ h4{
         @include maxDevice(1600px){
             font-size: 95px;
         }
+
+        @include maxDevice(1200px){
+            font-size: 75px;
+        }
+
+        @include maxDevice(575px){
+            font-size: 62px;
+        }
     }
 
     &-3{
@@ -37,28 +50,44 @@ h4{
         letter-spacing: -2.931985px;
 
         @include maxDevice(1600px){
-            font-size: 55px;
+            font-size: 56px;
+        }
+
+        @include maxDevice(575px){
+            font-size: 42px;
         }
     }
 }
 
 .col{
     &-content{
+        padding: 20px;
         margin-right: auto;
         margin-left: auto;
-        padding: 15px 0;
-        max-width: 90%;
+        max-width: 680px;
         width: 100%;
     }
 }
 
 .top_offset{
     padding-top: 200px;
+
+    @include maxDevice(991px){
+        padding-top: 150px;
+    }
+
+    @include maxDevice(767px){
+        padding-top: 130px;
+    }
 }
 
 .content-area{
     p.lead{
         font-size: 24px;
+
+        @include maxDevice(767px){
+            font-size: 20px;
+        }
     }
 }
 
@@ -68,6 +97,7 @@ h4{
     
 .outer-view{
     position: relative;
+    overflow: hidden;
 
     .ovel-bottom-left{
         left: 0;
@@ -75,6 +105,27 @@ h4{
         height: 62%;
         max-width: 32%;
         position: absolute;
+
+        @include maxDevice(767px){
+            height: 80%;
+            max-width: 60%;
+        }
+    }
+    .oval-top-left{
+        left: 0;
+        top: 25%;
+        bottom: auto;
+        max-width: 60%;
+        position: absolute;
+        max-height: calc(100vh - 100px);
+    }
+    .ovel-bottom-right{
+        right: 0;
+        top: 100px;
+        bottom: auto;
+        max-width: 60%;
+        position: absolute;
+        max-height: calc(100vh - 100px);
     }
 }
 
@@ -95,6 +146,11 @@ h4{
         color: $white;
         position: absolute;
 
+        @include maxDevice(767px){
+            right: 0;
+            top: -45px;
+        }
+
         svg{
             width: 40px;
             height: 40px;
@@ -109,6 +165,11 @@ h4{
         li{
             padding: 0 15px;
             margin-bottom: 40px;
+
+            @include maxDevice(767px){
+                margin-bottom: 20px;
+                padding: 0 10px;
+            }
         }
 
         &_3{
@@ -119,10 +180,15 @@ h4{
         }
 
         &_item{
-            min-height: 200px;
+            // min-height: 200px;
+            padding-bottom: 100%;
             border-radius: 42px;
             @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
             @include box-shadow(15px 15px 60px rgba(156,169,185,0.5), -15px -15px 60px rgba(255,255,255,0.5), inset -15px -15px 60px rgba(255,255,255,0.5));
+
+            @include maxDevice(767px){
+                border-radius: 20px;
+            }
         }
     }
 }
@@ -130,6 +196,12 @@ h4{
 .redeem{
     &_box{
         min-height: 300px;
+        padding-top: 40px !important;
+        padding-bottom: 60px !important;
+
+        @include maxDevice(767px){
+            min-height: 220px;
+        }
     }
 
     &-points{
@@ -147,7 +219,7 @@ h4{
         font-weight: 500;
         position: relative;
         border-radius: 30px;
-        padding: 45px 30px 50px;
+        padding: 45px 20px 50px;
         @include transition(all 0.35s ease);
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
@@ -156,11 +228,26 @@ h4{
             @include box-shadow(15px 15px 60px rgba(156,169,185,0.5), -15px -15px 60px rgba(255,255,255,0.5), inset -15px -15px 60px rgba(255,255,255,0.6));
         }
 
+        @include minDevice(1600px){
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        @include maxDevice(767px){
+            background: #ffffff;
+            font-size: 16px;
+            padding: 50px 15px 20px;
+        }
+
         h2{
             font-size: 25px;
             font-weight: 700;
             margin-bottom: 0.3em;
             color: $secondary-30;
+
+            @include maxDevice(991px){
+                font-size: 22px;
+            }
 
             &:hover{
                 color: $dark;
@@ -182,6 +269,10 @@ h4{
         opacity: 0.35;
         max-height: 40px;
         position: absolute;
+
+        @include maxDevice(767px){
+            top: 12px;
+        }
     }
 
     &_logo{
@@ -204,6 +295,10 @@ h4{
         padding-bottom: 15px;
         margin-bottom: 12px;
         border-bottom: 2px dashed $primary;
+
+        @include maxDevice(767px){
+            font-size: 16px;
+        }
     }
 
     &_info{
@@ -242,19 +337,21 @@ h4{
     }
 
     &_users{
+        width: 100%;
+
         img{
-            margin-right: 6px;
-            max-width: 45px;
-            width: 100%;
+            margin-right: 5px;
+            // max-width: 45px;
+            width: 14%;
         }
 
         span{
-            width: 45px;
-            height: 45px;
+            width: 15%;
+            line-height: 1;
             font-size: 16px;
             color: $gray-68;
             font-weight: 500;
-            line-height: 42px;
+            padding: 3% 0 5%;
             text-align: center;
             border-radius: 25px;
             background-color: $gray-20;
@@ -277,6 +374,10 @@ h4{
         line-height: 1.2;
         font-weight: 300;
 
+        @include maxDevice(1600px){
+            font-size: 25px;
+        }
+
         p{
             font-weight: 300;
         }
@@ -291,6 +392,18 @@ h4{
             font-weight: 700;
             line-height: 0.9;
             font-size: 52px;
+
+            @include maxDevice(1600px){
+                font-size: 42px;
+            }
+
+            @include maxDevice(991px){
+                font-size: 38px;
+            }
+
+            @include maxDevice(575px){
+                font-size: 30px;
+            }
         }
 
         strong{
@@ -309,6 +422,12 @@ h4{
     
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
         @include box-shadow(inset 2px 2px 8px rgba(112,122,134,0.5), inset -2px -2px 8px rgba(255,255,255,0.5));
+
+        @include maxDevice(767px){
+            border-radius: 20px 20px 0 0;
+            max-width: 100%;
+            padding: 8% 15px 20px;
+        }
     
         img{
             max-width: 100%;
@@ -316,15 +435,22 @@ h4{
     }
     
     &-portFrame{
-        max-width: 100%;
+        width: 100%;
+        max-width: 300px;
         border-radius: 63px;
         display: inline-block;
     
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
         @include box-shadow(20px 20px 50px rgba(156,169,185,0.5), -20px -20px 50px rgba(255,255,255,0.5), inset 20px 20px 30px rgba(112,122,134,0.5), inset -20px -20px 30px rgba(255,255,255,0.5));
 
+        @include maxDevice(767px){
+            border-radius: 22px;
+        }
+
         img{
-            max-width: 100%;
+            max-width: 90%;
+            display: block;
+            margin: auto;
         }
     }
 }
@@ -337,7 +463,12 @@ h4{
         &::-webkit-scrollbar {
             width: 0px;
             background: transparent;
-        }        
+        }  
+        
+        @include maxDevice(991px){
+            padding-top: 0;
+            padding-bottom: 12px;
+        }
     }
 
     &_item{
@@ -358,6 +489,21 @@ h4{
         @include align-items(center);
         @include justify-content(center);
         @include box-shadow(-8px -8px 30px rgba(255,255,255,0.5), 8px 8px 30px rgba(0,0,0,0.5));
+
+        @include maxDevice(991px){
+            @include box-shadow(none);
+            border-radius: 8px;
+            margin-left: 15px;
+            min-width: 120px;
+            height: 65px;
+        }
+
+        @include maxDevice(768px){
+            margin-left: 10px;
+            min-width: 90px;
+            font-size: 16px;
+            height: 65px;
+        }
 
 
         &:before{
@@ -426,11 +572,20 @@ h4{
     letter-spacing: 4px;
     text-transform: uppercase;
 
+    @include maxDevice(1600px){
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
     strong{
         letter-spacing: normal;
         font-size: 36px;
         color: $gray-50;
         display: block;
+
+        @include maxDevice(1600px){
+            font-size: 28px;
+        }
     }
 }
 
@@ -442,11 +597,19 @@ h4{
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
         @include box-shadow(4px 4px 18px rgba(156,169,185,0.5), -4px -4px 18px rgba(255,255,255,0.5));
 
+        @include maxDevice(575px){
+            padding: 15px 10px;
+        }
+
         h4{
             color: $gray-50;
             font-size: 24px;
             font-weight: 500;
             margin-bottom: 3px;
+
+            @include maxDevice(575px){
+                font-size: 18px;
+            }
         }
 
         .bids{
@@ -454,12 +617,29 @@ h4{
             font-weight: 500;
             line-height: 0.9;
 
+            @include maxDevice(575px){
+                font-size: 18px;
+            }
+
             span{
                 text-transform: uppercase;
                 font-weight: 500;
                 color: $gray-10;
                 font-size: 16px;
                 display: block;
+
+                @include maxDevice(575px){
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .flag-icon{
+            img{
+                width: 48px;
+                @include maxDevice(575px){
+                    width: 28px;
+                }
             }
         }
 
@@ -474,8 +654,21 @@ h4{
             @include linear-gradient(136deg, #CBE0F6, #CBE0F7);
             @include box-shadow(3px 3px 13px rgba(156,169,185,0.5));
 
+            @include maxDevice(575px){
+                width: 40px;
+                height: 40px;
+                margin-bottom: 0;
+                line-height: 40px;
+            }
+
             img{
                 @include transition(0.25s all linear);
+
+                @include maxDevice(575px){
+                    max-width: 50%;
+                    vertical-align: sub;
+                    display: inline-block;
+                }
             }
         }
 
@@ -509,17 +702,32 @@ h4{
         font-weight: 500;
         letter-spacing: 1px;
 
+        @include maxDevice(991px){
+            &.position-absolute{
+                left: 0;
+                position: relative !important;
+            }
+        }
+
         strong{
             color: $gray-50;
             font-size: 48px;
             display: block;
             line-height: 1;
+
+            @include maxDevice(767px){
+                font-size: 38px;
+            }
         }
 
         span{
             color: $secondary-30;
             font-weight: 700;
             font-size: 22px;
+
+            @include maxDevice(767px){
+                font-size: 18px;
+            }
         }
     }
 }
@@ -541,6 +749,16 @@ h4{
         border-radius: 55px;
 
         @include box-shadow(4px 4px 18px rgba(156,169,185,0.5), -4px -4px 18px rgba(255,255,255,0.5));
+
+        @include maxDevice(575px){
+            @include justify-content(space-between);
+            text-align: center;
+        }
+
+        @include maxDevice(767px){
+            font-size: 18px;
+            border-radius: 15px;
+        }
         
         &:hover, &.active{
             color: $white;
@@ -560,6 +778,13 @@ h4{
             color: $gray-10;
             font-size: 16px;
             @include transition(inherit);
+        }
+    }
+
+    &-date{
+        @include maxDevice(575px){
+            width: 100%;
+            margin-bottom: 10px;
         }
     }
 }
@@ -628,6 +853,10 @@ h4{
         letter-spacing: -0.6608974px;
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
+
+        @include maxDevice(767px){
+            font-size: 18px;
+        }
 
         .date{
             color: $gray;
@@ -861,6 +1090,20 @@ h4{
     font-size: 28px;
     column-count: 3;
 
+    @include maxDevice(1200px){
+        font-size: 24px;
+    }
+
+    @include maxDevice(991px){
+        font-size: 20px;
+    }
+    @include maxDevice(767px){
+        column-count: 2;
+    }
+    @include maxDevice(530px){
+        column-count: 1;
+    }
+
     li{
         margin-bottom: 15px;
     }
@@ -872,5 +1115,14 @@ h4{
 svg{
     line[stroke="#e0e0e0"]{
         display: none !important;
+    }
+}
+
+
+
+// Media Quries
+@include maxDevice(991px){
+    .login-link.text-white{
+        color: #2d2f33 !important;
     }
 }

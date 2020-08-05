@@ -10,6 +10,7 @@ import Navbar from 'react-bootstrap/Navbar';
  // assets
 import Logo from '../../assets/logo.png';
 import UserPic from '../../assets/user_pic.png';
+import Menu from '../../assets/hamburger.svg';
 
 class HeaderDashboard extends Component {
     
@@ -32,13 +33,13 @@ class HeaderDashboard extends Component {
     render() {
         return (
             <header className="header header-dashboard position-absolute">
-                <Navbar expand="md" variant="">
+                <Navbar expand="lg" variant="">
                     <Navbar.Brand href="./"><img src={Logo} alt="logo" /></Navbar.Brand>
-                    <div className="ml-auto d-flex align-items-center order-md-2">
+                    <div className="ml-auto d-flex align-items-center order-lg-2">
                         <div className="header-points">{this.state.points}</div>
-                        <Link to="/user-settings" className="header-user ml-4"><img src={UserPic} alt="user"/></Link>
+                        <Link to="/user-settings" className="header-user ml-md-4 ml-3"><img src={UserPic} alt="user"/></Link>
                     </div>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" className="ml-2 ml-md-3 border-0 pr-0"><img src={Menu} alt="menu" /></Navbar.Toggle>
 
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav>

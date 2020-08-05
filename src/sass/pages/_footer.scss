@@ -1,17 +1,39 @@
 .footer{
     padding: 60px 0;
-    font-size: 20px;
-    font-weight: 500;
     color: $secondary;
 
+    @include maxDevice(767px){
+        padding: 20px 0;
+    }
+    
     &-inner{
+        font-size: 20px;
+        font-weight: 500;
         padding: 60px 0 30px;
         border-radius: 191px;
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
         @include box-shadow(15px 15px 60px rgba(156,169,185,0.5), -15px -15px 60px rgba(255,255,255,0.5));
 
+        @include maxDevice(1600px){
+            padding: 35px 0 20px;            
+            font-size: 18px;
+        }
+
+        @include maxDevice(767px){
+            padding: 20px 0;
+        }
+
         a{
             color: $secondary;
+        }
+
+        .f_logo{
+            @include maxDevice(1600px){
+                max-width: 60px;
+            }
+            @include maxDevice(767px){
+                max-width: 48px;
+            }
         }
     }
 
@@ -20,5 +42,16 @@
         border-bottom: dashed 2px $gray-97;
         padding: 20px 5px;
         margin: 35px 0;
+
+        @include maxDevice(1600px){
+            padding: 15px 5px;
+            margin: 20px 0;
+        }
+
+        @include maxDevice(767px){
+            margin-top: 0;
+            padding-right: 0;
+            border-top: none !important;
+        }
     }
 }

@@ -9,25 +9,27 @@ import Header from './header/Header';
 
 // assets
 import Image from '../assets/about-image.png';
-import Ovel from '../assets/oval_01.svg';
+import Oval from '../assets/oval_01.svg';
+import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 function About() {
   return (
     <div className="outer-view">
         <Header />
         
-        <img src={Ovel} className="ovel-bottom-left" alt="ovel shape" />
+        <img src={Oval} className="ovel-bottom-left d-none d-lg-block" alt="ovel shape" />
+        <img src={OvalRight} className="ovel-bottom-right d-block d-lg-none" alt="ovel shape" />
         <Container>
-            <Row noGutters className="mh-100 content-area top_offset">
-                <Col>
+            <Row className="mh-100 content-area top_offset">
+                <Col md={8}>
                     <div className="mb-4">
                         <h1>A little bit about us!</h1>
                         <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est justo, ullamcorper et ipsum fringilla, convallis faucibus ex. Mauris fermentum, tellus venenatis venenatis accumsan, risus ante aliquam tortor, eget laoreet nibh arcu et augue. Curabitur interdum nibh vel sem posuere, in ornare felis rutrum. Sed condimentum turpis sed ipsum condimentum aliquet. Quisque eget feugiat odio. Nullam at nibh elementum, pellentesque enim et, efficitur massa. Nulla facilisi. Duis dictum feugiat lacus non vehicula.</p>
                     </div>
                 </Col>
 
-                <Col>
-                    <div className="about_image text-center">
+                <Col md={4} className="d-none d-md-block">
+                    <div className="about_image text-center mb-4">
                         <img src={Image} alt="about" className="img-fluid" />
                     </div>
                 </Col>

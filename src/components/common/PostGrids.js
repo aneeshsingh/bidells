@@ -24,7 +24,7 @@ class PostGrids extends Component {
             const data = res.data;
             console.log(Object.entries(data));
             const getBets = Object.entries(data).map(([key, bets], index) => 
-                <Col md={4} lg={3} sm={6} className="mb-4 pb-3" key={key}>
+                <Col md={6} lg={4} xl={3} sm={6} className="mb-md-4 mb-3 pb-3" key={key}>
                 <div className="post_box d-flex flex-column h-100">
                     <img src={bets.game_logo} className="post_horseIcon" alt="horse" />
                     <div className="post_type text-uppercase">{bets.game_type}</div>

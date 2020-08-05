@@ -24,7 +24,7 @@ class redeemGrids extends Component {
             const data = res.data;
             console.log(Object.entries(data));
             const products = Object.entries(data).map(([key, product], index) => 
-                <Col md={4} sm={6} className="mb-4 pb-3" key={key}>
+                <Col md={6} lg={4} sm={6} className="mb-4 pb-md-3" key={key}>
                     <div className="post_box redeem_box d-flex py-4 h-100">
                         <img src={product.productLogo} className="post_logo" alt={product.productType} />
                         <div className="m-auto w-100">

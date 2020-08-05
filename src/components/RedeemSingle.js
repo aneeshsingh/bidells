@@ -18,8 +18,11 @@ import Ovel_01 from '../assets/Oval-right-bottom.svg';
 import SubmitArrow from '../assets/arrow-right-solid.svg';
 import Ads_02 from '../assets/ads_03.png';
 import Ads_03 from '../assets/ads_04.png';
+import Ads from '../assets/ads.png';
 import Minus from '../assets/minus.svg';
 import Plus from '../assets/plus.svg';
+import Oval from '../assets/Ovalpmob-left.svg';
+import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 import Uber from '../assets/uber-logo.png';
 
@@ -65,6 +68,8 @@ class RedeemSingle extends Component {
                 <Header />
                 
 
+                <img src={Oval} className="oval-top-left d-block d-md-none" alt="ovel shape" />
+                <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" style={{ top: '0px' }} alt="ovel shape" />
                 <div className="top_offset position-relative">
                     <img src={Ovel_01} className="place-oval-Rbottom" alt="ovel shape" />
 
@@ -77,15 +82,15 @@ class RedeemSingle extends Component {
                                     <p>Get a reliable ride in minutes with the Uber app.</p>
                                 </div>
                             </Col>
-                            <Col md={6} className="py-3">
+                            <Col md={6} className="py-3 d-none d-md-block">
                                 <img src={Uber} className="img-fluid d-block m-auto mr-md-0" alt="logo"/>
                             </Col>
                         </Row>
                         
                         <Row className="justify-content-between">
                             <Col md={8} lg={8} className="mb-2 pr-md-5">
-                                <Row className="mb-4">
-                                    <Col sm={6} md={5} className="mb-4">
+                                <Row className="mb-md-4 mb-5">
+                                    <Col sm={6} md={5} className="mb-md-4">
                                         <div className="box-grid my-3 li-grad p-md-5 p-4">
                                             <div className="box-grid-info py-2">
                                                 <span className="mb-4 d-block">Quantity</span>
@@ -106,7 +111,7 @@ class RedeemSingle extends Component {
                                             </div>
                                         </div>  
                                     </Col>    
-                                    <Col sm={6} md={5} className="mb-4">
+                                    <Col sm={6} md={5} className="mb-md-4">
                                         <div className="box-grid my-3 li-grad p-md-5 p-4">
                                             <div className="box-grid-info py-2">
                                                 <span className="mb-4 d-block">Total</span>
@@ -123,7 +128,7 @@ class RedeemSingle extends Component {
                                     </Col>    
                                 </Row>      
 
-                                <div className="mt-5 tabs-content">
+                                <div className="mt-5 d-none d-md-block tabs-content">
                                     <Tabs defaultActiveKey="detail" fill id="tab-redeem">
                                         <Tab eventKey="detail" title="Detail">
                                             <p>{this.state.redeem.content}</p>
@@ -137,19 +142,17 @@ class RedeemSingle extends Component {
                                     </Tabs>
                                 </div>
                             </Col>
-                            <Col md={4} lg={3} className="mb-2">
-                                <div className="ads-portFrame p-md-5 p-sm-4 p-3">
+                            <Col md={4} lg={3} className="mb-md-2">
+                                <div className="ads-portFrame p-md-5 p-4">
                                     <img src={Ads_03} alt="ads" />
                                 </div>
 
-                                <div className="ads-portFrame mt-md-5 mt-4">
+                                <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
                                     <img src={Ads_02} alt="ads" />
                                 </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col md={6} className="mb-4">
-                                
+                                <div className="ads-frame mx-auto mt-4 d-block d-md-none">
+                                    <img src={Ads} alt="Ads Poster" />
+                                </div>
                             </Col>
                         </Row>
                     </Container>

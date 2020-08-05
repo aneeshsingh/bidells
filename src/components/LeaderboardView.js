@@ -15,7 +15,10 @@ import Header from './header/HeaderDashboard';
 // assets
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';
 import Ads_02 from '../assets/ads_03.png';
+import Ads from '../assets/ads.png';
 import LeadUser from '../assets/post_user.png';
+import Oval from '../assets/Ovalpmob-left.svg';
+import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 class LeaderboardView extends Component {
     constructor(props) {
@@ -32,17 +35,15 @@ class LeaderboardView extends Component {
             const data = res.data;
             console.log(Object.entries(data));
             const getLeads = Object.entries(data).map(([key, bets], index) => 
-                <Link to="#" className="lead-strip li-grad d-flex align-items-center mb-4" key={key}>
-                    <div className="lead-user mr-3">
-                        <img src={LeadUser} alt="user"/>
-                    </div>
-                    <div className="lead-date text-uppercase flex-grow-1">
+                <Link to="#" className="lead-strip li-grad d-flex flex-wrap align-items-center mb-4" key={key}>
+                    <div className="lead-date d-flex align-items-center text-uppercase flex-grow-1">
+                        <img src={LeadUser} className="mr-md-3 mr-2 lead-user" alt="user"/>
                         {bets.user_name}
                     </div>
-                    <div className="lead-data text-right">
+                    <div className="lead-data text-sm-right">
                         <span className="d-block">Position</span> {bets.position}
                     </div>
-                    <div className="lead-data text-right ml-md-5 ml-4 pl-md-4">
+                    <div className="lead-data text-sm-right ml-md-5 ml-4 pl-md-4">
                         <span className="d-block">Points</span> {bets.points}
                     </div>
                 </Link>
@@ -67,7 +68,8 @@ class LeaderboardView extends Component {
             <div className="outer-view">
                 <Header />
                 
-
+                <img src={Oval} className="oval-top-left d-block d-md-none" alt="ovel shape" />
+                <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" style={{ top: '0px' }} alt="ovel shape" />
                 <div className="top_offset position-relative">
                     <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
 
@@ -102,8 +104,11 @@ class LeaderboardView extends Component {
                             </Col>
                         </Row>
 
-                        <div className="pt-4 pb-5">
+                        <div className="pt-4 pb-md-5">
                             <Row className="justify-content-between">
+                                <Col className="d-md-none mb-4">
+                                    <Button href="#" block className="form-btn border-0 text-truncate text-uppercase">SEE ALL TIME LEADERBOARD</Button>
+                                </Col>
                                 <Col md={8} lg={8} className="mb-4">
                                     {this.state.getLeads}
                                     
@@ -122,11 +127,14 @@ class LeaderboardView extends Component {
                                         </div>
                                     </Link> */}
                                 </Col>
-                                <Col md={4} lg={3} className="mb-4">
-                                    <Button href="#" block className="form-btn border-0 text-uppercase">SEE ALL TIME LEADERBOARD</Button>
+                                <Col md={4} lg={3} className="mb-md-4">
+                                    <Button href="#" block className="form-btn d-none d-md-block border-0 text-truncate text-uppercase">SEE ALL TIME LEADERBOARD</Button>
 
-                                    <div className="ads-portFrame mt-md-5 mt-4">
+                                    <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
                                         <img src={Ads_02} alt="ads" />
+                                    </div>
+                                    <div className="ads-frame mx-auto mt-auto d-block d-md-none">
+                                        <img src={Ads} alt="Ads Poster" />
                                     </div>
                                 </Col>
                             </Row>

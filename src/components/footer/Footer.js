@@ -16,10 +16,10 @@ function Footer() {
     <Router>
         <div className="footer">
             <Container>
-                <div className="footer-inner">
+                <div className="footer-inner px-5 px-md-0">
                     <Row className="justify-content-center">
-                        <Col md={7}>
-                            <ul className="d-flex mb-0 list-unstyled align-items-center justify-content-between flex-wrap mx-ms-3 mx-1">
+                        <Col md={10} lg={7}>
+                            <ul className="d-md-flex d-none mb-0 list-unstyled align-items-center justify-content-between flex-wrap mx-ms-3 mx-1">
                                 <li><Link to="/about">Bets</Link></li>
                                 <li><Link to="#">Leaderboards</Link></li>
                                 <li><Link to="#">Results</Link></li>
@@ -33,7 +33,7 @@ function Footer() {
                             </div>
 
                             <div className="text-center">
-                                <img src={Logo} alt="logo" />
+                                <img src={Logo} className="f_logo" alt="logo" />
                             </div>
                         </Col>
                     </Row>

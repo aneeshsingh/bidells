@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/Col';
 
 // assets
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';
+import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 
 
@@ -18,7 +19,8 @@ class SiteMap extends Component {
         return (
             <div className="outer-view">
                 <div className="pt-5 text-dark position-relative mh-100">
-                    <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
+                    <img src={Ovel_01} className="place-oval-Lbottom d-none d-md-block" alt="ovel shape" />
+                    <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" alt="ovel shape" />
 
                     <Container fluid="md">
                         <Row className="mt-4">

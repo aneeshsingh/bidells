@@ -16,6 +16,12 @@
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
         @include transition(all 0.35s linear);
 
+        @include maxDevice(575px){
+            height: 52px;
+            font-size: 17px;
+            padding: 6px 24px;
+        }
+
         &:focus{
             background-color: rgba($skylight-30, 0.4);
         }
@@ -36,12 +42,20 @@
             }
         }
     }
-
+    
     &-shadow{
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
 
         &:focus{
             @include box-shadow(10px 10px 40px rgba(156,169,185,0.1), -10px -10px 40px rgba(255,255,255,0.1), inset 10px 10px 40px rgba(112,122,134,0.1), inset -10px -10px 40px rgba(255,255,255,0.1));
+        }
+
+        @include maxDevice(575px){
+            @include box-shadow(5px 5px 20px rgba(156,169,185,0.5), -5px -5px 20px rgba(255,255,255,0.5), inset 5px 5px 20px rgba(112,122,134,0.5), inset -5px -5px 20px rgba(255,255,255,0.5));
+
+            &:focus{
+                @include box-shadow(5px 5px 20px rgba(156,169,185,0.1), -5px -5px 20px rgba(255,255,255,0.1), inset 5px 5px 20px rgba(112,122,134,0.1), inset -5px -5px 20px rgba(255,255,255,0.1));
+            }
         }
     }
 
@@ -50,6 +64,14 @@
 
         &:focus{
             @include box-shadow(10px 10px 40px rgba(156,169,185,0.1), -10px -10px 40px rgba(255,255,255,0.1));
+        }
+
+        @include maxDevice(575px){
+            @include box-shadow(5px 5px 20px rgba(156,169,185,0.5), -5px -5px 20px rgba(255,255,255,0.5));
+
+            &:focus{
+                @include box-shadow(5px 5px 20px rgba(156,169,185,0.1), -5px -5px 20px rgba(255,255,255,0.1));
+            }
         }
     }
 
@@ -74,8 +96,16 @@
     &-btn{
         height: 65px;
 
+        @include maxDevice(575px){
+            height: 58px;
+        }
+
         &[href]{
             line-height: 65px;
+
+            @include maxDevice(575px){
+                line-height: 58px;
+            }
         }
     }
 
@@ -93,6 +123,17 @@
 
         @include linear-gradient((136deg, #EBF3FA, #CBE0F7));
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
+
+        @include maxDevice(991px){
+            font-size: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        @include maxDevice(575px){
+            padding-left: 24px;
+            padding-right: 24px;
+            @include box-shadow(5px 5px 20px rgba(156,169,185,0.5), -5px -5px 20px rgba(255,255,255,0.5));
+        }
 
         &:hover{
             @include box-shadow(3px 6px 4px rgba(156,169,185,0.5));
@@ -122,6 +163,16 @@
             font-weight: 500;
             margin-bottom: 0;
             line-height: 65px;
+            padding-left: 10px;
+            padding-right: 10px;
+
+            @include maxDevice(575px){
+                height: 52px;
+                font-size: 16px;
+                line-height: 52px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
 
             img{
                 vertical-align: text-top;
@@ -132,11 +183,21 @@
         }
 
         &-box{
+            padding: 5px;
+
             label{
-                height: auto;
-                padding-top: 25%;
-                padding-bottom: 25%;
+                height: 100px;
+                font-size: 15px;
                 line-height: normal;
+
+                @include flexbox();
+                @include align-items(center);
+                @include justify-content(center);
+
+                @include maxDevice(1200px){
+                    font-size: 14px;
+                    height: 80px;
+                }
             }
         }
 
@@ -151,6 +212,10 @@
         @include linear-gradient(136deg, #3C3C3C, #010101);
         @include box-shadow(4px 4px 18px rgba(0,0,0,0.5), -4px -4px 18px rgba(82,82,82,0.5), inset 2px 2px 8px rgba(0,0,0,0.5),  inset -2px -2px 8px rgba(60,60,60,0.5));
 
+        @include maxDevice(575px){
+            padding-left: 15px;
+        }
+
         input, .submitText{
             width: 100%;
             outline: none;
@@ -158,6 +223,10 @@
             font-weight: 500;
             color: #ffffff;
             letter-spacing: -0.7499999px;
+
+            @include maxDevice(575px){
+                font-size: 18px;
+            }
 
             &::-webkit-input-placeholder {
                 color: $white;
@@ -176,6 +245,11 @@
             border-radius: 16px;
             @include linear-gradient(136deg, #FFFFFF, #A0A0A0);
             @include box-shadow(2px 2px 8px rgba(198,198,198,0.5), -2px -2px 8px rgba(255,255,255,0.5));
+
+            @include maxDevice(575px){
+                width: 70px;
+                height: 50px;
+            }
         }
     }
 
@@ -237,6 +311,10 @@
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7); 
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 0 0 0 rgba(0,0,0,0));
 
+        @include maxDevice(575px){
+            @include box-shadow(5px 5px 20px rgba(156,169,185,0.5), -5px -5px 20px rgba(255,255,255,0.5), inset 0 0 0 rgba(0,0,0,0));
+        }
+
         strong{
             display: block;
             font-size: 50px;
@@ -266,12 +344,22 @@ input:checked + .label-box{
         letter-spacing: -0.6px;
         border-radius: 16px !important;
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
+
+        @include maxDevice(575px){
+            height: 58px;
+            font-size: 17px;
+            padding: 6px 15px;
+        }
     }
     
     .country-list{
         font-size: 16px;
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);    
-        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));    
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
+        
+        @include maxDevice(575px){
+            @include box-shadow(5px 5px 20px rgba(156,169,185,0.5), -5px -5px 20px rgba(255,255,255,0.5), inset 5px 5px 20px rgba(112,122,134,0.5), inset -5px -5px 20px rgba(255,255,255,0.5));
+        }
     }
     
     .flag-dropdown{
@@ -292,11 +380,20 @@ input:checked + .label-box{
         width: 105px;
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
         
+        @include maxDevice(575px){
+            width: 68px;
+            @include box-shadow(5px 5px 20px rgba(156,169,185,0.5), -5px -5px 20px rgba(255,255,255,0.5), inset 5px 5px 20px rgba(112,122,134,0.5), inset -5px -5px 20px rgba(255,255,255,0.5));
+        }
+
         .arrow{
             left: 32px;
             border-top-width: 8px;
             border-left-width: 7px;
             border-right-width: 7px;
+
+            @include maxDevice(575px){
+                left: 25px;
+            }
 
             &.up{
                 border-top-width: 0;

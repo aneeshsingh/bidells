@@ -1,4 +1,8 @@
 .infomation_area{
+    @include maxDevice(767px){
+        min-height: 60vh;
+    }
+
     h1{
         margin-bottom: 0.25em;
     }
@@ -8,12 +12,20 @@
     }
 
     p.lead{
-        line-height: 1.2;
+        line-height: 1.4;
         font-size: 32px;
         max-width: 90%;
 
         @include maxDevice(1600px){
-            font-size: 25px;
+            font-size: 26px;
+        }
+
+        @include maxDevice(1200px){
+            font-size: 22px;
+        }
+
+        @include maxDevice(767px){
+            font-size: 20px;
         }
     }
 
@@ -22,19 +34,43 @@
         max-width: 560px;
         height: 75px;
         width: 100%;
+
+        @include maxDevice(1200px){
+            height: 68px;
+            font-size: 17px;
+            line-height: 68px;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
     }
 
     .oval{
         position: absolute;
         max-width: 50%;
 
+        @include maxDevice(767px){
+            max-width: 80%;
+        }
+
         &.welcome-oval{
             height: 150%;
+
+            @include maxDevice(767px){
+                height: 100%;
+
+                &.bottom-left{
+                    top: 70%;
+                }
+            }
         }
         
         &.bottom-left{
             left: 0;
-            top: 20%;   
+            top: 20%;
+            
+            @include maxDevice(767px){
+                top: 15%;
+            }
         }
 
         &.center-right{
@@ -49,6 +85,10 @@
             top: 0;
         }
     }
+
+    .space-bottom{
+        padding-bottom: 10%;
+    }
 }
 
 .video{
@@ -60,10 +100,6 @@
         border-radius: 67px;
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
         @include box-shadow(20px 20px 100px rgba(156,169,185,0.5), -20px -20px 100px rgba(255,255,255,0.5));
-
-        @include maxDevice(1600px){
-            height: 360px;
-        }
 
         &-title{
             font-size: 22px;
@@ -99,6 +135,35 @@
                 -o-object-position: center;
             }
         }
+
+        @include maxDevice(1600px){
+            height: 300px;
+            padding: 20px 32px;
+            border-radius: 22px;
+
+            &-title, &-bottom{
+                font-size: 18px;
+            }
+
+            &-bottom{
+                img{
+                    max-width: 34px;
+                }
+            }
+
+            .btn-play{
+                width: 64px;
+                height: 64px;
+            }
+        }
+
+        @include maxDevice(992px){
+            height: 250px;
+        }
+
+        @include maxDevice(767px){
+            margin: 25px 0 20px;
+        }
     }
 }
 
@@ -109,5 +174,9 @@
         color: $gray-90;
         font-size: 75px;
         font-weight: 500;
+
+        @include maxDevice(1600px){
+            font-size: 52px;
+        }
     }
 }

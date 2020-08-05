@@ -35,7 +35,7 @@ class HeaderPost extends Component {
       <header className="header position-absolute">
         <Navbar expand="md">
             <Button href="/" className="border-0 navbar-back"><img src={ArrowLeft} alt="arrow"/></Button>
-            <div className="ads-frame ml-auto mt-auto mb-3">
+            <div className="ads-frame ml-auto mt-auto d-none d-md-block">
                 <img src={Ads} alt="Ads Poster" />
             </div>
             <div className="ml-auto d-flex align-items-center order-md-2">

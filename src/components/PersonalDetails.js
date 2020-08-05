@@ -12,26 +12,28 @@ import HeaderLogin from './header/HeaderLogin';
 import BgImage from '../assets/personalDetals.jpg';
 import Ads from '../assets/ads.png';
 import arrowRight from '../assets/arrow-right-solid.png';
-import Ovel from '../assets/oval_01.svg';
 import User from '../assets/user_icon.svg';
+import Oval from '../assets/oval_01.svg';
+import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 function PersonalDetails() {
   return (
     <div className="outer-view">
         <HeaderLogin />
         
-        <img src={Ovel} className="ovel-bottom-left" alt="ovel shape" />
+        <img src={Oval} className="ovel-bottom-left d-none d-lg-block" alt="ovel shape" />
+        <img src={OvalRight} className="ovel-bottom-right d-block d-lg-none" alt="ovel shape" />
         <Row noGutters className="mh-100">
             <Col sm={12} md={6}>
                 <div className="col-content content-area top_offset">
                     <Row>
-                        <Col md={8} lg={7}>
+                        <Col md={10} lg={10}>
                             <div className="mb-4 pb-1">
                                 <h1>We’re nearly there!</h1>
                                 <p className="lead">We need to know a little bit more about you to create your personalised plan.</p>
                             </div>
                         </Col>
-                        <Col md={10} lg={8}>
+                        <Col md={12} lg={12} className="mb-4"> 
                             <Form>
                                 <Form.Group>
                                     <Form.Label>Upload your photo</Form.Label>
@@ -47,13 +49,13 @@ function PersonalDetails() {
                                 <Form.Group>
                                     <Form.Label>Please select your gender</Form.Label>
                                     <Form.Row>
-                                        <Col>
+                                        <Col sm={4} className="mb-3 mb-sm-0">
                                             <Form.Check type="radio" className="form-choose pl-0 text-center" name="gender" label="Male"  id="male" />    
                                         </Col>
-                                        <Col>
+                                        <Col sm={4} className="mb-3 mb-sm-0">
                                             <Form.Check type="radio" className="form-choose pl-0 text-center" name="gender" label="Female"  id="female" />    
                                         </Col>
-                                        <Col>
+                                        <Col sm={4} className="mb-3 mb-sm-0">
                                             <Form.Check type="radio" className="form-choose pl-0 text-center" name="gender"  label="Unspecified"  id="unspecified" />    
                                         </Col>
                                     </Form.Row>

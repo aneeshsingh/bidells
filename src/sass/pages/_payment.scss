@@ -10,6 +10,11 @@
             border: none !important;
             background-color: transparent;
         }
+
+        @include maxDevice(992px){
+            padding-top: 18px;
+            padding-bottom: 18px;
+        }
     }
 
     &-card{
