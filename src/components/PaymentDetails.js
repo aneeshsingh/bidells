@@ -7,6 +7,9 @@ import Button from 'react-bootstrap/Button'
 // Header
 import HeaderLogin from './header/HeaderLogin';
 
+// common
+// import PaymentMethod from './payment/index';
+
 // assets
 import BgImage from '../assets/paymentDetails.jpg';
 import Ads from '../assets/ads.png';
@@ -50,6 +53,10 @@ function PaymentDetails() {
                         </Col>
                         <Col md={10} lg={8}>
                             <Button variant="light" type="submit" block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">SUBSCRIBE <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+                        </Col>
+
+                        <Col md={10}>
+                            {/* <PaymentMethod /> */}
                         </Col>
                     </Row>
                 </div>
