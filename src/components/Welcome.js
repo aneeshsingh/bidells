@@ -8,7 +8,6 @@ import Modal from 'react-bootstrap/Modal';
 
 // Header
 import Header from './header/Header';
-import Footer from './footer/Footer';
 
 // common
 import PostGrids from '../components/common/PostGrids';
@@ -208,7 +207,7 @@ function Welcome() {
                 onHide={() => setModalShow(false)}
             />
 
-            <Footer />
+            
         </div>
     );
 }

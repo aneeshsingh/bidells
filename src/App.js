@@ -30,6 +30,7 @@ import CreateBets  from './components/CreateBets';
 import PointSummary  from './components/PointSummary';
 import CreateRefer  from './components/CreateRefer';
 import SiteMap  from './components/SiteMap';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
@@ -109,6 +110,8 @@ function App() {
             <SiteMap />
           </Route>
         </Switch>
+
+        <Footer />
       </div>
     </Router>
   );

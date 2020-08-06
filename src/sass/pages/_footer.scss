@@ -2,8 +2,13 @@
     padding: 60px 0;
     color: $secondary;
 
+    @include maxDevice(1200px){
+        padding: 40px 0;
+    }
     @include maxDevice(767px){
         padding: 20px 0;
+        margin-top: 30px;
+        margin-bottom: 20%;
     }
     
     &-inner{
@@ -21,6 +26,21 @@
 
         @include maxDevice(767px){
             padding: 20px 0;
+            border-radius: 30px;
+            background: linear-gradient(136deg, #EBF3FA, #CBE0F7);
+            @include box-shadow(2px 2px 10px rgba(156,169,185,0.5), -2px -2px 10px rgba(255,255,255,0.5));
+
+            ul.d-flex{
+                li{
+                    max-width: 50%;
+                    margin-bottom: 5px;
+                    @include flex(0 0 50%);
+                }
+            }
+        }
+
+        @include maxDevice(575px){
+            font-size: 16px;
         }
 
         a{
@@ -49,9 +69,8 @@
         }
 
         @include maxDevice(767px){
-            margin-top: 0;
-            padding-right: 0;
-            border-top: none !important;
+            padding: 10px 5px;
+            border-color: #979797;
         }
     }
 }

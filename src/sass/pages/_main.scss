@@ -76,6 +76,10 @@ h4{
 .top_offset{
     padding-top: 200px;
 
+    &.position-relative{
+        position: static !important;
+    }
+
     @include maxDevice(991px){
         padding-top: 150px;
     }
@@ -102,10 +106,15 @@ h4{
 .li-grad{
     @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
 }
-    
-.outer-view{
+
+.page-content{
     position: relative;
     overflow: hidden;
+}
+    
+.outer-view{
+    // position: relative;
+    // overflow: hidden;
 
     .ovel-bottom-left{
         left: 0;
@@ -445,9 +454,15 @@ h4{
         @include box-shadow(inset 2px 2px 8px rgba(112,122,134,0.5), inset -2px -2px 8px rgba(255,255,255,0.5));
 
         @include maxDevice(767px){
-            border-radius: 20px 20px 0 0;
+            // border-radius: 20px 20px 0 0;
             max-width: 100%;
-            padding: 8% 15px 20px;
+            padding: 15px;
+            border-radius: 20px 20px;
+            position: fixed;
+            z-index: 888;
+            bottom: 10px;
+            left: 15px;
+            right: 15px;
         }
     
         img{
