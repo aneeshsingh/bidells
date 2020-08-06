@@ -26,6 +26,7 @@ class Leaderboard extends Component {
         super(props);
 
         this.state = {
+            height: '250', 
             getLeads: [],
             series: [{
                 name: "Leads",
@@ -100,6 +101,11 @@ class Leaderboard extends Component {
         };
     }
 
+    componentWillMount(){
+        if(window.innerWidth < 991){
+            this.setState({height: '160'});
+        }
+    }
 
     getLeadData(){
         axios.get(`/?itemType=getAllLeaderboards&userID=6`)
@@ -160,7 +166,7 @@ class Leaderboard extends Component {
                                         AVERAGE POSITION
                                     </div>
 
-                                    <Chart options={this.state.options} series={this.state.series} height="250" />
+                                    <Chart options={this.state.options} series={this.state.series} height={this.state.height} />
                                 </div>
                             </Col>
                         </Row>

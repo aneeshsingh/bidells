@@ -11,7 +11,7 @@ import SearchUser from '../../assets/post_user.png';
 function Step() {
   return (
     <Row>
-        <Col md={4}>
+        <Col lg={4}>
             <div className="multistep-info d-flex flex-column justify-content-center h-100">
                 <div className="step_count">02</div>
                 <h2>Create your own</h2>
@@ -25,7 +25,7 @@ function Step() {
                 </div>
             </div>
         </Col>
-        <Col md={8}>
+        <Col lg={8}>
             <div className="multistep-inner">
                 <div className="multistep-heading mb-4">
                     <h3>Who are the players?</h3>
@@ -33,7 +33,7 @@ function Step() {
                 </div>
                 <Form>
                     <Form.Row>
-                        <Col md={6}>
+                        <Col md={8} lg={6}>
                             <Form.Group className="form-serach position-relative">
                                 <Form.Control type="text" className="form-shadow pr-5 form-radius border-0" placeholder="Invite friends" />
                                 <Button variant="link" className="search-icon p-0"><img src={Search} alt="search" /></Button>

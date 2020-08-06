@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 function Step() {
   return (
     <Row>
-        <Col md={4}>
+        <Col lg={4}>
             <div className="multistep-info d-flex flex-column justify-content-center h-100">
                 <div className="step_count">01</div>
                 <h2>Create your own</h2>
@@ -21,7 +21,7 @@ function Step() {
                 </div>
             </div>
         </Col>
-        <Col md={8}>
+        <Col lg={8}>
             <div className="multistep-inner">
             <Form>
                 <Form.Group>

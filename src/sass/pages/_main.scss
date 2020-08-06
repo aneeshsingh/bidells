@@ -21,6 +21,10 @@ h4{
     color: $secondary-30;
     font-weight: 700;
     font-size: 25px;
+
+    @include maxDevice(991px){
+        font-size: 20px;
+    }
 }
 
 .display{
@@ -79,6 +83,10 @@ h4{
     @include maxDevice(767px){
         padding-top: 130px;
     }
+
+    @include maxDevice(575px){
+        padding-top: 115px;
+    }
 }
 
 .content-area{
@@ -113,7 +121,7 @@ h4{
     }
     .oval-top-left{
         left: 0;
-        top: 25%;
+        top: 38%;
         bottom: auto;
         max-width: 60%;
         position: absolute;
@@ -235,8 +243,8 @@ h4{
 
         @include maxDevice(767px){
             background: #ffffff;
+            border-radius: 20px;
             font-size: 16px;
-            padding: 50px 15px 20px;
         }
 
         h2{
@@ -359,7 +367,20 @@ h4{
     }
 }
 
+.post{
+    &_box{
+        @include maxDevice(767px){
+            padding: 50px 15px 20px;
+        }
+    }
+}
+
 .bet{
+    &_box{
+        @include maxDevice(767px){
+            padding: 25px 15px 20px;
+        }
+    }
     &_info{
         padding: 8px 0;
         margin: 20px 0 10px;
@@ -436,14 +457,15 @@ h4{
     
     &-portFrame{
         width: 100%;
+        margin: auto;
+        display: block;
         max-width: 300px;
         border-radius: 63px;
-        display: inline-block;
     
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
         @include box-shadow(20px 20px 50px rgba(156,169,185,0.5), -20px -20px 50px rgba(255,255,255,0.5), inset 20px 20px 30px rgba(112,122,134,0.5), inset -20px -20px 30px rgba(255,255,255,0.5));
 
-        @include maxDevice(767px){
+        @include maxDevice(991px){
             border-radius: 22px;
         }
 
@@ -814,8 +836,20 @@ h4{
                 @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
             }
 
+            @include maxDevice(991px){
+                font-size: 16px;
+            }
+
             & + a{
                 margin-left: 35px;
+
+                @include maxDevice(767px){
+                    margin-left: 0;
+                }
+            }
+
+            @include maxDevice(767px){
+                margin: 5px !important;
             }
         }
     }
@@ -823,6 +857,10 @@ h4{
 .tab{
     &-content{
         margin-top: 45px;
+
+        @include maxDevice(991px){
+            margin-top: 25px;
+        }
     }
 }
 .tabs-content{
@@ -844,7 +882,7 @@ h4{
 
 .activites{
     &-strip{
-        line-height: 1.1;
+        line-height: 1.2;
         font-size: 20px;
         color: $gray-10;
         font-weight: 500;
@@ -855,7 +893,9 @@ h4{
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
 
         @include maxDevice(767px){
-            font-size: 18px;
+            padding: 10px 15px;
+            line-height: 1.35;
+            font-size: 22px;
         }
 
         .date{
@@ -879,9 +919,15 @@ h4{
 
 .referal{
     &-box{
+        width: 100%;
+        max-width: 300px;
         padding: 40px 35px;
         border-radius: 19px;
         @include box-shadow(10px 10px 40px rgba(156,169,185,.5), -10px -10px 40px rgba(255,255,255,0.5));
+
+        @include maxDevice(767px){
+            padding: 30px 25px;
+        }
 
         h5{
             margin: 0;
@@ -903,6 +949,10 @@ h4{
     border-radius: 49px;
     max-width: 49px;
     width: 100%;
+
+    @include maxDevice(575px){
+        max-width: 38px;
+    }
 }
 
 .multistep{
@@ -910,6 +960,16 @@ h4{
         padding: 30px;
         border-radius: 16px;
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
+
+        @include maxDevice(1200px){
+            padding: 15px;
+        }
+
+        @include maxDevice(767px){
+            padding: 0;
+            @include box-shadow(none);
+            background: none !important;
+        }
     }
 
     &-info{
@@ -920,11 +980,29 @@ h4{
         @include linear-gradient(136deg, #E0EFFD, #BEDCFD);
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
 
+        @include maxDevice(1200px){
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        @include maxDevice(991px){
+            min-height: auto;
+            padding: 20px 20px 50px;
+        }
+
         .step_count{
             color: $secondary-30;
             margin-bottom: 10px;
             font-weight: 400;
             font-size: 28px;
+
+            @include maxDevice(1200px){
+                font-size: 22px;
+            }
+
+            @include maxDevice(991px){
+                margin-bottom: 0px;
+            }
         }
 
         h2{
@@ -933,6 +1011,10 @@ h4{
 
         p{
             font-size: 20px;
+
+            @include maxDevice(1200px){
+                font-size: 18px;
+            }
         }
     }
 
@@ -945,6 +1027,10 @@ h4{
         bottom: 30px;
         right: 25px;
         left: 25px;
+
+        @include maxDevice(991px){
+            bottom: 15px;
+        }
 
         &:after{
             left: 0;
@@ -986,26 +1072,58 @@ h4{
     &-inner{
         padding: 60px 0px 140px 25px;
         min-height: 650px;
+
+        @include maxDevice(991px){
+            min-height: auto;
+            padding-left: 0;
+            padding-top: 25px;
+            padding-bottom: 110px;
+        }
     }
 
     &-heading{
         font-size: 28px;
         font-weight: 300;
 
+        @include maxDevice(1200px){
+            font-size: 22px;
+        }
+
         h3{
             color: $secondary-30;
             font-weight: 700;
             font-size: 32px;
+
+            @include maxDevice(1200px){
+                font-size: 26px;
+            }
         }
     }
 
     &-btns{
         .btn{
             min-width: 250px; 
+
+            @include maxDevice(991px){
+                min-width: 190px;
+            }
+
+            @include maxDevice(575px){
+                min-width: auto;
+                height: 65px;
+            }
         }
 
         .col-md-8{
             margin-top: -100px;
+
+            @include maxDevice(991px){
+                margin-top: -80px;
+            }
+
+            @include maxDevice(767px){
+                margin-top: -75px;
+            }
         }
     }
 }
@@ -1015,6 +1133,10 @@ h4{
         position: absolute;
         top: 8px;
         right: 16px;
+
+        @include maxDevice(767px){
+            top: 2px;
+        }
     }
 
     &-list{
@@ -1050,6 +1172,7 @@ h4{
             &-input{
                 &:checked~.custom-control-label::after{
                     @include translate(112px, 0);
+                    @include linear-gradient(45deg, #eba087, #f16130);
                 }
             }
 
@@ -1124,5 +1247,10 @@ svg{
 @include maxDevice(991px){
     .login-link.text-white{
         color: #2d2f33 !important;
+    }
+}
+@include maxDevice(767px){
+    .border-left-dashed{
+        border-left-width: 0;
     }
 }

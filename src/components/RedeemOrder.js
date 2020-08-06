@@ -16,6 +16,9 @@ import Header from './header/HeaderPost';
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';
 import arrowRight from '../assets/arrow-right-solid.png';
 import Ads_02 from '../assets/ads_03.png';
+import Ads from '../assets/ads.png';
+import Oval from '../assets/Ovalpmob-left.svg';
+import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 import Uber from '../assets/uber-logo.png';
 
@@ -26,6 +29,8 @@ class RedeemOrder extends Component {
                 <Header />
                 
 
+                <img src={Oval} className="oval-top-left d-block d-md-none" alt="ovel shape" />
+                <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" style={{ top: '0px' }} alt="ovel shape" />
                 <div className="top_offset position-relative">
                     <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
 
@@ -44,32 +49,32 @@ class RedeemOrder extends Component {
                                     <Col md={8} lg={9}>
                                         <Form>
                                             <Row>
-                                                <Col sm={4} className="mb-3">
+                                                <Col lg={4} className="mb-3">
                                                     <Form.Group>
                                                         <input type="radio" name="orderStatus" id="recieved" className="d-none" />
-                                                        <Form.Label className="label-box" htmlFor="recieved"><strong>1</strong> We have recieved your order</Form.Label>
+                                                        <Form.Label className="label-box text-center text-lg-left" htmlFor="recieved"><strong>1</strong> We have recieved your order</Form.Label>
                                                     </Form.Group>
                                                 </Col>
-                                                <Col sm={4} className="mb-3">
+                                                <Col lg={4} className="mb-3">
                                                     <Form.Group>
                                                         <input type="radio" name="orderStatus" id="dispatched" className="d-none" />
-                                                        <Form.Label className="label-box" htmlFor="dispatched"><strong>2</strong> Your order has been dispatched</Form.Label>
+                                                        <Form.Label className="label-box text-center text-lg-left" htmlFor="dispatched"><strong>2</strong> Your order has been dispatched</Form.Label>
                                                     </Form.Group>
                                                 </Col>
-                                                <Col sm={4} className="mb-3">
+                                                <Col lg={4} className="mb-3">
                                                     <Form.Group>
                                                         <input type="radio" name="orderStatus" id="delivered" className="d-none" />
-                                                        <Form.Label className="label-box" htmlFor="delivered"><strong>3</strong> Your order has been delivered</Form.Label>
+                                                        <Form.Label className="label-box text-center text-lg-left" htmlFor="delivered"><strong>3</strong> Your order has been delivered</Form.Label>
                                                     </Form.Group>
                                                 </Col>
                                             </Row>
-                                            <Button variant="light" type="submit" block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">CONTINUE BIDDING <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+                                            <Button variant="light" type="submit" block className="form-btn mb-5 d-flex align-items-center border-0 form-btn-skyblue">CONTINUE BIDDING <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
                                         </Form>
                                     </Col>
                                 </Row>
                             </Col>
                             <Col md={4} lg={3} className="mb-5">
-                                <div className="post_box redeem_box d-flex py-4">
+                                <div className="post_box redeem_box d-md-flex py-4 d-none">
                                     <img src={Uber} className="post_logo" alt="horse" />
                                     <div className="m-auto">
                                         <div className="post_type">EXPERIENCE</div>
@@ -80,8 +85,11 @@ class RedeemOrder extends Component {
                                     <div className="redeem-points position-absolute">50,000</div>
                                 </div>
 
-                                <div className="ads-portFrame mt-md-5 mt-4">
+                                <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
                                     <img src={Ads_02} alt="ads" />
+                                </div>
+                                <div className="ads-frame mx-auto mt-4 d-block d-md-none">
+                                    <img src={Ads} alt="Ads Poster" />
                                 </div>
                             </Col>
                         </Row>

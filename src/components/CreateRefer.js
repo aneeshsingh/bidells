@@ -19,6 +19,8 @@ import Ovel_01 from '../assets/Oval_dashboard_01.svg';
 import Ads from '../assets/ads.png';
 import LeftArrow from '../assets/arrow-left-solid.png';
 import RightArrow from '../assets/arrow-white.svg';
+import Oval from '../assets/Ovalpmob-left.svg';
+import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 
 
@@ -50,7 +52,7 @@ class CreateRefer extends Component {
         let currentStep = this.state.currentStep;
         if(currentStep > 1){
           return(
-            <Button variant="dark-grad" type="button" onClick={() => this._prev()} className="d-flex align-items-center align-items-center border-0"><img className="mr-auto" src={LeftArrow} alt="arrow" /> <span>Previous</span></Button>
+            <Button variant="dark-grad" type="button" onClick={() => this._prev()} className="d-flex align-items-center align-items-center border-0"><img className="mr-md-auto mr-3" src={LeftArrow} alt="arrow" /> <span>Previous</span></Button>
           )
         }
         return null;
@@ -59,11 +61,11 @@ class CreateRefer extends Component {
         let currentStep = this.state.currentStep;
         if(currentStep < 4){
           return(
-            <Button variant="dark-grad" type="button" onClick={() => this._next()} className="d-flex ml-auto align-items-center align-items-center border-0"><span>Next</span> <img className="ml-auto" src={RightArrow} alt="arrow" /></Button>
+            <Button variant="dark-grad" type="button" onClick={() => this._next()} className="d-flex ml-auto align-items-center align-items-center border-0"><span>Next</span> <img className="ml-md-auto ml-3" src={RightArrow} alt="arrow" /></Button>
           )
         }
         return(
-          <Button href="./" variant="dark-grad" type="button" className="d-flex align-items-center ml-auto align-items-center border-0"><span>Logout</span> <img className="ml-auto" src={RightArrow} alt="arrow" /></Button>
+          <Button href="./" variant="dark-grad" type="button" className="d-flex align-items-center ml-auto align-items-center border-0"><span>Logout</span> <img className="ml-md-auto ml-3" src={RightArrow} alt="arrow" /></Button>
         )
       }
     render() {
@@ -72,7 +74,9 @@ class CreateRefer extends Component {
         return (
             <div className="outer-view">
                 <Header />
-                
+                        
+                <img src={Oval} className="oval-top-left d-block d-md-none" alt="ovel shape" />
+                <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" style={{ top: '0px' }} alt="ovel shape" />
                 <div className="top_offset position-relative">
                     <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
 
@@ -84,7 +88,7 @@ class CreateRefer extends Component {
                                     <h1>Create your own</h1>
                                 </div>
                             </Col>
-                            <Col md={6} lg={5}>
+                            <Col md={6} lg={5} className="d-none d-md-block">
                                 <div className="ads-frame ml-auto mt-auto mb-3">
                                     <img src={Ads} alt="Ads Poster" />
                                 </div>

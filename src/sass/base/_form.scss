@@ -36,6 +36,10 @@
             cursor: pointer;
             line-height: 45px;
 
+            @include maxDevice(575px){
+                line-height: 38px;
+            }
+
             img{
                 display: inline-block;
                 vertical-align: top;
@@ -86,10 +90,18 @@
             font-size: 28px;
             padding-top: 8px;
             margin-bottom: 15px;
+
+            @include maxDevice(1200px){
+                font-size: 20px;
+            }
         }
         h6{
             font-size: 22px;
             margin-bottom: 14px;
+
+            @include maxDevice(1200px){
+                font-size: 16px;
+            }
         }
     }
 

@@ -12,13 +12,16 @@ import Header from './header/HeaderDashboard';
 // assets
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';
 import Ads_02 from '../assets/ads_03.png';
+import Ads from '../assets/ads.png';
+import Oval from '../assets/Ovalpmob-left.svg';
+import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 class PointSummary extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-        
+            height: '300', 
           series: [{
               name: "Leads",
               data: [100, 70, 85, 95, 65, 70, 65, 40, 30, 65, 45, 95, 95, 45, 50, 40, 20, 75, 25, 75]
@@ -92,11 +95,19 @@ class PointSummary extends Component {
         };
     }
 
+    componentWillMount(){
+        if(window.innerWidth < 991){
+            this.setState({height: '160'});
+        }
+    }
+
     render() {
         return (
             <div className="outer-view">
                 <Header />
-                
+                        
+                <img src={Oval} className="oval-top-left d-block d-md-none" alt="ovel shape" />
+                <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" style={{ top: '0px' }} alt="ovel shape" />
                 <div className="top_offset position-relative">
                     <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
 
@@ -118,81 +129,91 @@ class PointSummary extends Component {
                                         <strong>3,000</strong>
                                         Total Points
                                     </div>
-                                    <Chart options={this.state.options} series={this.state.series} height="300" />
+                                    <Chart options={this.state.options} series={this.state.series} height={this.state.height} />
                                 </div>
                             </Col>
                         </Row>
 
-                        <div className="pt-4 pb-5">
+                        <div className="pt-4 pb-md-5">
                         <Row className="justify-content-between">
                                 <Col md={8} lg={9} className="mb-2 pr-md-5">
                                     <div className="activites-strip align-items-center d-flex mb-4">
                                         <div>
-                                            <span className="type">POINTS REDEEMED</span>
+                                            <span className="type text-uppercase">POINTS REDEEMED</span>
+                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
                                             <p>You purchased Restaurant Choice Fine Dining Gift Card $50 for B50000</p>
                                         </div>
-                                        <div className="date ml-auto">
+                                        <div className="date ml-auto d-none d-lg-block">
                                             02-15-2020
                                         </div>
                                     </div>
                                     <div className="activites-strip align-items-center d-flex mb-4">
                                         <div>
                                             <span className="type">POINTS REDEEMED</span>
+                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
                                             <p>You finished 10 and won B0 for the Week 4 competition</p>
                                         </div>
-                                        <div className="date ml-auto">
+                                        <div className="date ml-auto d-none d-lg-block">
                                             02-15-2020
                                         </div>
                                     </div>
                                     <div className="activites-strip align-items-center d-flex mb-4">
                                         <div>
                                             <span className="type">POINTS REDEEMED</span>
+                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
                                             <p>You placed a bet on Adam Scott for with the odds of .4</p>
                                         </div>
-                                        <div className="date ml-auto">
+                                        <div className="date ml-auto d-none d-lg-block">
                                             02-15-2020
                                         </div>
                                     </div>
                                     <div className="activites-strip align-items-center d-flex mb-4">
                                         <div>
                                             <span className="type">POINTS REDEEMED</span>
+                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
                                             <p>Sorry you bid was not successful with 3. All Cylinders (9)</p>
                                         </div>
-                                        <div className="date ml-auto">
+                                        <div className="date ml-auto d-none d-lg-block">
                                             02-15-2020
                                         </div>
                                     </div>
                                     <div className="activites-strip align-items-center d-flex mb-4">
                                         <div>
                                             <span className="type">POINTS REDEEMED</span>
+                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
                                             <p>You placed a bet on Sydney Roosters for 2123 with the odds of .25</p>
                                         </div>
-                                        <div className="date ml-auto">
+                                        <div className="date ml-auto d-none d-lg-block">
                                             02-15-2020
                                         </div>
                                     </div>
                                     <div className="activites-strip align-items-center d-flex mb-4">
                                         <div>
                                             <span className="type">POINTS REDEEMED</span>
+                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
                                             <p>You placed a bet on St George for with the odds of .75</p>
                                         </div>
-                                        <div className="date ml-auto">
+                                        <div className="date ml-auto d-none d-lg-block">
                                             02-15-2020
                                         </div>
                                     </div>
                                     <div className="activites-strip align-items-center d-flex mb-4">
                                         <div>
                                             <span className="type">POINTS REDEEMED</span>
+                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
                                             <p>You placed a bet on 3. All Cylinders (9) for 200 with the odds of .7</p>
                                         </div>
-                                        <div className="date ml-auto">
+                                        <div className="date ml-auto d-none d-lg-block">
                                             02-15-2020
                                         </div>
                                     </div>
                                 </Col>
-                                <Col md={4} lg={3} className="mb-2">
-                                    <div className="ads-portFrame">
+                                <Col md={4} lg={3} className="mb-md-2">
+                                        <div className="ads-portFrame d-none d-md-block">
                                         <img src={Ads_02} alt="ads" />
+                                    </div>
+                                    <div className="ads-frame mx-auto mt-4 d-block d-md-none">
+                                        <img src={Ads} alt="Ads Poster" />
                                     </div>
                                 </Col>
                             </Row>

@@ -16,6 +16,8 @@ import Header from './header/HeaderPost';
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';
 import arrowRight from '../assets/arrow-right-solid.png';
 import Ads_02 from '../assets/ads_03.png';
+import Ads from '../assets/ads.png';
+import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 import Uber from '../assets/uber-logo.png';
 
@@ -25,6 +27,7 @@ function RedeemCongrats() {
         <Header />
         
 
+        <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" style={{ top: '0px' }} alt="ovel shape" />
         <div className="top_offset position-relative">
             <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
 
@@ -33,10 +36,15 @@ function RedeemCongrats() {
                     <Col md={8} lg={8} className="mt-md-5 mt-md-4 mt-3">
                         <Row>
                             <Col md={9} className="mb-md-5 mb-4">
-                                <div className="heading-area">
+                                <div className="heading-area d-none d-md-block">
                                     <div className="post_type">EXPERIENCE</div>
                                     <h1>Congratulations!</h1>
                                     <p>Your transaction was successful, we just need you to confirm a few more details.</p>
+                                </div>
+                                <div className="heading-area d-block d-md-none">
+                                    <div className="post_type">EXPERIENCE</div>
+                                    <h1>Uber Gift Card $50!</h1>
+                                    <p>Get a reliable ride in minutes with the Uber app.</p>
                                 </div>
                             </Col>
 
@@ -59,8 +67,8 @@ function RedeemCongrats() {
                             </Col>
                         </Row>
                     </Col>
-                    <Col md={4} lg={3} className="mb-5">
-                        <div className="post_box redeem_box d-flex py-4">
+                    <Col md={4} lg={3} className="mb-md-5">
+                        <div className="post_box redeem_box d-md-flex py-4 d-none">
                             <img src={Uber} className="post_logo" alt="horse" />
                             <div className="m-auto">
                                 <div className="post_type">EXPERIENCE</div>
@@ -71,8 +79,11 @@ function RedeemCongrats() {
                             <div className="redeem-points position-absolute">50,000</div>
                         </div>
 
-                        <div className="ads-portFrame mt-md-5 mt-4">
+                        <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
                             <img src={Ads_02} alt="ads" />
+                        </div>
+                        <div className="ads-frame mx-auto mt-4 d-block d-md-none">
+                            <img src={Ads} alt="Ads Poster" />
                         </div>
                     </Col>
                 </Row>

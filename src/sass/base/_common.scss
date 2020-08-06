@@ -157,6 +157,20 @@ strong{
 			display: inline-block;
 			vertical-align: middle;
 		}
+
+		@include maxDevice(991px){
+			padding: 18px 20px;
+			height: 72px;
+		}
+
+		@include maxDevice(767px){
+			padding: 17px 15px;
+			font-size: 18px;
+
+			img{
+				max-width: 18px;
+			}
+		}
 	}
 
 	&-price{
@@ -191,6 +205,12 @@ strong{
 		height: 120px;
 		font-size: 20px;
 		font-weight: 400;
+
+		@include maxDevice(767px){
+			width: 100px;
+			height: 100px;
+			font-size: 16px;
+		}
 
 		img{
 			display: block;
