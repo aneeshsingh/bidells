@@ -1,14 +1,21 @@
-import React from 'react';
-import {StripeProvider} from 'react-stripe-elements';
+import React, { Component } from 'react';
 
-// import MyStoreCheckout from './MyStoreCheckout';
+import Checkout from './CheckoutForm';
 
-const App = () => {
-  return (
-    <StripeProvider apiKey="pk_test_12345">
-      {/* <MyStoreCheckout /> */}
-    </StripeProvider>
-  );
-};
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
-export default App;
+
+const stripePromise = loadStripe(process.env.PUBLISHABLE_KEY);
+
+class index extends Component {
+  render() {
+    return (
+      <Elements stripe={stripePromise}>
+        <Checkout />
+      </Elements>
+    );
+  }
+}
+
+export default index;

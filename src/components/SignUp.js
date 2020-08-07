@@ -48,7 +48,13 @@ class SignUp extends Component {
           userID: this.gen4()
         };
 
-        axios.post('/?itemType=register', { data })
+        // let axiosConfig = {
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
+        // };
+// axiosConfig
+        axios.get(`/?itemType=register`, data )
         .then(res => {
           console.log(data);
           console.log(this.state.data);
@@ -83,7 +89,7 @@ class SignUp extends Component {
                                     </div>
                                 </Col>
                                 <Col md={12} lg={12}>
-                                    <Form  onSubmit={this.handleSubmit}>
+                                    <Form onSubmit={this.handleSubmit}>
                                         <Form.Row>
                                             <Col sm={12}>
                                                 <Form.Group>
