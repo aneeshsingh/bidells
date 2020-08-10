@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React from "react";
 
-import Checkout from './CheckoutForm';
-
-import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import { BrowserRouter } from "react-router-dom";
 
+import CardForm from './cardForm';
 
-const stripePromise = loadStripe(process.env.PUBLISHABLE_KEY);
+const stripePromise = loadStripe("pk_test_51HD6rjBs0tLIdmO2IfHnaC8x7hAUSruv4iMlj2KtxEusOMz8sz93bb0B84eizIh3LlLKY6XzWWkWWYyG7szNWcxr00mmWoYIIp");
 
-class index extends Component {
-  render() {
+const Payment = () => {
     return (
-      <Elements stripe={stripePromise}>
-        <Checkout />
-      </Elements>
+      <BrowserRouter>
+        <Elements stripe={stripePromise}>
+          <CardForm />
+        </Elements>
+      </BrowserRouter>
     );
-  }
-}
+  };
 
-export default index;
+  export default Payment;
