@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -21,7 +22,26 @@ import Oval from '../assets/Ovalpmob-left.svg';
 import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 class referSettings extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false
+        };
+    }
+
+    logout = () => {
+        localStorage.removeItem('auth_bdGroup');
+
+        this.setState({
+            redirect: true
+        })
+    }
+
     render() {
+        if (this.state.redirect) {
+            return <Redirect to="/" />;
+        }
         return (
             <div className="outer-view">
                 <Header />
@@ -71,7 +91,7 @@ class referSettings extends Component {
                                 </Col>
                                 <Col md={4} lg={3} className="mb-md-2">
 
-                                <Button variant="dark-grad" type="button" block className="d-md-flex align-items-center mb-4 mb-md-5 align-items-center d-none border-0"><span>Logout</span> <img className="ml-auto" src={arrowRightWhite} alt="arrow" /></Button>
+                                <Button onClick={() => this.logout()} variant="dark-grad" type="button" block className="d-md-flex align-items-center mb-4 mb-md-5 align-items-center d-none border-0"><span>Logout</span> <img className="ml-auto" src={arrowRightWhite} alt="arrow" /></Button>
 
                                     <div className="ads-portFrame p-lg-5 p-sm-4 p-3">
                                         <img src={Ads_03} alt="ads" />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from './instance/axios';
+import { Redirect } from "react-router-dom";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -16,17 +17,31 @@ import arrowRight from '../assets/arrow-right-solid.png';
 import Oval from '../assets/oval_01.svg';
 import OvalRight from '../assets/Oval_dashboard_02.svg';
 
+
 class login extends Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password:''
+            password:'',
+            redirect: false,
+            error: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         // this.handleChange = this.handleChange.bind(this);
     }
+
+    componentDidMount(){
+        let Auth = localStorage.getItem('auth_bdGroup');
+        if(Auth){
+            this.setState({
+                redirect: true
+            })
+        }
+    }
+    
+
     handleSubmit(e) {
         e.preventDefault();
         // console.log(this.gen4());
@@ -38,12 +53,22 @@ class login extends Component {
         const data = {
             email: this.state.email,
             password: this.state.password
-        };
+        };   
 
-        
-// axiosConfig
-        axios.post(`https://reqres.in/api/login`, data)
+        axios.post(`/?itemType=login&email=${data.email}&password=${data.password}&remember=true`, data)
         .then(res => {
+            const data = res.data;
+            if(data.userID){
+                localStorage.setItem('auth_bdGroup', data.userID);
+                this.setState({
+                    redirect: true
+                })
+            }else{
+                this.setState({
+                    error: data.error_string
+                })
+            }
+
           console.log(res);
         }).catch((error) => {
             console.log(error)
@@ -53,6 +78,9 @@ class login extends Component {
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to="/get-all-bets" />;
+        }
         return (
             <div className="outer-view">
                 <HeaderLogin />
@@ -73,6 +101,7 @@ class login extends Component {
                                     <Form onSubmit={this.handleSubmit}>
                                         <Form.Group>
                                             <Form.Control type="email" autoComplete="true" className="form-shadow form-radius border-0" value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} placeholder="Email Address" />
+                                            <Form.Text className="text-danger">{this.state.error}</Form.Text>
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Control type="password" className="form-shadow form-radius border-0" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} placeholder="Password" />

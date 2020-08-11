@@ -26,43 +26,45 @@ class SignUp extends Component {
             email: '',
             phone: '',
             password:'',
-            confirmPassword:''
+            confirmPassword:'',
+            curTime : new Date().toLocaleString()
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         // this.handleChange = this.handleChange.bind(this);
     }
 
-    gen4() {
-    return Math.random().toString(16).slice(-2)
-    }
+    // gen4() {
+    // return Math.random().toString(16).slice(-2)
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
         // console.log(this.gen4());
+        // const data = {
+        //   name: this.state.firstName + this.state.lastName,
+        //   phone: this.state.phone ? this.state.phone : this.state.data.phone,
+        //   email: this.state.email ? this.state.email : this.state.data.email,
+        //   password: this.state.password ? this.state.password : this.state.data.password,
+        //   userID: this.gen4()
+        // };
+
         const data = {
-          name: this.state.firstName + this.state.lastName,
-          phone: this.state.phone ? this.state.phone : this.state.data.phone,
-          email: this.state.email ? this.state.email : this.state.data.email,
-          password: this.state.password ? this.state.password : this.state.data.password,
-          userID: this.gen4()
+            name: this.state.firstName + ' ' + this.state.lastName,
+            phone: this.state.phone,
+            email: this.state.email,
+            password: this.state.password,
+            userID: 5846
         };
 
-        // let axiosConfig = {
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     }
-        // };
-// axiosConfig
-        axios.get(`/?itemType=register`, data )
+        
+        axios.post(`/?itemType=register&full-name=${data.name}&email=${data.phone}&phone=${data.phone}&password=${data.password}&currentTime=${this.state.curTime}`, {email: 'vinay@alkye.com', name: 'Vinay', phone: '+423423424234234', userID: 432} )
         .then(res => {
-          console.log(data);
-          console.log(this.state.data);
+          console.log(res);
+        //   console.log(this.state.data);
         }).catch((error) => {
             console.log(error)
         });
-
-        console.log(data)
     }
 
     // handleChange(event) {

@@ -30,8 +30,9 @@
         }
     }
 
-    a{
+    a, button{
         color: $secondary;
+        text-decoration: none !important;
     }
 
     .navbar{

@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+    Link
+  } from "react-router-dom";
 
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -13,9 +16,9 @@ function Header() {
     <header className="header position-absolute">
         <Navbar expand="lg">
             <Navbar.Brand href="./"><img src={Logo} alt="logo" /></Navbar.Brand>
-            <div className="ml-auto header-controls text-uppercase order-lg-2">
-                <Button href="/login" variant="link">Login</Button>
-                <Button href="/sign-up" className="btn-radius  btn-shadow ml-md-3 ml-1" variant="grad-primary">Sign Up</Button>
+            <div className="ml-auto header-controls order-lg-2">
+                <Link to="/login"><Button variant="link" className="text-uppercase">Login</Button></Link>
+                <Link to="/sign-up"><Button variant="grad-primary" className="text-uppercase btn-radius btn-shadow ml-md-3 ml-1">Sign Up</Button></Link>
             </div>
             <Navbar.Toggle aria-controls="basic-navbar-nav" className="ml-2 ml-md-3 border-0 pr-0"><img src={Menu} alt="menu" /></Navbar.Toggle>
 

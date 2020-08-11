@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  withRouter
 } from "react-router-dom";
 
 // Components
@@ -32,9 +32,14 @@ import CreateRefer  from './components/CreateRefer';
 import SiteMap  from './components/SiteMap';
 import Footer from './components/footer/Footer';
 
-function App() {
-  return (
-    <Router>
+class App extends Component {
+  componentDidUpdate(prevProps) {
+		if (this.props.location !== prevProps.location) {
+			window.scrollTo(0, 0);
+		}
+	}
+  render() {
+    return (      
       <div className="page-content">
         <Switch>
           <Route path="/login">
@@ -103,18 +108,17 @@ function App() {
           <Route path="/create-refer">
             <CreateRefer />
           </Route>
-          <Route path="/welcome">
-            <Welcome />
-          </Route>
-          <Route path="/">
+          <Route path="/sitemap">
             <SiteMap />
           </Route>
+          <Route path="/">
+            <Welcome />
+          </Route>
         </Switch>
-
         <Footer />
       </div>
-    </Router>
-  );
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
