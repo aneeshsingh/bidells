@@ -42,7 +42,9 @@ class RedeemSingle extends Component {
     }
 
     getLeadData(){
-        axios.get(`/?itemType=getProductInformation&productID=644&userID=6`)
+        let Auth = localStorage.getItem('auth_bdGroup');
+        
+        axios.get(`/?itemType=getProductInformation&productID=644&userID=${Auth}`)
             .then(res => {
             const redeem = res.data;
             // console.log(Object.entries(redeem));

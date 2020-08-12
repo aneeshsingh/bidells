@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 // Header
-import Header from './header/HeaderDashboard';
+import Header from './header/Header';
 
 import RedeemGrids from './common/redeemGrids';
 

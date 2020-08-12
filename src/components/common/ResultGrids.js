@@ -20,48 +20,52 @@ class ResultGrids extends Component {
     }
 
     getResultData(){
-        axios.get(`/?itemType=generateResults&userID=6`)
+        let Auth = localStorage.getItem('auth_bdGroup');
+
+        axios.get(`/?itemType=generateResults&userID=${Auth}`)
             .then(res => {
             const data = res.data;
-            console.log(Object.entries(data));
-            const getResults = Object.entries(data).map(([key, result], index) => 
-                <Col md={4} sm={6} className="mb-4 pb-3">
-                    <div className="post_box h-100">
-                        <img src={HorseRacing} className="post_horseIcon" alt="horse" />
-                        <div className="post_type">HORSE RACING</div>
-                        <h2 className="pb-3"><Link to="#">{result.betName}</Link></h2>
-                        
-                        <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
-                            <div>
-                                Position <strong>{result.bidells}</strong>
+            console.log(data);
+            if(!data.error){
+                const getResults = Object.entries(data).map(([key, result], index) => 
+                    <Col md={4} sm={6} className="mb-4 pb-3" key={key}>
+                        <div className="post_box h-100">
+                            <img src={HorseRacing} className="post_horseIcon" alt="horse" />
+                            <div className="post_type">HORSE RACING</div>
+                            <h2 className="pb-3"><Link to="#">{result.betName}</Link></h2>
+                            
+                            <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
+                                <div>
+                                    Position <strong>{result.bidells}</strong>
+                                </div>
+                                <div>
+                                    Your Choice <strong>{result.usersPick}</strong>
+                                </div>
                             </div>
-                            <div>
-                                Your Choice <strong>{result.usersPick}</strong>
+                            <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
+                                <div>
+                                    Odds <strong>{result.betOdds}</strong>
+                                </div>
+                                <div>
+                                    Winner <strong>{result.betWinner}</strong>
+                                </div>
+                            </div>
+                            <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
+                                <div>
+                                    Points <strong>{result.bidells}</strong>
+                                </div>
+                                <div>
+                                Bet Date <strong>{result.betDate}</strong>
+                                </div>
                             </div>
                         </div>
-                        <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
-                            <div>
-                                Odds <strong>{result.betOdds}</strong>
-                            </div>
-                            <div>
-                                Winner <strong>{result.betWinner}</strong>
-                            </div>
-                        </div>
-                        <div className="post_results d-flex flex-wrap align-items-center justify-content-between">
-                            <div>
-                                Points <strong>{result.bidells}</strong>
-                            </div>
-                            <div>
-                            Bet Date <strong>{result.betDate}</strong>
-                            </div>
-                        </div>
-                    </div>
-                </Col>
-             )
+                    </Col>
+                )
 
-            this.setState({
-                getResults
-            })
+                this.setState({
+                    getResults
+                })
+            }
             
         }).catch((error) => {
             console.log(error)

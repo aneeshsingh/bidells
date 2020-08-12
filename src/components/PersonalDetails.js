@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 // Header
-import HeaderLogin from './header/HeaderLogin';
+import Header from './header/Header';
 
 // assets
 import BgImage from '../assets/personalDetals.jpg';
@@ -19,7 +19,7 @@ import OvalRight from '../assets/Oval_dashboard_02.svg';
 function PersonalDetails() {
   return (
     <div className="outer-view">
-        <HeaderLogin />
+        <Header />
         
         <img src={Oval} className="ovel-bottom-left d-none d-lg-block" alt="ovel shape" />
         <img src={OvalRight} className="ovel-bottom-right d-block d-lg-none" alt="ovel shape" />

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 // Header
-import Header from './header/HeaderDashboard';
+import Header from './header/Header';
 
 // common
 import PostGrids from './common/PostGrids';
@@ -18,7 +19,26 @@ import Oval from '../assets/Ovalpmob-left.svg';
 import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 class GetAllBets extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false
+        };
+    }
+
+    componentDidMount(){
+        let Auth = localStorage.getItem('auth_bdGroup');
+        if(!Auth){
+            this.setState({
+                redirect: true
+            })
+        }
+    }
+
     render() {
+        if (this.state.redirect) {
+            return <Redirect to="/login" />;
+        }
         return (
             <div className="outer-view">
                 <Header />                

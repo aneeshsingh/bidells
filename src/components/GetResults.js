@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -7,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 // Header
-import Header from './header/HeaderDashboard';
+import Header from './header/Header';
 
 import ResultGrids from './common/ResultGrids';
 
@@ -21,8 +22,27 @@ import Oval from '../assets/Ovalpmob-left.svg';
 import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 class AllResults extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false
+        };
+    }
+
+    componentDidMount(){
+        let Auth = localStorage.getItem('auth_bdGroup');
+        if(!Auth){
+            this.setState({
+                redirect: true
+            })
+        }
+    }
+
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to="/login" />;
+        }
         return (
             <div className="outer-view">
                 <Header />                

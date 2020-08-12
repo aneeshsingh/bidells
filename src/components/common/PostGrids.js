@@ -19,7 +19,9 @@ class PostGrids extends Component {
         }
     }
     getBetsData(){
-        axios.get(`/?itemType=premiumBets&userID=6`)
+        let Auth = localStorage.getItem('auth_bdGroup');
+
+        axios.get(`/?itemType=premiumBets&userID=${Auth}`)
             .then(res => {
             const data = res.data;
             // console.log(Object.entries(data));

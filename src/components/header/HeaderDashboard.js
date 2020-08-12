@@ -23,11 +23,15 @@ class HeaderDashboard extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/?itemType=getPoints&userID=6`)
+        let Auth = localStorage.getItem('auth_bdGroup');
+        
+        axios.get(`/?itemType=getPoints&userID=${Auth}`)
             .then(res => {
             const points = res.data;
             this.setState({ points : points.points });
-        })
+        });
+
+
     }
     
     render() {
@@ -43,12 +47,12 @@ class HeaderDashboard extends Component {
 
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav>
-                            <Nav.Link href="/about">Bets</Nav.Link>
+                            <Nav.Link href="/get-all-bets">Bets</Nav.Link>
                             <Nav.Link href="/leaderboard">Leaderboards</Nav.Link>
-                            <Nav.Link href="/all-results">Results</Nav.Link>
+                            <Nav.Link href="/get-results">Results</Nav.Link>
                             <Nav.Link href="/redeem-points">Shop</Nav.Link>
-                            <Nav.Link href="#">Activity</Nav.Link>
-                            <Nav.Link href="#">Refer a friend</Nav.Link>
+                            <Nav.Link href="/activities">Activity</Nav.Link>
+                            <Nav.Link href="/refer">Refer a friend</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

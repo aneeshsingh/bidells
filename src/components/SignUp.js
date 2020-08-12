@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PhoneInput from "react-phone-input-2";
 import axios from "./instance/axios";
+import { Redirect } from "react-router-dom";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -28,6 +29,7 @@ class SignUp extends Component {
       password: "",
       confirmPassword: "",
       curTime: new Date().toLocaleString(),
+      redirect: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,62 +42,33 @@ class SignUp extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // console.log(this.gen4());
-    // const data = {
-    //   name: this.state.firstName + this.state.lastName,
-    //   phone: this.state.phone ? this.state.phone : this.state.data.phone,
-    //   email: this.state.email ? this.state.email : this.state.data.email,
-    //   password: this.state.password ? this.state.password : this.state.data.password,
-    //   userID: this.gen4()
-    // };
-
-    // email: this.state.email,
-    // name: this.state.firstName + this.state.lastName,
-    // phone: this.state.phone,
-    // password: this.state.password
-    const data = {
-      itemType: "register",
-      "full-name": this.state.name + this.state.lastName,
-      email: this.state.email,
-      phone: this.state.phone,
-      password: this.state.password,
-      currentTime: this.state.curTime,
-    };
-
-    // console.log(data);
-    // axios
-    //   .post(`/`, data)
-    //   .then((res) => {
-    //     //   console.log(res);
-    //     console.log(res.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    
+    
     axios
       .get(
         `/?itemType=register&full-name=${
-          this.state.name + this.state.lastName
+          this.state.name + ' ' + this.state.lastName
         }+&email=${this.state.email}&phone=${this.state.phone}&password=${
           this.state.password
         }&currentTime=${this.state.curTime}`
       )
       .then((res) => {
-        //   console.log(res);
-        console.log(res.data);
+        const data = res.data;
+        if(data.userID){
+            this.setState({
+                redirect: true
+            })
+        }
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
-  // handleChange(event) {
-  //     this.setState({
-  //         email: event.target.value
-  //     });
-  // }
-
   render() {
+    if (this.state.redirect) {
+        return <Redirect to="/login" />;
+    }
     return (
       <div className="outer-view">
         <HeaderLogin />

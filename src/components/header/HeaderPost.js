@@ -23,7 +23,9 @@ class HeaderPost extends Component {
   }
 
   componentDidMount() {
-      axios.get(`/?itemType=getPoints&userID=6`)
+      let Auth = localStorage.getItem('auth_bdGroup');
+      
+      axios.get(`/?itemType=getPoints&userID=${Auth}`)
           .then(res => {
           const points = res.data;
           this.setState({ points : points.points });

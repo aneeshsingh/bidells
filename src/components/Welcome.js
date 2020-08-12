@@ -57,7 +57,8 @@ function Welcome() {
     return (
         <div className="outer-view">
             <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" alt="ovel shape" />
-            <Header varient={'dark'} />
+            
+            <Header />
             
             
                 <div className="top_offset">

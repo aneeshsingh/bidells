@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 // Header
-import Header from './header/HeaderPost';
+import Header from './header/Header';
 
 // assets
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';
@@ -30,7 +30,9 @@ class singlePost extends Component {
     }
     
     getProductDate(){
-        axios.get(`/?itemType=betDetails&betID=686&userID=6`)
+        let Auth = localStorage.getItem('auth_bdGroup');
+
+        axios.get(`/?itemType=betDetails&betID=686&userID=${Auth}`)
             .then(res => {
             const betDetails = Object.entries(res.data);
             // console.log(Object.entries(betDetails));

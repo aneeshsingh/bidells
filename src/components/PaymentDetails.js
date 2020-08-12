@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 // import Button from 'react-bootstrap/Button';
 
 // Header
-import HeaderLogin from './header/HeaderLogin';
+import Header from './header/Header';
 
 // common
 import PaymentMethod from './payment/index';
@@ -21,7 +21,7 @@ import OvalRight from '../assets/Oval_dashboard_02.svg';
 function PaymentDetails() {
   return (
     <div className="outer-view">
-        <HeaderLogin />
+        <Header />
         
         <img src={Oval} className="ovel-bottom-left d-none d-lg-block" alt="ovel shape" />
         <img src={OvalRight} className="ovel-bottom-right d-block d-lg-none" alt="ovel shape" />
@@ -35,26 +35,6 @@ function PaymentDetails() {
                                 <p className="lead">Want to give us a try? Select subscriptions offer a 7 day free trial! You will not be charged until the end of your trial and can cancel at any time.</p>
                             </div>
                         </Col>
-                        {/* <Col md={12} lg={12} className="mb-4"> 
-                            <div className="form-grad payment-details d-lg-flex d-none align-items-center">
-                                <div className="payment-card mr-3"><img src={PaymentCard} alt="card"/></div>
-                                <div className="payment-card-number flex-grow-1"><input type="text" placeholder="Card number" /></div>
-                                <div className="payment-card-expire mx-3"><input type="text" placeholder="MM / YY" /></div>
-                                <div className="payment-card-cvc"><input type="text" placeholder="CVC" /></div>
-                            </div>
-                            <div className="form-grad payment-details d-flex d-lg-none align-items-center mb-3">
-                                <div className="payment-card mr-3"><img src={PaymentCard} alt="card"/></div>
-                                <div className="payment-card-number flex-grow-1"><input type="text" placeholder="Card number" /></div>
-                            </div>
-                            <div className="form-grad payment-details d-flex d-lg-none align-items-center">
-                                <div className="payment-card-expire mr-auto"><input type="text" placeholder="MM / YY" /></div>
-                                <div className="payment-card-cvc"><input type="text" placeholder="CVC" /></div>
-                            </div>
-                        </Col>
-                        <Col md={10} lg={8}>
-                            <Button variant="light" type="submit" block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">SUBSCRIBE <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
-                        </Col> */}
-
                         <Col md={12}>
                             <PaymentMethod />
                         </Col>

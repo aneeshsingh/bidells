@@ -8,7 +8,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 
 // Header
-import Header from './header/HeaderDashboard';
+import Header from './header/Header';
 
 
 import Bets from './common/BetsGrids';

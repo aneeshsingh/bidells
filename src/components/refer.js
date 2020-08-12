@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 // Header
-import Header from './header/HeaderDashboard';
+import Header from './header/Header';
 
 // assets
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';
@@ -29,7 +29,9 @@ class refer extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/?itemType=getReferralCode&userID=6`)
+        let Auth = localStorage.getItem('auth_bdGroup');
+        
+        axios.get(`/?itemType=getReferralCode&userID=${Auth}`)
             .then(res => {
             const points = res.data;
             this.setState({ referrer : points.referrerCode });

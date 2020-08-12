@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from './instance/axios';
 import {
-    Link
+    Link,
+    Redirect
   } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
@@ -12,7 +13,7 @@ import Button from 'react-bootstrap/Button';
 import Chart from 'react-apexcharts';
 
 // Header
-import Header from './header/HeaderDashboard';
+import Header from './header/Header';
 
 // assets
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';
@@ -26,6 +27,7 @@ class Leaderboard extends Component {
         super(props);
 
         this.state = {
+            redirect: false,
             height: '250', 
             getLeads: [],
             series: [{
@@ -105,15 +107,25 @@ class Leaderboard extends Component {
         if(window.innerWidth < 991){
             this.setState({height: '160'});
         }
+
+        let Auth = localStorage.getItem('auth_bdGroup');
+        if(!Auth){
+            this.setState({
+                redirect: true
+            })
+        }
     }
 
     getLeadData(){
-        axios.get(`/?itemType=getAllLeaderboards&userID=6`)
+        let Auth = localStorage.getItem('auth_bdGroup');
+
+        axios.get(`/?itemType=getAllLeaderboards&userID=${Auth}`)
             .then(res => {
             const data = res.data;
-            console.log(Object.entries(data));
-            const getLeads = Object.entries(data).map(([key, bets], index) => 
-                <Link to="/leaderboard-view" className="lead-strip li-grad d-flex flex-wrap align-items-center mb-4" key={key}>
+            // console.log(data);
+            if(!data.error){
+                const getLeads = Object.entries(data).map(([key, bets], index) => 
+                    <Link to="/leaderboard-view" className="lead-strip li-grad d-flex flex-wrap align-items-center mb-4" key={key}>
                     <div className="lead-date flex-grow-1">
                         {bets.week_name}
                     </div>
@@ -124,11 +136,13 @@ class Leaderboard extends Component {
                         <span className="d-block">Points</span> {bets.points}
                     </div>
                 </Link>
-             )
+                )
 
-            this.setState({
-                getLeads
-            })
+                this.setState({
+                    getLeads
+                })
+            }
+
             
         }).catch((error) => {
             console.log(error)
@@ -140,6 +154,9 @@ class Leaderboard extends Component {
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to="/login" />;
+        }
         return (
             <div className="outer-view">
                 <Header />

@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 // Header
-import Header from './header/HeaderDashboard';
+import Header from './header/Header';
 
 // assets
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';

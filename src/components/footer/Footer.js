@@ -18,12 +18,12 @@ function Footer() {
                 <Row className="justify-content-center">
                     <Col md={10} lg={7}>
                         <ul className="d-flex mb-0 list-unstyled align-items-center justify-content-between flex-wrap mx-ms-3 mx-1">
-                            <li><Link to="/about">Bets</Link></li>
-                            <li><Link to="#">Leaderboards</Link></li>
-                            <li><Link to="#">Results</Link></li>
-                            <li><Link to="#">Shop</Link></li>
-                            <li><Link to="#">Activity</Link></li>
-                            <li><Link to="#">Refer a friend</Link></li>
+                            <li><Link to="/get-all-bets">Bets</Link></li>
+                            <li><Link to="/leaderboard">Leaderboards</Link></li>
+                            <li><Link to="/all-results">Results</Link></li>
+                            <li><Link to="/redeem-points">Shop</Link></li>
+                            <li><Link to="/activities">Activity</Link></li>
+                            <li><Link to="/refer">Refer a friend</Link></li>
                             <li><Link to="/sitemap">Site map</Link></li>
                         </ul>
 
