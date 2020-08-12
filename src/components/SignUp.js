@@ -21,7 +21,7 @@ class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
+            name: '',
             lastName: '',
             email: '',
             phone: '',
@@ -49,19 +49,23 @@ class SignUp extends Component {
         //   userID: this.gen4()
         // };
 
+        // email: this.state.email,
+        // name: this.state.firstName + this.state.lastName,
+        // phone: this.state.phone,
+        // password: this.state.password
         const data = {
-            name: this.state.firstName + ' ' + this.state.lastName,
+            name:this.state.name + this.state.lastName,
+            email:this.state.email,
             phone: this.state.phone,
-            email: this.state.email,
-            password: this.state.password,
-            userID: 5846
+            password:this.state.password
         };
 
+
         
-        axios.post(`/?itemType=register&full-name=${data.name}&email=${data.phone}&phone=${data.phone}&password=${data.password}&currentTime=${this.state.curTime}`, {email: 'vinay@alkye.com', name: 'Vinay', phone: '+423423424234234', userID: 432} )
+        axios.get(`/?itemType=register`, data)
         .then(res => {
-          console.log(res);
-        //   console.log(this.state.data);
+        //   console.log(res);
+          console.log(res.data);
         }).catch((error) => {
             console.log(error)
         });
@@ -95,22 +99,22 @@ class SignUp extends Component {
                                         <Form.Row>
                                             <Col sm={12}>
                                                 <Form.Group>
-                                                    <Form.Control type="text" className="form-shadow form-radius border-0" value={this.state.firstName} onChange={(e) => this.setState({firstName: e.target.value})} placeholder="First Name" />
+                                                    <Form.Control type="text" name="name" className="form-shadow form-radius border-0" value={this.state.name} onChange={(e) => this.setState({name: e.target.value})} placeholder="First Name" />
                                                 </Form.Group>
                                             </Col>
                                             <Col sm={12}>
                                                 <Form.Group>
-                                                    <Form.Control type="text" className="form-shadow form-radius border-0" value={this.state.lastName} onChange={(e) => this.setState({lastName: e.target.value})} placeholder="Last Name" />
+                                                    <Form.Control type="text" name="lastname" className="form-shadow form-radius border-0" value={this.state.lastName} onChange={(e) => this.setState({lastName: e.target.value})} placeholder="Last Name" />
                                                 </Form.Group>
                                             </Col>
                                             <Col sm={12}>
                                                 <Form.Group>
-                                                    <Form.Control type="email" className="form-shadow form-radius border-0" value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} placeholder="Email Address" />
+                                                    <Form.Control type="email" name="email" className="form-shadow form-radius border-0" value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} placeholder="Email Address" />
                                                 </Form.Group>
                                             </Col>
                                             <Col sm={12}>
                                                 <Form.Group>
-                                                    <PhoneInput country={'au'} enableAreaCodes={true} value={this.state.phone} dropdownClass="form-shadow form-radius border-0" inputClass="form-shadow form-radius border-0" onChange={phone => this.setState({ phone })} />
+                                                    <PhoneInput country={'au'} name="phone" enableAreaCodes={true} value={this.state.phone} dropdownClass="form-shadow form-radius border-0" inputClass="form-shadow form-radius border-0" onChange={phone => this.setState({ phone })} />
                                                 </Form.Group>
                                             </Col>
                                             {/* <Col xs={3}>
@@ -125,12 +129,12 @@ class SignUp extends Component {
                                             </Col> */}
                                             <Col sm={12}>
                                                 <Form.Group>
-                                                    <Form.Control type="password" className="form-shadow form-radius border-0" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} placeholder="Password" />
+                                                    <Form.Control type="password" name="password" className="form-shadow form-radius border-0" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} placeholder="Password" />
                                                 </Form.Group>
                                             </Col>
                                             <Col sm={12}>
                                                 <Form.Group>
-                                                    <Form.Control type="password" className="form-shadow form-radius border-0" value={this.state.confirmPassword} onChange={(e) => this.setState({confirmPassword: e.target.value})} placeholder="Confirm Password" />
+                                                    <Form.Control type="password" name="confirmPassword" className="form-shadow form-radius border-0" value={this.state.confirmPassword} onChange={(e) => this.setState({confirmPassword: e.target.value})} placeholder="Confirm Password" />
                                                 </Form.Group>
                                             </Col>
                                         </Form.Row>
