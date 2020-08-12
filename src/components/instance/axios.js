@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://www.bidells.com/app-processing'
+  baseURL: "https://www.bidells.com/app-processing",
 });
 
 export default instance;
