@@ -191,7 +191,7 @@ class Leaderboard extends Component {
                         <div className="pt-4 pb-md-5">
                             <Row className="justify-content-between">
                                 <Col className="d-md-none mb-4">
-                                    <Button href="#" block className="form-btn border-0 text-truncate text-uppercase">SEE ALL TIME LEADERBOARD</Button>
+                                    <Button href="#" block variant="-" className="form-btn border-0 text-truncate text-uppercase">SEE ALL TIME LEADERBOARD</Button>
                                 </Col>
                                 <Col md={8} lg={8} className="mb-4">
                                     {this.state.getLeads}                                    
@@ -208,7 +208,7 @@ class Leaderboard extends Component {
                                     </Link> */}
                                 </Col>
                                 <Col md={4} lg={3} className="mb-md-4">
-                                    <Button href="#" block className="form-btn d-none d-md-block border-0 text-truncate text-uppercase">SEE ALL TIME LEADERBOARD</Button>
+                                    <Button href="#" block variant="-" className="form-btn d-none d-md-block border-0 text-truncate text-uppercase">SEE ALL TIME LEADERBOARD</Button>
 
                                     <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
                                         <img src={Ads_02} alt="ads" />

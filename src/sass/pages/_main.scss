@@ -629,6 +629,7 @@ h4{
 .strip{
     &-bidell{
         padding: 20px;
+        cursor: pointer;
         color: $gray-50;
         border-radius: 33px;
         @include linear-gradient(136deg, #EBF3FA, #CBE0F7);
@@ -674,8 +675,14 @@ h4{
         .flag-icon{
             img{
                 width: 48px;
+                height: 48px;
+                object-fit: cover;
+                border-radius: 50px;
+                object-position: center;
+
                 @include maxDevice(575px){
                     width: 28px;
+                    height: 28px;
                 }
             }
         }
@@ -683,7 +690,6 @@ h4{
         .check-icon{
             width: 64px;
             height: 64px;
-            cursor: pointer;
             line-height: 60px;
             text-align: center;
             border-radius: 35px;      
@@ -708,22 +714,22 @@ h4{
                 }
             }
         }
-
-        input:checked{
-            & + .check-icon{
-                @include linear-gradient(136deg, #3C3C3C, #010101);
-                @include box-shadow(4px 4px 18px rgba(0,0,0,0.5), -4px -4px 18px rgba(82,82,82,0.5), inset 2px 2px 8px rgba(0,0,0,0.5), inset -2px -2px 8px rgba(60,60,60,0.5));
-
-                img{
-                    filter: brightness(10);
-                }
-            }
-        }
     }
 
     &-content{
         font-size: 16px;
         font-weight: 500;
+    }
+}
+
+input:checked{
+    & + .strip-bidell .check-icon{
+        @include linear-gradient(136deg, #3C3C3C, #010101);
+        @include box-shadow(4px 4px 18px rgba(0,0,0,0.5), -4px -4px 18px rgba(82,82,82,0.5), inset 2px 2px 8px rgba(0,0,0,0.5), inset -2px -2px 8px rgba(60,60,60,0.5));
+
+        img{
+            filter: brightness(10);
+        }
     }
 }
 

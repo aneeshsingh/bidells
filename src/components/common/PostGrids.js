@@ -30,7 +30,7 @@ class PostGrids extends Component {
                 <div className="post_box d-flex flex-column h-100">
                     <img src={bets.game_logo} className="post_horseIcon" alt="horse" />
                     <div className="post_type text-uppercase">{bets.game_type}</div>
-                    <h2><Link to={'/get-bet-details/:'+bets.postID}>{bets.title}</Link></h2>
+                    <h2><Link to={'/get-bet-details/'+bets.postID}>{bets.title}</Link></h2>
                     <div className="post_text">
                          {bets.subHeading}
                     </div>
