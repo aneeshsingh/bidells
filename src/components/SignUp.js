@@ -22,47 +22,194 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      password: "",
+      phone: '',
+      phoneError: '',
       confirmPassword: "",
+      fields: {},
+      errors: {},
       curTime: new Date().toLocaleString(),
-      redirect: false
+      redirect: false,
+      alreadyHas: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   // gen4() {
   // return Math.random().toString(16).slice(-2)
   // }
 
+  handleChange(e) {
+    let fields = this.state.fields;
+    fields[e.target.name] = e.target.value;
+    this.setState({
+      fields
+    });
+
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     
-    
-    axios
+    if (this.validateForm()) {
+      let fields = {};
+      fields["firstname"] = "";
+      fields["lastname"] = "";
+      fields["email"] = "";
+      fields["password"] = "";
+      fields["confirm_password"] = "";     
+
+      this.setState({
+        fields:fields
+      })
+
+      axios
       .get(
         `/?itemType=register&full-name=${
-          this.state.name + ' ' + this.state.lastName
-        }+&email=${this.state.email}&phone=${this.state.phone}&password=${
-          this.state.password
+          this.state.fields.firstname + ' ' + this.state.fields.lastname
+        }+&email=${this.state.fields.email}&phone=${this.state.phone}&password=${
+          this.state.fields.password
         }&currentTime=${this.state.curTime}`
       )
       .then((res) => {
         const data = res.data;
+        console.log(data);
         if(data.userID){
             this.setState({
                 redirect: true
             })
+        }else{
+          
+          this.setState({
+            alreadyHas: data.error
+          })
         }
       })
       .catch((error) => {
         console.log(error);
       });
+
+    }
+    
+
+
+  }
+  
+
+  validateForm() {
+    let fields = this.state.fields;
+    let phoneError = this.state.phoneError;
+    let errors = {};
+    let formIsValid = true;
+
+    // First Name error messages
+    if (!fields["firstname"]) {
+      formIsValid = false;
+      errors["firstname"] = "*Please enter your firstname.";
+    }
+
+    if (typeof fields["firstname"] !== "undefined") {
+      if (!fields["firstname"].match(/^[a-zA-Z ]*$/)) {
+        formIsValid = false;
+        errors["firstname"] = "*Please enter alphabet characters only.";
+      }
+    }
+
+    // Last Name error messages
+    if (!fields["lastname"]) {
+      formIsValid = false;
+      errors["lastname"] = "*Please enter your lastname.";
+    }
+
+    if (typeof fields["lastname"] !== "undefined") {
+      if (!fields["lastname"].match(/^[a-zA-Z ]*$/)) {
+        formIsValid = false;
+        errors["lastname"] = "*Please enter alphabet characters only.";
+      }
+    }
+
+    // Email Address error messages
+    if (!fields["email"]) {
+      formIsValid = false;
+      errors["email"] = "*Please enter your email address.";
+    }
+
+    if (typeof fields["email"] !== "undefined") {
+      //regular expression for email validation
+      var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      if (!pattern.test(fields["email"])) {
+        formIsValid = false;
+        errors["email"] = "*Please enter valid email address.";
+      }
+    }
+    // Phone error messages
+    // if (!fields["phone"]) {
+    //   formIsValid = false;
+    //   errors["phone"] = "*Please enter your phone no.";
+    // }
+
+    // if (typeof fields["phone"] !== "undefined") {
+    //   if (!fields["phone"].match(/^[0-9]{10}$/)) {
+    //     formIsValid = false;
+    //     errors["phone"] = "*Please enter valid phone no.";
+    //   }
+    // }
+
+
+    // Password error messages
+    if (!fields["password"]) {
+      formIsValid = false;
+      errors["password"] = "*Please enter your password.";
+    }
+
+    if (typeof fields["password"] !== "undefined") {
+      if (!fields["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
+        formIsValid = false;
+        errors["password"] = "*Please enter secure and strong password.";
+      }
+    }
+    
+    // Confirm Password error messages
+    if (!fields["confirm_password"]) {
+      formIsValid = false;
+      errors["confirm_password"] = "Please enter your confirm password.";
+    }
+
+    // Compare Password error messages
+    if (typeof fields["password"] !== "undefined" && typeof fields["confirm_password"] !== "undefined") {
+          
+      if (fields["password"] !== fields["confirm_password"]) {
+        formIsValid = false;
+        errors["password"] = "Passwords don't match.";
+      }
+    } 
+
+
+    // console.log(this.state.phone);
+    if (!this.state.phone) {
+      formIsValid = false;
+      phoneError = "Please enter your phone number.";
+    }
+
+    // if (typeof this.state.phone !== "undefined") {  
+    //   var pattern_01 = new RegExp(/^[0-9\b]+$/);
+    //   if (!pattern_01.test(this.state.phone)) {
+    //     formIsValid = false;
+    //     phoneError = "Please enter only number.";
+    //   }
+    //   else if(this.state.phone.length !== 12){
+    //     formIsValid = false;
+    //     phoneError = "Please enter valid phone number.";
+    //   }
+    // }
+
+
+    this.setState({
+      errors: errors,
+      phoneError
+    });
+    return formIsValid;
   }
 
   render() {
@@ -104,14 +251,13 @@ class SignUp extends Component {
                         <Form.Group>
                           <Form.Control
                             type="text"
-                            name="name"
+                            name="firstname"
                             className="form-shadow form-radius border-0"
-                            value={this.state.name}
-                            onChange={(e) =>
-                              this.setState({ name: e.target.value })
-                            }
+                            value={this.state.fields.firstname || ''}
+                            onChange={this.handleChange}
                             placeholder="First Name"
                           />
+                          <div className="error_msg">{this.state.errors.firstname}</div>
                         </Form.Group>
                       </Col>
                       <Col sm={12}>
@@ -120,12 +266,11 @@ class SignUp extends Component {
                             type="text"
                             name="lastname"
                             className="form-shadow form-radius border-0"
-                            value={this.state.lastName}
-                            onChange={(e) =>
-                              this.setState({ lastName: e.target.value })
-                            }
+                            value={this.state.fields.lastname || ''}
+                            onChange={this.handleChange}
                             placeholder="Last Name"
                           />
+                          <div className="error_msg">{this.state.errors.lastname}</div>
                         </Form.Group>
                       </Col>
                       <Col sm={12}>
@@ -134,63 +279,54 @@ class SignUp extends Component {
                             type="email"
                             name="email"
                             className="form-shadow form-radius border-0"
-                            value={this.state.email}
-                            onChange={(e) =>
-                              this.setState({ email: e.target.value })
-                            }
+                            value={this.state.fields.email || ''}
+                            onChange={this.handleChange}
                             placeholder="Email Address"
                           />
+                          <div className="error_msg">{this.state.errors.email || this.state.alreadyHas}</div>
                         </Form.Group>
                       </Col>
                       <Col sm={12}>
                         <Form.Group>
                           <PhoneInput
                             country={"au"}
-                            name="phone"
+                            inputProps={{
+                              required: true
+                            }}
                             enableAreaCodes={true}
-                            value={this.state.phone}
+                            value={this.state.phone || ''}
                             dropdownClass="form-shadow form-radius border-0"
                             inputClass="form-shadow form-radius border-0"
-                            onChange={(phone) => this.setState({ phone })}
+                            // onChange={this.handleChange}
+                            onChange={phone => this.setState({ phone })}
                           />
+                          <div className="error_msg">{this.state.phoneError}</div>
                         </Form.Group>
                       </Col>
-                      {/* <Col xs={3}>
-                                                <Form.Group>
-                                                    <Form.Control type="text" className="form-shadow form-radius border-0" placeholder="AU" />
-                                                </Form.Group>
-                                            </Col>
-                                            <Col xs={9}>
-                                                <Form.Group>
-                                                    <Form.Control type="text" className="form-shadow form-radius border-0" placeholder="Phone Number" />
-                                                </Form.Group>
-                                            </Col> */}
                       <Col sm={12}>
                         <Form.Group>
                           <Form.Control
                             type="password"
                             name="password"
                             className="form-shadow form-radius border-0"
-                            value={this.state.password}
-                            onChange={(e) =>
-                              this.setState({ password: e.target.value })
-                            }
+                            value={this.state.fields.password || ''}
+                            onChange={this.handleChange}
                             placeholder="Password"
                           />
+                          <div className="error_msg">{this.state.errors.password}</div>
                         </Form.Group>
                       </Col>
                       <Col sm={12}>
                         <Form.Group>
                           <Form.Control
                             type="password"
-                            name="confirmPassword"
+                            name="confirm_password"
                             className="form-shadow form-radius border-0"
-                            value={this.state.confirmPassword}
-                            onChange={(e) =>
-                              this.setState({ confirmPassword: e.target.value })
-                            }
+                            value={this.state.fields.confirm_password || ''}
+                            onChange={this.handleChange}
                             placeholder="Confirm Password"
                           />
+                          <div className="error_msg">{this.state.errors.confirm_password}</div>
                         </Form.Group>
                       </Col>
                     </Form.Row>

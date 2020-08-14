@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from './instance/axios';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -52,15 +53,69 @@ function MyVerticallyCenteredModal(props) {
     );
   }
 
-function Welcome() {
+function WelcomeVideo() {
     const [modalShow, setModalShow] = React.useState(false);
     return (
-        <div className="outer-view">
-            <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" alt="ovel shape" />
+        <div className="video-frame d-flex flex-column">
+            <h5 className="video-frame-title">How Bidells works?</h5>
+
+            <Button type="button" variant="play" onClick={() => setModalShow(true)}><img src={Play} alt="play" /></Button>
+
+            <div className="video-frame-bottom mt-auto d-flex align-items-center justify-content-between">
+                <span><img src={VideoIcon} alt="Video" /></span>
+                <span>02:00</span>
+            </div>
+
+            <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
+        </div>
+    );
+}
+
+
+
+class Welcome extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            isFetching: false
+        };
+    }
+
+    // getLeadData(){
+        
+        
+    // }
+
+    componentDidMount() {
+        this.setState({isFetching: true});
+        axios.get(`/?itemType=welcome`)
+            .then(res => {
+            const data = res.data;
+            console.log(Object.entries(data));
+
+            this.setState({
+                data: data,
+                isFetching: false
+            })
             
-            <Header />
-            
-            
+        }).catch((error) => {
+            this.setState({isFetching: false})
+            console.log(error)
+        })
+    }
+
+    render() {  
+        if(this.state.isFetching) return <div>Loading...</div>;     
+        const { data } = this.state;
+        console.log(data);
+        return (
+            <div className="outer-view">
+                <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" alt="ovel shape" />
+                <Header />
                 <div className="top_offset">
                     <section className="infomation_area content-area position-relative">
                         <img src={Oval_01} className="oval bottom-left welcome-oval" alt="ovel shape" />
@@ -68,23 +123,14 @@ function Welcome() {
                             <Row className="space-bottom justify-content-between">
                                 <Col md={6} lg={5}>
                                     <div className="mb-4">
-                                        <h1 className="display-1">Welcome <br />to Bidells</h1>
-                                        <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est justo, ullamcorper et ipsum fringilla, convallis faucibus ex.</p>
+                                        <h1 className="display-1">Welcome <br/>to Bidells</h1>
+                                        <p className="lead">We Are An Online Betting Site For A Wide Selection Of Events. Bidells Is Here To Make Your Betting Experience Better and Personalized. Bet On Sports Or Politics Or Create Your Own Customized Bet. Betting Has Never Been More Fun.</p>
 
                                         <Button variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
                                     </div>
                                 </Col>
                                 <Col md={6} lg={6}>
-                                    <div className="video-frame d-flex flex-column">
-                                        <h5 className="video-frame-title">How Bidells works?</h5>
-
-                                        <Button type="button" variant="play" onClick={() => setModalShow(true)}><img src={Play} alt="play" /></Button>
-
-                                        <div className="video-frame-bottom mt-auto d-flex align-items-center justify-content-between">
-                                            <span><img src={VideoIcon} alt="Video" /></span>
-                                            <span>02:00</span>
-                                        </div>
-                                    </div>
+                                    <WelcomeVideo video="dsfds" />
                                 </Col>
                             </Row>
                         </Container>
@@ -201,16 +247,10 @@ function Welcome() {
                             </Row>
                         </Container>
                     </section>
-                </div>
-
-            <MyVerticallyCenteredModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            />
-
-            
-        </div>
-    );
+                </div>                
+            </div>
+        );
+    }
 }
 
 export default Welcome;

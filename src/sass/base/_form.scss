@@ -85,6 +85,7 @@
 
     &-group{
         margin-bottom: 20px;
+        position: relative;
 
         h5{
             font-size: 28px;
@@ -413,5 +414,24 @@ input:checked + .label-box{
                 border-bottom-width: 8px;
             }
         }
+    }
+}
+
+.error_msg{
+    right: 20px;
+    bottom: 10px;
+    width: auto;
+    font-size: 90%;
+    font-weight: 400;
+    color: #dc3545;
+    margin-top: .25rem;
+    position: absolute;
+
+    @include maxDevice(900px){
+        right: 0;
+        bottom: 0;
+        padding-top: 5px;
+        text-align: right;
+        position: relative;
     }
 }
