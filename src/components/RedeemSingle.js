@@ -24,7 +24,6 @@ import Plus from '../assets/plus.svg';
 import Oval from '../assets/Ovalpmob-left.svg';
 import OvalRight from '../assets/Oval_dashboard_02.svg';
 
-import Uber from '../assets/uber-logo.png';
 
 class RedeemSingle extends Component {
     constructor(props) {
@@ -43,8 +42,9 @@ class RedeemSingle extends Component {
 
     getLeadData(){
         let Auth = localStorage.getItem('auth_bdGroup');
+        let Id = this.props.match.params.Id;
         
-        axios.get(`/?itemType=getProductInformation&productID=644&userID=${Auth}`)
+        axios.get(`/?itemType=getProductInformation&productID=${Id}&userID=${Auth}`)
             .then(res => {
             const redeem = res.data;
             // console.log(Object.entries(redeem));
@@ -66,102 +66,125 @@ class RedeemSingle extends Component {
     render() {
         console.log(this.state.redeem);
         return (
-            <div className="outer-view">
-                <Header />
-                
+          <div className="outer-view">
+            <Header />
 
-                <img src={Oval} className="oval-top-left d-block d-md-none" alt="ovel shape" />
-                <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" style={{ top: '0px' }} alt="ovel shape" />
-                <div className="top_offset position-relative">
-                    <img src={Ovel_01} className="place-oval-Rbottom" alt="ovel shape" />
+            <img
+              src={Oval}
+              className="oval-top-left d-block d-md-none"
+              alt="ovel shape"
+            />
+            <img
+              src={OvalRight}
+              className="ovel-bottom-right d-block d-md-none"
+              style={{ top: "0px" }}
+              alt="ovel shape"
+            />
+            <div className="top_offset position-relative">
+              <img
+                src={Ovel_01}
+                className="place-oval-Rbottom"
+                alt="ovel shape"
+              />
 
-                    <Container fluid="md">
-                        <Row className="align-items-center content-area mb-5">
-                            <Col md={6}>
-                                <div className="heading-area">
-                                    <div className="post_type">EXPERIENCE</div>
-                                    <h1>{this.state.redeem.title}</h1>
-                                    <p>Get a reliable ride in minutes with the Uber app.</p>
-                                </div>
-                            </Col>
-                            <Col md={6} className="py-3 d-none d-md-block">
-                                <img src={Uber} className="img-fluid d-block m-auto mr-md-0" alt="logo"/>
-                            </Col>
-                        </Row>
-                        
-                        <Row className="justify-content-between">
-                            <Col md={8} lg={8} className="mb-2 pr-md-5">
-                                <Row className="mb-md-4 mb-5">
-                                    <Col sm={6} md={5} className="mb-md-4">
-                                        <div className="box-grid my-3 li-grad p-md-5 p-4">
-                                            <div className="box-grid-info py-2">
-                                                <span className="mb-4 d-block">Quantity</span>
-                                                
-                                                <InputGroup className="form-quality">
-                                                    <InputGroup.Prepend>
-                                                        <Button variant="minus"><img src={Minus} alt="minus"/></Button>
-                                                    </InputGroup.Prepend>
-                                                    <Form.Control 
-                                                        value={this.state.quality}
-                                                        onChange={e => this.handleChange(e)}
-                                                    />
-                                                    <InputGroup.Append>
-                                                        <Button variant="plus"><img src={Plus} alt="plus"/></Button>
-                                                    </InputGroup.Append>
-                                                </InputGroup>
+              <Container fluid="md">
+                <Row className="align-items-center content-area mb-5">
+                  <Col md={6}>
+                    <div className="heading-area">
+                      <div className="post_type">EXPERIENCE</div>
+                      <h1>{this.state.redeem.title}</h1>
+                      <p>{this.state.redeem.content}</p>
+                    </div>
+                  </Col>
+                  <Col md={6} className="py-3 d-none d-md-block">
+                    {this.state.redeem.get_first_image_url ? (
+                      <img
+                        src={this.state.redeem.get_first_image_url}
+                        className="img-fluid d-block m-auto mr-md-0"
+                        alt="logo"
+                      />
+                    ) : null}
+                  </Col>
+                </Row>
 
-                                            </div>
-                                        </div>  
-                                    </Col>    
-                                    <Col sm={6} md={5} className="mb-md-4">
-                                        <div className="box-grid my-3 li-grad p-md-5 p-4">
-                                            <div className="box-grid-info py-2">
-                                                <span className="mb-4 d-block">Total</span>
-                                                <strong>{this.state.redeem.userCurrentPoints}</strong>
-                                            </div>
-                                        </div>
-                                    </Col>
+                <Row className="justify-content-between">
+                  <Col md={8} lg={8} className="mb-2 pr-md-5">
+                    <Row className="mb-md-4 mb-5">
+                      <Col sm={6} md={5} className="mb-md-4">
+                        <div className="box-grid my-3 li-grad p-md-5 p-4">
+                          <div className="box-grid-info py-2">
+                            <span className="mb-4 d-block">Quantity</span>
 
-                                    <Col sm={12} md={10} className="mt-3">
-                                        <div className="form-bet-amount d-flex align-items-center">
-                                            <span className="submitText">CONTINUE</span>
-                                            <Button><img src={SubmitArrow} alt="arrow"/></Button>
-                                        </div>
-                                    </Col>    
-                                </Row>      
+                            <InputGroup className="form-quality">
+                              <InputGroup.Prepend>
+                                <Button variant="minus">
+                                  <img src={Minus} alt="minus" />
+                                </Button>
+                              </InputGroup.Prepend>
+                              <Form.Control
+                                value={this.state.quality}
+                                onChange={(e) => this.handleChange(e)}
+                              />
+                              <InputGroup.Append>
+                                <Button variant="plus">
+                                  <img src={Plus} alt="plus" />
+                                </Button>
+                              </InputGroup.Append>
+                            </InputGroup>
+                          </div>
+                        </div>
+                      </Col>
+                      <Col sm={6} md={5} className="mb-md-4">
+                        <div className="box-grid my-3 li-grad p-md-5 p-4">
+                          <div className="box-grid-info py-2">
+                            <span className="mb-4 d-block">Total</span>
+                            <strong>
+                              {parseFloat(this.state.redeem.points).toLocaleString()}
+                            </strong>
+                          </div>
+                        </div>
+                      </Col>
 
-                                <div className="mt-5 d-none d-md-block tabs-content">
-                                    <Tabs defaultActiveKey="detail" fill id="tab-redeem">
-                                        <Tab eventKey="detail" title="Detail">
-                                            <p>{this.state.redeem.content}</p>
-                                        </Tab>
-                                        <Tab eventKey="shipping" title="Shipping">
-                                            <p>{this.state.redeem.shippingDetails}</p>
-                                        </Tab>
-                                        <Tab eventKey="payment" title="Payment">
-                                            <p>{this.state.redeem.paymentDetails}</p>
-                                        </Tab>
-                                    </Tabs>
-                                </div>
-                            </Col>
-                            <Col md={4} lg={3} className="mb-md-2">
-                                <div className="ads-portFrame p-md-5 p-4">
-                                    <img src={Ads_03} alt="ads" />
-                                </div>
+                      <Col sm={12} md={10} className="mt-3">
+                        <div className="form-bet-amount d-flex align-items-center">
+                          <span className="submitText">CONTINUE</span>
+                          <Button>
+                            <img src={SubmitArrow} alt="arrow" />
+                          </Button>
+                        </div>
+                      </Col>
+                    </Row>
 
-                                <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
-                                    <img src={Ads_02} alt="ads" />
-                                </div>
-                                <div className="ads-frame mx-auto mt-4 d-block d-md-none">
-                                    <img src={Ads} alt="Ads Poster" />
-                                </div>
-                            </Col>
-                        </Row>
-                    </Container>
+                    <div className="mt-5 d-none d-md-block tabs-content">
+                      <Tabs defaultActiveKey="detail" fill id="tab-redeem">
+                        <Tab eventKey="detail" title="Detail">
+                          <p>{this.state.redeem.content}</p>
+                        </Tab>
+                        <Tab eventKey="shipping" title="Shipping">
+                          <p>{this.state.redeem.shippingDetails}</p>
+                        </Tab>
+                        <Tab eventKey="payment" title="Payment">
+                          <p>{this.state.redeem.paymentDetails}</p>
+                        </Tab>
+                      </Tabs>
+                    </div>
+                  </Col>
+                  <Col md={4} lg={3} className="mb-md-2">
+                    <div className="ads-portFrame p-md-5 p-4">
+                      <img src={Ads_03} alt="ads" />
+                    </div>
 
-                </div>
-                
+                    <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
+                      <img src={Ads_02} alt="ads" />
+                    </div>
+                    <div className="ads-frame mx-auto mt-4 d-block d-md-none">
+                      <img src={Ads} alt="Ads Poster" />
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
             </div>
+          </div>
         );
     }
 }

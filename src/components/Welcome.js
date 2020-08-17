@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from './instance/axios';
+import {
+    Link
+  } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -33,7 +36,7 @@ function MyVerticallyCenteredModal(props) {
     return (
       <Modal
         {...props}
-        size="lg"
+        size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
         className="modal-radius"
@@ -41,20 +44,21 @@ function MyVerticallyCenteredModal(props) {
         <Modal.Body className="p-0">
             <Button type="button" variant="reset" className="modal-close" onClick={props.onHide}>
                 <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-x d-block" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
-                    <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+                    <path d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                    <path d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
                 </svg>
             </Button>
             <div className="embed-responsive embed-responsive-16by9">
-                <iframe title="Bidells Tour" className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                <iframe title="Bidells Tour" className="embed-responsive-item" src={props.video} allowFullScreen></iframe>
             </div>
         </Modal.Body>
       </Modal>
     );
   }
 
-function WelcomeVideo() {
+function WelcomeVideo(props) {
     const [modalShow, setModalShow] = React.useState(false);
+    const video = props.video;
     return (
         <div className="video-frame d-flex flex-column">
             <h5 className="video-frame-title">How Bidells works?</h5>
@@ -67,6 +71,7 @@ function WelcomeVideo() {
             </div>
 
             <MyVerticallyCenteredModal
+                video={video}
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
@@ -81,7 +86,7 @@ class Welcome extends Component {
         super(props);
         this.state = {
             data: [],
-            isFetching: false
+            isfatching: false
         };
     }
 
@@ -91,27 +96,36 @@ class Welcome extends Component {
     // }
 
     componentDidMount() {
-        this.setState({isFetching: true});
         axios.get(`/?itemType=welcome`)
             .then(res => {
             const data = res.data;
-            console.log(Object.entries(data));
+            // console.log(Object.entries(data));
 
             this.setState({
                 data: data,
-                isFetching: false
+                isfatching: true
             })
             
         }).catch((error) => {
-            this.setState({isFetching: false})
-            console.log(error)
+            console.log(error);
+            this.setState({
+                isfatching: false
+            })
         })
     }
 
-    render() {  
-        if(this.state.isFetching) return <div>Loading...</div>;     
-        const { data } = this.state;
-        console.log(data);
+    render() {     
+        // console.log(this.state.data);
+        if(!this.state.isfatching){
+            return(
+                <div className="preloader">
+                    <div className="lds-ripple"><div></div><div></div></div>
+                </div>
+            )
+        }
+
+        let Auth = localStorage.getItem('auth_bdGroup');
+
         return (
             <div className="outer-view">
                 <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" alt="ovel shape" />
@@ -123,14 +137,14 @@ class Welcome extends Component {
                             <Row className="space-bottom justify-content-between">
                                 <Col md={6} lg={5}>
                                     <div className="mb-4">
-                                        <h1 className="display-1">Welcome <br/>to Bidells</h1>
-                                        <p className="lead">We Are An Online Betting Site For A Wide Selection Of Events. Bidells Is Here To Make Your Betting Experience Better and Personalized. Bet On Sports Or Politics Or Create Your Own Customized Bet. Betting Has Never Been More Fun.</p>
+                                        <h1 className="display-1">{this.state.data.welcome_section ? this.state.data.welcome_section.title : ''}</h1>
+                                        <p className="lead">{this.state.data.welcome_section ? this.state.data.welcome_section.desciption : ''}</p>
 
-                                        <Button variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+                                        {Auth ? null :  <Link to='/sign-up' variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
                                     </div>
                                 </Col>
                                 <Col md={6} lg={6}>
-                                    <WelcomeVideo video="dsfds" />
+                                    <WelcomeVideo video={this.state.data.welcome_section ? this.state.data.welcome_section.video_link : ''} />
                                 </Col>
                             </Row>
                         </Container>
@@ -140,10 +154,11 @@ class Welcome extends Component {
                             <Row>
                                 <Col md={7} lg={5} className="ml-auto">
                                     <div className="mb-4">
-                                        <h2 className="display-3">Open Account</h2>
-                                        <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est justo, ullamcorper et ipsum fringilla, convallis faucibus ex.</p>
+                                        <h2 className="display-3">{this.state.data.open_account_section ? this.state.data.open_account_section.title : ''}</h2>
+                                        <p className="lead">{this.state.data.open_account_section ? this.state.data.open_account_section.description : ''}</p>
 
-                                        <Button variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+                                        {/* <Button variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button> */}
+                                        {Auth ? null :  <Link to='/sign-up' variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
                                     </div>
                                 </Col>
                             </Row>
@@ -156,10 +171,11 @@ class Welcome extends Component {
                             <Row className="space-bottom align-items-center">
                                 <Col md={6} lg={5}>
                                     <div className="mb-4">
-                                        <h2 className="display-3">Place Bet</h2>
-                                        <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est justo, ullamcorper et ipsum fringilla, convallis faucibus ex.</p>
+                                        <h2 className="display-3">{this.state.data.place_bet_section ? this.state.data.place_bet_section.title : ''}</h2>
+                                        <p className="lead">{this.state.data.place_bet_section ? this.state.data.place_bet_section.description : ''}</p>
 
-                                        <Button variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+                                        {/* <Button variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button> */}
+                                        {Auth ? null :  <Link to='/sign-up' variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
                                     </div>
                                 </Col>
                             </Row>
@@ -172,8 +188,8 @@ class Welcome extends Component {
                             <Row className="space-bottom align-items-center">
                                 <Col md={8} lg={5} className="ml-auto">
                                     <div className="mb-4">
-                                        <h2 className="display-3">Redeem</h2>
-                                        <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est justo, ullamcorper et ipsum fringilla, convallis faucibus ex.</p>
+                                        <h2 className="display-3">{this.state.data.reedem_section ? this.state.data.reedem_section.title : ''}</h2>
+                                        <p className="lead">{this.state.data.reedem_section ? this.state.data.reedem_section.description : ''}</p>
 
                                         <ul className="grid_box mt-md-5 mt-4 list-unstyled grid_box_3 d-flex flex-wrap">
                                             <li>
@@ -206,7 +222,8 @@ class Welcome extends Component {
                         <Container fluid="md">
                             <PostGrids />
                             
-                            <Button variant="light" type="submit" block className="form-btn mt-md-5 mb-md-0 mb-5 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+                            {/* <Button variant="light" type="submit" block className="form-btn mt-md-5 mb-md-0 mb-5 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button> */}
+                            {Auth ? null :  <Link to='/sign-up' variant="light" type="submit" block className="form-btn mt-md-5 mb-md-0 mb-5 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
                         </Container>
                     </section>
 
@@ -217,10 +234,10 @@ class Welcome extends Component {
                             <Row className="space-bottom align-items-center">
                                 <Col md={8} lg={5} className="ml-auto">
                                     <div className="mb-4">
-                                        <h2 className="display-3">These ads help us!</h2>
-                                        <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est justo, ullamcorper et ipsum fringilla, convallis faucibus ex.</p>
+                                        <h2 className="display-3">{this.state.data.these_ads_helps_section ? this.state.data.these_ads_helps_section.title : ''}</h2>
+                                        <p className="lead">{this.state.data.these_ads_helps_section ? this.state.data.these_ads_helps_section.description : ''}</p>
 
-                                        <div className="ads-portFrame mt-md-5 mt-4">
+                                        <div className="ads-portFrame mt-md-5 mt-4 ml-sm-0">
                                             <img src={Ads_02} alt="ads" />
                                         </div>
                                     </div>
@@ -235,8 +252,8 @@ class Welcome extends Component {
                             <Row className="space-bottom align-items-center">
                                 <Col md={8} lg={5}>
                                     <div className="mb-4">
-                                        <h2 className="display-3">Don’t Like ads</h2>
-                                        <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est justo, ullamcorper et ipsum fringilla, convallis faucibus ex.</p>
+                                        <h2 className="display-3">{this.state.data.do_not_like_ads_section ? this.state.data.do_not_like_ads_section.title : ''}</h2>
+                                        <p className="lead">{this.state.data.do_not_like_ads_section ? this.state.data.do_not_like_ads_section.description : ''}</p>
 
                                         <div className="price pt-3">
                                             <div className="display-1">$0.99</div>

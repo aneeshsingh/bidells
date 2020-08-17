@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from './instance/axios';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -22,6 +23,9 @@ class PointSummary extends Component {
 
         this.state = {
             height: '300', 
+            description: '',
+            totalPoints: '',
+            getUserActivity: [],
           series: [{
               name: "Leads",
               data: [100, 70, 85, 95, 65, 70, 65, 40, 30, 65, 45, 95, 95, 45, 50, 40, 20, 75, 25, 75]
@@ -95,7 +99,44 @@ class PointSummary extends Component {
         };
     }
 
+
+    getLeadData(){
+        let Auth = localStorage.getItem('auth_bdGroup');
+        
+        axios.get(`/?itemType=pointsummary&userID=${Auth}`)
+            .then(res => {
+            const data = res.data;
+            
+            const description = res.data.post_content;
+            const totalPoints = res.data.total_points;
+
+            const getUserActivity = Object.entries(data.get_user_activity).map(([key, activity], index) => 
+                <div className="activites-strip align-items-center d-flex mb-4" key={key}>
+                    <div>
+                        <span className="type text-uppercase">{activity.userActivityType}</span>
+                        <div className="date pt-0 pb-2 d-block d-lg-none">{activity.userActivityDate}</div>
+                        <p>{activity.userActivityName}</p>
+                    </div>
+                    <div className="date ml-auto d-none d-lg-block">
+                        {activity.userActivityDate}
+                    </div>
+                </div>
+            )
+
+            this.setState({
+                getUserActivity,
+                description,
+                totalPoints
+            })
+            
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
     componentWillMount(){
+        this.getLeadData();
+
         if(window.innerWidth < 991){
             this.setState({height: '160'});
         }
@@ -117,7 +158,7 @@ class PointSummary extends Component {
                                 <div className="heading-area">
                                     <div className="post_type">REFERRAL</div>
                                     <h1>Points Summary</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed magna eros. Quisque eget lorem nec urna convallis posuere.</p>
+                                    <p>{this.state.description}</p>
                                 </div>
                             </Col>
                         </Row>
@@ -126,7 +167,7 @@ class PointSummary extends Component {
                             <Col>
                                 <div className="graph position-relative my-3 li-grad pt-md-5 px-md-5 px-4 pt-4 pb-0">
                                     <div className="graph-info text-uppercase mb-3">
-                                        <strong>3,000</strong>
+                                        <strong>{this.state.totalPoints}</strong>
                                         Total Points
                                     </div>
                                     <Chart options={this.state.options} series={this.state.series} height={this.state.height} />
@@ -137,76 +178,9 @@ class PointSummary extends Component {
                         <div className="pt-4 pb-md-5">
                         <Row className="justify-content-between">
                                 <Col md={8} lg={9} className="mb-2 pr-md-5">
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type text-uppercase">POINTS REDEEMED</span>
-                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
-                                            <p>You purchased Restaurant Choice Fine Dining Gift Card $50 for B50000</p>
-                                        </div>
-                                        <div className="date ml-auto d-none d-lg-block">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
-                                            <p>You finished 10 and won B0 for the Week 4 competition</p>
-                                        </div>
-                                        <div className="date ml-auto d-none d-lg-block">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
-                                            <p>You placed a bet on Adam Scott for with the odds of .4</p>
-                                        </div>
-                                        <div className="date ml-auto d-none d-lg-block">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
-                                            <p>Sorry you bid was not successful with 3. All Cylinders (9)</p>
-                                        </div>
-                                        <div className="date ml-auto d-none d-lg-block">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
-                                            <p>You placed a bet on Sydney Roosters for 2123 with the odds of .25</p>
-                                        </div>
-                                        <div className="date ml-auto d-none d-lg-block">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
-                                            <p>You placed a bet on St George for with the odds of .75</p>
-                                        </div>
-                                        <div className="date ml-auto d-none d-lg-block">
-                                            02-15-2020
-                                        </div>
-                                    </div>
-                                    <div className="activites-strip align-items-center d-flex mb-4">
-                                        <div>
-                                            <span className="type">POINTS REDEEMED</span>
-                                            <div className="date pt-0 pb-2 d-block d-lg-none">02-15-2020</div>
-                                            <p>You placed a bet on 3. All Cylinders (9) for 200 with the odds of .7</p>
-                                        </div>
-                                        <div className="date ml-auto d-none d-lg-block">
-                                            02-15-2020
-                                        </div>
-                                    </div>
+
+                                    {this.state.getUserActivity}
+                                    
                                 </Col>
                                 <Col md={4} lg={3} className="mb-md-2">
                                         <div className="ads-portFrame d-none d-md-block">

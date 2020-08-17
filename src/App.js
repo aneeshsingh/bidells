@@ -66,24 +66,22 @@ class App extends Component {
           <Route path="/get-all-bets">
             <GetAllBets />
           </Route>
-          <Route path="/get-bet-details">
-            <GetBetDetails />
-          </Route>
+          <Route exact path="/get-bet-details/:betId" component={GetBetDetails} />
+
           <Route path="/leaderboard">
             <Leaderboard />
           </Route>
-          <Route path="/leaderboard-view">
-            <LeaderboardView />
-          </Route>
+          <Route exact path="/leaderboard-view/:Id" component={LeaderboardView} />
+          
           <Route path="/get-results">
             <GetResults />
           </Route>
           <Route path="/redeem-points">
             <RedeemPoints />
           </Route>
-          <Route path="/redeem-single">
-            <RedeemSingle />
-          </Route>
+          <Route exact path="/redeem-single/:Id" component={RedeemSingle} />
+            {/* <RedeemSingle />
+          </Route> */}
           <Route path="/redeem-congrats">
             <RedeemCongrats />
           </Route>

@@ -5,7 +5,7 @@ import {
   } from "react-router-dom";
 
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 
  // assets
 import UserPic from '../../assets/user_pic.png';
@@ -36,12 +36,12 @@ class HeaderPost extends Component {
     return (
       <header className="header position-absolute">
         <Navbar expand="md">
-            <Button href="/" className="border-0 navbar-back"><img src={ArrowLeft} alt="arrow"/></Button>
+            <Link to="/redeem-points" className="border-0 navbar-back"><img src={ArrowLeft} alt="arrow"/></Link>
             <div className="ads-frame ml-auto mt-auto d-none d-md-block">
                 <img src={Ads} alt="Ads Poster" />
             </div>
             <div className="ml-auto d-flex align-items-center order-md-2">
-                <div className="header-points">{this.state.points}</div>
+                <Link to="/point-summary" className="header-points">{this.state.points}</Link>
                 <Link to="/user-settings" className="header-user ml-4"><img src={UserPic} alt="User"/></Link>
             </div>
         </Navbar>

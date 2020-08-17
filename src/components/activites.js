@@ -26,7 +26,8 @@ class activites extends Component {
     }
 
     getActivites(){
-        axios.get(`/?itemType=getAllUserActivity&userID=6`)
+        let Auth = localStorage.getItem('auth_bdGroup');
+        axios.get(`/?itemType=getAllUserActivity&userID=${Auth}`)
             .then(res => {
             const data = res.data;
             console.log(Object.entries(data));

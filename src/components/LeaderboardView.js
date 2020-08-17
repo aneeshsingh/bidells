@@ -30,7 +30,9 @@ class LeaderboardView extends Component {
     }
 
     getLeadData(){
-        axios.get(`/?itemType=getLeaderboardDetails&leaderboardID=768`)
+        let Id = this.props.match.params.Id;
+        
+        axios.get(`/?itemType=getLeaderboardDetails&leaderboardID=${Id}`)
             .then(res => {
             const data = res.data;
             console.log(Object.entries(data));

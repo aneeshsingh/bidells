@@ -26,18 +26,20 @@ class singlePost extends Component {
         
         this.state = {
             betDetails: [],
-            playerDetails: []
+            playerDetails: [],
+            isfatching: false
         }
     }
     
     getProductDate(){
         // const { match: { params } } = this.props;
         let Auth = localStorage.getItem('auth_bdGroup');
+        let Id = this.props.match.params.betId;
 
-        axios.get(`/?itemType=betDetails&betID=688&userID=${Auth}`)
+        axios.get(`/?itemType=betDetails&betID=${Id}&userID=${Auth}`)
             .then(res => {
                 const data = res.data;
-                console.log(data);
+                // console.log(data);
                 // const betDetails = Object.entries(res.data);
                 const betDetails = data.bid_detail;
                 
@@ -66,11 +68,15 @@ class singlePost extends Component {
 
             this.setState({ 
                 betDetails,
-                playerDetails
+                playerDetails,
+                isfatching: true
             });
             
         }).catch((error) => {
-            console.log(error)
+            console.log(error);
+            this.setState({
+                isfatching: false
+            })
         })
 
     }
@@ -80,7 +86,15 @@ class singlePost extends Component {
     }
     
     render() {
-        console.log(this.state)
+        // console.log(this.state)
+        if(!this.state.isfatching){
+            return(
+                <div className="preloader">
+                    <div className="lds-ripple"><div></div><div></div></div>
+                </div>
+            )
+        }
+        
         return (
             <div className="outer-view">
                 <Header />

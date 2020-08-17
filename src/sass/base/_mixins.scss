@@ -94,16 +94,32 @@
   background: -o-radial-gradient($properies);
   background: radial-gradient($properies);
 }
-  
-  // media query
-  @mixin maxDevice($device){
-      @media screen and (max-width: $device){
-          @content;
-      }
+
+// keyframe
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+      @content;
   }
-  
-  @mixin minDevice($device){
-      @media screen and (min-width: $device){
-          @content;
-      }
+  @-moz-keyframes #{$name} {
+      @content;
   }
+  @-ms-keyframes #{$name} {
+      @content;
+  }
+  @keyframes #{$name} {
+      @content;
+  }
+}
+  
+// media query
+@mixin maxDevice($device){
+    @media screen and (max-width: $device){
+        @content;
+    }
+}
+
+@mixin minDevice($device){
+    @media screen and (min-width: $device){
+        @content;
+    }
+}

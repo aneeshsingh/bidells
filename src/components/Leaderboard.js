@@ -124,16 +124,16 @@ class Leaderboard extends Component {
             const data = res.data;
             // console.log(data);
             if(!data.error){
-                const getLeads = Object.entries(data).map(([key, bets], index) => 
-                    <Link to="/leaderboard-view" className="lead-strip li-grad d-flex flex-wrap align-items-center mb-4" key={key}>
+                const getLeads = Object.entries(data).map(([key, lead], index) => 
+                    <Link to={'/leaderboard-view/'+lead.leaderboard_id} className="lead-strip li-grad d-flex flex-wrap align-items-center mb-4" key={key}>
                     <div className="lead-date flex-grow-1">
-                        {bets.week_name}
+                        {lead.week_name}
                     </div>
                     <div className="lead-data text-sm-right">
-                        <span className="d-block">Position</span> {bets.position}
+                        <span className="d-block">Position</span> {lead.position}
                     </div>
                     <div className="lead-data text-sm-right ml-md-5 ml-4 pl-md-4">
-                        <span className="d-block">Points</span> {bets.points}
+                        <span className="d-block">Points</span> {lead.points}
                     </div>
                 </Link>
                 )
