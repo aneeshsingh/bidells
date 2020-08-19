@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
+import axios from './instance/axios';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -17,17 +18,56 @@ import arrowRightWhite from '../assets/arrow-white.svg';
 import Ads_02 from '../assets/ads_03.png';
 import Ads_03 from '../assets/ads_04.png';
 import Ads from '../assets/ads.png';
-import User from '../assets/post_user.png';
 import Oval from '../assets/Ovalpmob-left.svg';
 import OvalRight from '../assets/Oval_dashboard_02.svg';
+import UserPic from '../assets/user_pic.png';
 
 class referSettings extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            name: '',
+            email: '',
+            phone: '',
+            address: '',
+            profilepic: '',
+            file: null,
             redirect: false
         };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    getLeadData(){
+        let Auth = localStorage.getItem('auth_bdGroup');
+        
+        axios.get(`/?itemType=getUserDetails&userID=${Auth}`)
+            .then(res => {
+            const data = res.data;
+            console.log(data);
+
+            const profilepic = data.profilePicUrl || UserPic;
+            const name = data.userFullName;
+            const email = data.emailAddress;
+            const phone = data.phoneNumber;
+            const address = data.address;
+            
+            this.setState({
+              profilepic,
+              name,
+              email,
+              phone,
+              address,
+            });
+            
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    componentWillMount(){
+        this.getLeadData();
     }
 
     logout = () => {
@@ -36,6 +76,51 @@ class referSettings extends Component {
         this.setState({
             redirect: true
         })
+    }
+
+
+    handleSubmit(e) {
+        e.preventDefault();
+        let Auth = localStorage.getItem('auth_bdGroup');
+        
+        const fd = new FormData();
+        fd.append('name', this.state.name);
+        fd.append('email', this.state.email);
+        fd.append('phone', this.state.phone);
+        fd.append('address', this.state.address);
+        fd.append('file', this.state.file, this.state.file.name);
+        
+        console.log(this.state.file);
+
+        // const data = {
+        //     userFullName: this.state.name,
+        //     emailAddress: this.state.email,
+        //     phoneNumber: this.state.phone,
+        //     address: this.state.address
+        // }; 
+        
+        // &userfullname=${this.state.name}&useremailaddress=${this.state.email}&profilepic=${this.state.image.name}&phone=${this.state.phone}&address=${this.state.address}
+        axios.post(`/?itemType=updateUserDetails&userID=${Auth}&userfullname=${this.state.name}&useremailaddress=${this.state.email}&phone=${this.state.phone}&address=${this.state.address}&profilepic=${this.state.file.name}`, {fd})
+          .then((res) => {
+            const data = res;
+            console.log(data.data);
+
+            // this.getLeadData();
+            // if(data.userID){
+            //     this.setState({
+            //         redirect: true
+            //     })
+            // }else{
+              
+            //   this.setState({
+            //     alreadyHas: data.error
+            //   })
+            // }
+          })
+          .catch((error) => {
+            console.log(error);
+          });    
+    
     }
 
     render() {
@@ -67,24 +152,68 @@ class referSettings extends Component {
                         <div className="pt-4">                            
                             <Row className="justify-content-between">
                                 <Col md={7} lg={6} className="mb-4 pr-md-5">
-                                    <Form>
+                                    <Form onSubmit={this.handleSubmit}>
                                         <Form.Group>
-                                            <input type="file" id="profilePic" className="d-none" />
-                                            <Form.Label htmlFor="profilePic" className="form-shadow form-control form-control-label form-radius pt-sm-2 pb-0 border-0">
-                                                <img src={User} alt="user" className="profile-image mr-sm-3 mr-2"/> Change Profile Picture
+                                            <input 
+                                                type="file" 
+                                                id="profilePic" 
+                                                className="d-none" 
+                                                accept="image/png, image/jpeg"
+                                                onChange={(e) =>
+                                                    this.setState({ file: e.target.files[0] })
+                                                }
+                                            />
+                                            <Form.Label htmlFor="profilePic" className="form-shadow text-truncate form-control form-control-label form-radius pt-sm-2 pb-0 border-0">
+                                                <img src={this.state.profilepic} alt="user" className="profile-image mr-sm-3 mr-2"/> Change Profile Picture
                                             </Form.Label>
                                         </Form.Group>
                                         <Form.Group>
-                                            <Form.Control type="text" className="form-shadow form-radius border-0" placeholder="Name" />
+                                            <Form.Control 
+                                                type="text" 
+                                                name="name"
+                                                className="form-shadow form-radius border-0" 
+                                                placeholder="Name" 
+                                                value={this.state.name}
+                                                onChange={(e) =>
+                                                    this.setState({ name: e.target.value })
+                                                }
+                                            />
                                         </Form.Group>
                                         <Form.Group>
-                                            <Form.Control type="email" className="form-shadow form-radius border-0" placeholder="Email" />
+                                            <Form.Control 
+                                                type="email" 
+                                                name="email"
+                                                className="form-shadow form-radius border-0" 
+                                                placeholder="Email" 
+                                                value={this.state.email}
+                                                onChange={(e) =>
+                                                    this.setState({ email: e.target.value })
+                                                }
+                                            />
                                         </Form.Group>
                                         <Form.Group>
-                                            <Form.Control type="text" className="form-shadow form-radius border-0" placeholder="Phone Number" />
+                                            <Form.Control 
+                                                type="text" 
+                                                name="phone"
+                                                className="form-shadow form-radius border-0" 
+                                                placeholder="Phone Number"  
+                                                value={this.state.phone}
+                                                onChange={(e) =>
+                                                    this.setState({ phone: e.target.value })
+                                                }
+                                            />
                                         </Form.Group>
                                         <Form.Group>
-                                            <Form.Control type="text" className="form-shadow form-radius border-0" placeholder="Address" />
+                                            <Form.Control 
+                                                type="text" 
+                                                name="address"
+                                                className="form-shadow form-radius border-0" 
+                                                placeholder="Address" 
+                                                value={this.state.address}
+                                                onChange={(e) =>
+                                                    this.setState({ address: e.target.value })
+                                                }
+                                            />
                                         </Form.Group>
                                         <Button variant="light" type="submit" block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">SUBMIT <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
                                     </Form>

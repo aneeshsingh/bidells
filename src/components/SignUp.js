@@ -46,7 +46,6 @@ class SignUp extends Component {
     this.setState({
       fields
     });
-
   }
 
   handleSubmit(e) {

@@ -967,12 +967,16 @@ input:checked{
 }
 
 .profile-image{
+    object-position: center;
     border-radius: 49px;
+    object-fit: cover;
     max-width: 49px;
+    height: 49px;
     width: 100%;
 
     @include maxDevice(575px){
         max-width: 38px;
+        height: 38px;
     }
 }
 
