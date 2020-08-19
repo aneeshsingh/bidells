@@ -221,6 +221,10 @@
     }
 
     &-bet-amount{
+        width: 100%;
+        height: auto;
+        text-align: left;
+        line-height: normal;
         border-radius: 16px;        
         padding: 8px 8px 8px 25px;
         @include linear-gradient(136deg, #3C3C3C, #010101);
@@ -253,12 +257,18 @@
             }
         }
 
-        .btn{
+        .btn-arrow{
             width: 115px;
             height: 70px;
+            text-align: center;
             border-radius: 16px;
+            @include flexbox();
             @include linear-gradient(136deg, #FFFFFF, #A0A0A0);
             @include box-shadow(2px 2px 8px rgba(198,198,198,0.5), -2px -2px 8px rgba(255,255,255,0.5));
+
+            img{
+                margin: auto;
+            }
 
             @include maxDevice(575px){
                 width: 70px;

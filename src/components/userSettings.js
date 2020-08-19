@@ -79,32 +79,45 @@ class referSettings extends Component {
     }
 
 
-    handleSubmit(e) {
+    async  handleSubmit(e) {
         e.preventDefault();
         let Auth = localStorage.getItem('auth_bdGroup');
+
+        // const toBase64 = file => new Promise((resolve, reject) => {
+        // const reader = new FileReader();
+        // reader.readAsDataURL(file);
+        // reader.onload = () => resolve(reader.result);
+        // reader.onerror = error => reject(error);
+        // });
         
         const fd = new FormData();
+        fd.append('image', this.state.file);
         fd.append('name', this.state.name);
         fd.append('email', this.state.email);
         fd.append('phone', this.state.phone);
         fd.append('address', this.state.address);
-        fd.append('file', this.state.file, this.state.file.name);
+
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
         
-        console.log(this.state.file);
+        console.log(this.state.file, this.state.file.name);
 
         // const data = {
         //     userFullName: this.state.name,
         //     emailAddress: this.state.email,
         //     phoneNumber: this.state.phone,
-        //     address: this.state.address
+        //     address: this.state.address,
+        //     profilePicUrl: await toBase64(this.state.file.name)
         // }; 
-        
-        // &userfullname=${this.state.name}&useremailaddress=${this.state.email}&profilepic=${this.state.image.name}&phone=${this.state.phone}&address=${this.state.address}
-        axios.post(`/?itemType=updateUserDetails&userID=${Auth}&userfullname=${this.state.name}&useremailaddress=${this.state.email}&phone=${this.state.phone}&address=${this.state.address}&profilepic=${this.state.file.name}`, {fd})
+
+        // 
+        axios.post(`/?itemType=updateUserDetails&userID=${Auth}&userfullname=${this.state.name}&useremailaddress=${this.state.email}&phone=${this.state.phone}&address=${this.state.address}&profilepic=${this.state.file.name}`, {fd}, config)
           .then((res) => {
             const data = res;
             console.log(data.data);
-
             // this.getLeadData();
             // if(data.userID){
             //     this.setState({
@@ -163,7 +176,7 @@ class referSettings extends Component {
                                                     this.setState({ file: e.target.files[0] })
                                                 }
                                             />
-                                            <Form.Label htmlFor="profilePic" className="form-shadow text-truncate form-control form-control-label form-radius pt-sm-2 pb-0 border-0">
+                                            <Form.Label htmlFor="profilePic" className="form-shadow text-truncate form-control form-control-label form-radius py-0 d-flex align-items-center border-0">
                                                 <img src={this.state.profilepic} alt="user" className="profile-image mr-sm-3 mr-2"/> Change Profile Picture
                                             </Form.Label>
                                         </Form.Group>

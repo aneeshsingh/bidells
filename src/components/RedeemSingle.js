@@ -29,21 +29,29 @@ class RedeemSingle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            quality: 2,
-            redeem: []
+            quantity: 2,
+            redeem: [],
+            ID: null 
         };
+
+        
+        this.buyProduct = this.buyProduct.bind(this);
     }
 
     handleChange = (e) => {
         this.setState({
-            [e.target.quality]: e.target.value
+            [e.target.quantity]: e.target.value
         })
     }
 
     getLeadData(){
         let Auth = localStorage.getItem('auth_bdGroup');
         let Id = this.props.match.params.Id;
-        
+
+        this.setState({
+          ID : Id
+        })
+
         axios.get(`/?itemType=getProductInformation&productID=${Id}&userID=${Auth}`)
             .then(res => {
             const redeem = res.data;
@@ -51,7 +59,7 @@ class RedeemSingle extends Component {
 
             this.setState({
                 redeem : redeem,
-                quality : redeem.quantityAvailable
+                quantity : redeem.quantityAvailable
             })
             
         }).catch((error) => {
@@ -60,11 +68,39 @@ class RedeemSingle extends Component {
     }
 
     componentDidMount() {
-        this.getLeadData();
+        this.getLeadData();        
+    }
+
+    increment = (e) =>{
+      this.setState({ quantity: parseInt(this.state.quantity) + 1 })
+    }
+  
+    decrement = (e) =>{
+      this.setState({ quantity: parseInt(this.state.quantity) - 1 })
+    }
+
+    buyProduct(e){
+      e.preventDefault();
+
+      let Auth = localStorage.getItem('auth_bdGroup');
+
+      const data = {
+        quantity: this.state.quantity
+      }
+
+
+      axios.get(`/?itemType=productPurchased&userID=${Auth}&quantity=${this.state.quantity}&productID=${this.state.ID}`, data)
+        .then((res) => {
+          const data = res;
+          console.log(data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });    
     }
 
     render() {
-        console.log(this.state.redeem);
+        // console.log(this.state.redeem);
         return (
           <div className="outer-view">
             <Header />
@@ -109,51 +145,53 @@ class RedeemSingle extends Component {
 
                 <Row className="justify-content-between">
                   <Col md={8} lg={8} className="mb-2 pr-md-5">
-                    <Row className="mb-md-4 mb-5">
-                      <Col sm={6} md={5} className="mb-md-4">
-                        <div className="box-grid my-3 li-grad p-md-5 p-4">
-                          <div className="box-grid-info py-2">
-                            <span className="mb-4 d-block">Quantity</span>
+                    <Form onSubmit={this.buyProduct}>
+                      <Row className="mb-md-4 mb-5">
+                        <Col sm={6} md={5} className="mb-md-4">
+                          <div className="box-grid my-3 li-grad p-md-5 p-4">
+                            <div className="box-grid-info py-2">
+                              <span className="mb-4 d-block">Quantity</span>
 
-                            <InputGroup className="form-quality">
-                              <InputGroup.Prepend>
-                                <Button variant="minus">
-                                  <img src={Minus} alt="minus" />
-                                </Button>
-                              </InputGroup.Prepend>
-                              <Form.Control
-                                value={this.state.quality}
-                                onChange={(e) => this.handleChange(e)}
-                              />
-                              <InputGroup.Append>
-                                <Button variant="plus">
-                                  <img src={Plus} alt="plus" />
-                                </Button>
-                              </InputGroup.Append>
-                            </InputGroup>
+                              <InputGroup className="form-quality">
+                                <InputGroup.Prepend>
+                                  <Button variant="minus" onClick={this.decrement}>
+                                    <img src={Minus} alt="minus" />
+                                  </Button>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                  value={this.state.quantity}
+                                  onChange={(e) => this.handleChange(e)}
+                                />
+                                <InputGroup.Append>
+                                  <Button variant="plus" onClick={this.increment}>
+                                    <img src={Plus} alt="plus" />
+                                  </Button>
+                                </InputGroup.Append>
+                              </InputGroup>
+                            </div>
                           </div>
-                        </div>
-                      </Col>
-                      <Col sm={6} md={5} className="mb-md-4">
-                        <div className="box-grid my-3 li-grad p-md-5 p-4">
-                          <div className="box-grid-info py-2">
-                            <span className="mb-4 d-block">Total</span>
-                            <strong>
-                              {parseFloat(this.state.redeem.points).toLocaleString()}
-                            </strong>
+                        </Col>
+                        <Col sm={6} md={5} className="mb-md-4">
+                          <div className="box-grid my-3 li-grad p-md-5 p-4">
+                            <div className="box-grid-info py-2">
+                              <span className="mb-4 d-block">Total</span>
+                              <strong>
+                                {parseFloat(this.state.redeem.points).toLocaleString()}
+                              </strong>
+                            </div>
                           </div>
-                        </div>
-                      </Col>
+                        </Col>
 
-                      <Col sm={12} md={10} className="mt-3">
-                        <div className="form-bet-amount d-flex align-items-center">
-                          <span className="submitText">CONTINUE</span>
-                          <Button>
-                            <img src={SubmitArrow} alt="arrow" />
+                        <Col sm={12} md={10} className="mt-3">
+                          <Button type="submit" variant="" className="form-bet-amount d-flex align-items-center">
+                            <span className="submitText">CONTINUE</span>
+                            <span className="btn-arrow">
+                              <img src={SubmitArrow} alt="arrow" />
+                            </span>
                           </Button>
-                        </div>
-                      </Col>
-                    </Row>
+                        </Col>
+                      </Row>
+                    </Form>
 
                     <div className="mt-5 d-none d-md-block tabs-content">
                       <Tabs defaultActiveKey="detail" fill id="tab-redeem">
