@@ -29,9 +29,11 @@ class RedeemSingle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            quantity: 2,
+            ID: null,
+            quantity: 1,
             redeem: [],
-            ID: null 
+            availQuantity: null,
+            total: null
         };
 
         
@@ -55,11 +57,12 @@ class RedeemSingle extends Component {
         axios.get(`/?itemType=getProductInformation&productID=${Id}&userID=${Auth}`)
             .then(res => {
             const redeem = res.data;
-            // console.log(Object.entries(redeem));
+            console.log(redeem);
 
             this.setState({
                 redeem : redeem,
-                quantity : redeem.quantityAvailable
+                availQuantity : redeem.quantityAvailable,
+                total : redeem.points
             })
             
         }).catch((error) => {
@@ -72,12 +75,28 @@ class RedeemSingle extends Component {
     }
 
     increment = (e) =>{
-      this.setState({ quantity: parseInt(this.state.quantity) + 1 })
+      if(this.state.quantity < this.state.availQuantity){
+        this.setState({ 
+          quantity: parseInt(this.state.quantity) + 1,
+          total : this.state.total * (parseInt(this.state.quantity) + 1)
+        })
+      }
     }
   
     decrement = (e) =>{
-      this.setState({ quantity: parseInt(this.state.quantity) - 1 })
+      if(this.state.quantity < 2){
+        this.setState({ 
+          quantity: 1
+        })
+      }else {
+        this.setState({ 
+          quantity: parseInt(this.state.quantity) - 1,
+          total : this.state.total / (parseInt(this.state.quantity) - 1)
+        })
+      }
     }
+
+    
 
     buyProduct(e){
       e.preventDefault();
@@ -100,7 +119,7 @@ class RedeemSingle extends Component {
     }
 
     render() {
-        // console.log(this.state.redeem);
+        console.log(this.state.quantity);
         return (
           <div className="outer-view">
             <Header />
@@ -136,7 +155,7 @@ class RedeemSingle extends Component {
                     {this.state.redeem.get_first_image_url ? (
                       <img
                         src={this.state.redeem.get_first_image_url}
-                        className="img-fluid d-block m-auto mr-md-0"
+                        className="img-fluid redeem-product-image d-block m-auto mr-md-0"
                         alt="logo"
                       />
                     ) : null}
@@ -154,7 +173,10 @@ class RedeemSingle extends Component {
 
                               <InputGroup className="form-quality">
                                 <InputGroup.Prepend>
-                                  <Button variant="minus" onClick={this.decrement}>
+                                  <Button
+                                    variant="minus"
+                                    onClick={this.decrement}
+                                  >
                                     <img src={Minus} alt="minus" />
                                   </Button>
                                 </InputGroup.Prepend>
@@ -163,7 +185,10 @@ class RedeemSingle extends Component {
                                   onChange={(e) => this.handleChange(e)}
                                 />
                                 <InputGroup.Append>
-                                  <Button variant="plus" onClick={this.increment}>
+                                  <Button
+                                    variant="plus"
+                                    onClick={this.increment}
+                                  >
                                     <img src={Plus} alt="plus" />
                                   </Button>
                                 </InputGroup.Append>
@@ -176,19 +201,47 @@ class RedeemSingle extends Component {
                             <div className="box-grid-info py-2">
                               <span className="mb-4 d-block">Total</span>
                               <strong>
-                                {parseFloat(this.state.redeem.points).toLocaleString()}
+                                {parseFloat(this.state.total).toLocaleString()}
                               </strong>
                             </div>
                           </div>
                         </Col>
 
                         <Col sm={12} md={10} className="mt-3">
-                          <Button type="submit" variant="" className="form-bet-amount d-flex align-items-center">
-                            <span className="submitText">CONTINUE</span>
-                            <span className="btn-arrow">
-                              <img src={SubmitArrow} alt="arrow" />
-                            </span>
-                          </Button>
+                          {
+                              parseFloat(this.state.total).toLocaleString() <= this.state.redeem.userCurrentPoints 
+                              ?                            
+                              <Button
+                                type="submit"
+                                variant=""
+                                className="form-bet-amount d-flex align-items-center"
+                              >
+                                <span className="submitText">CONTINUE</span>
+                                <span className="btn-arrow">
+                                  <img src={SubmitArrow} alt="arrow" />
+                                </span>
+                              </Button>
+                             :
+                                <Button
+                                type="button"
+                                disabled
+                                variant=""
+                                className="form-bet-amount d-flex align-items-center"
+                              >
+                                <span className="submitText">CONTINUE</span>
+                                <span className="btn-arrow">
+                                  <img src={SubmitArrow} alt="arrow" />
+                                </span>
+                              </Button>
+                            }
+
+                            {
+                              parseFloat(this.state.total).toLocaleString() >= this.state.redeem.userCurrentPoints 
+                              ?   
+                              <p className="lead mt-4 text-danger "><strong>You have Less Points is you balance!</strong></p>
+                             :
+                              null
+                            }                            
                         </Col>
                       </Row>
                     </Form>

@@ -4,11 +4,12 @@ import React from 'react';
 import HeaderLanding from './HeaderLanding';
 import HeaderDashboard from './HeaderDashboard';
 
-function Header() {
+function Header(props) {
     let Auth = localStorage.getItem('auth_bdGroup');
+    
     if(Auth){
         return(
-            <HeaderDashboard />
+            <HeaderDashboard userPic={props.userPic} />
         )
     }else{
         return(

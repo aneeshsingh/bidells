@@ -85,7 +85,11 @@ strong{
 		font-size: 1.05em;
 		padding-left: 12px;
 		padding-right: 12px;
-    }
+	}
+	
+	&[disabled]{
+		cursor: auto;
+	}
 
     svg{
 		@include transition(0.25s all linear);

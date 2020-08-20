@@ -16,7 +16,6 @@ class HeaderDashboard extends Component {
     
     constructor(props) {
         super(props);
-        
         this.state = {
             points: ''
         }
@@ -30,8 +29,7 @@ class HeaderDashboard extends Component {
             const points = res.data;
             this.setState({ points : points.points });
         });
-
-
+        
     }
     
     render() {
@@ -41,7 +39,7 @@ class HeaderDashboard extends Component {
                     <Navbar.Brand href="./"><img src={Logo} alt="logo" /></Navbar.Brand>
                     <div className="ml-auto d-flex align-items-center order-lg-2">
                         <Link to="/point-summary" className="header-points">{this.state.points}</Link>
-                        <Link to="/user-settings" className="header-user ml-md-4 ml-3"><img src={UserPic} alt="user"/></Link>
+                        <Link to="/user-settings" className="header-user ml-md-4 ml-3"><img src={this.props.userPic || UserPic} alt="user"/></Link>
                     </div>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" className="ml-2 ml-md-3 border-0 pr-0"><img src={Menu} alt="menu" /></Navbar.Toggle>
 

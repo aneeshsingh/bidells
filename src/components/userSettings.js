@@ -22,14 +22,6 @@ import Oval from "../assets/Ovalpmob-left.svg";
 import OvalRight from "../assets/Oval_dashboard_02.svg";
 import UserPic from "../assets/user_pic.png";
 
-const toBase64 = (file) =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
-
 class referSettings extends Component {
   constructor(props) {
     super(props);
@@ -55,8 +47,8 @@ class referSettings extends Component {
         const data = res.data;
         console.log(data);
 
-        //const profilepic = data.profilePicUrl || UserPic;
-        const profilepic = data.profilePicUrl;
+        const profilepic = data.profilePicUrl || UserPic;
+        // const profilepic = data.profilePicUrl;
         const name = data.userFullName;
         const email = data.emailAddress;
         const phone = data.phoneNumber;
@@ -87,78 +79,9 @@ class referSettings extends Component {
     });
   };
 
-  // async  handleSubmit(e) {
-  //     e.preventDefault();
-  //     let Auth = localStorage.getItem('auth_bdGroup');
-
-  //     // const toBase64 = file => new Promise((resolve, reject) => {
-  //     // const reader = new FileReader();
-  //     // reader.readAsDataURL(file);
-  //     // reader.onload = () => resolve(reader.result);
-  //     // reader.onerror = error => reject(error);
-  //     // });
-
-  //     const fd = new FormData();
-  //     fd.append('image', this.state.file);
-  //     fd.append('name', this.state.name);
-  //     fd.append('email', this.state.email);
-  //     fd.append('phone', this.state.phone);
-  //     fd.append('address', this.state.address);
-
-  //     const config = {
-  //         headers: {
-  //             'content-type': 'multipart/form-data'
-  //         }
-  //     }
-
-  //     console.log(this.state.file, this.state.file.name);
-
-  //     // const data = {
-  //     //     userFullName: this.state.name,
-  //     //     emailAddress: this.state.email,
-  //     //     phoneNumber: this.state.phone,
-  //     //     address: this.state.address,
-  //     //     profilePicUrl: await toBase64(this.state.file.name)
-  //     // };
-
-  //     //
-  //     axios.post(`/?itemType=updateUserDetails&userID=${Auth}&userfullname=${this.state.name}&useremailaddress=${this.state.email}&phone=${this.state.phone}&address=${this.state.address}&profilepic=${this.state.file.name}`, {fd}, config)
-  //       .then((res) => {
-  //         const data = res;
-  //         console.log(data.data);
-  //         // this.getLeadData();
-  //         // if(data.userID){
-  //         //     this.setState({
-  //         //         redirect: true
-  //         //     })
-  //         // }else{
-
-  //         //   this.setState({
-  //         //     alreadyHas: data.error
-  //         //   })
-  //         // }
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-
-  // }
-
-  //   handleSubmit(event) {
-  //     event.preventDefault();
-  //     const data = new FormData(event.target);
-
-  //     fetch("https://www.bidells.com/app-processing/", {
-  //       method: "POST",
-  //       body: data,
-  //     });
-  //   }
-
   async handleSubmit(e) {
     e.preventDefault();
-    let Auth = localStorage.getItem("auth_bdGroup");
 
-    // let file = this.state.file;
     const toBase64 = (file) =>
       new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -166,8 +89,6 @@ class referSettings extends Component {
         reader.onload = () => resolve(reader.result);
         reader.onerror = (error) => reject(error);
       });
-
-    //console.log(this.state.file, this.state.file.name);
 
     const data = {
       name: this.state.name,
@@ -178,7 +99,9 @@ class referSettings extends Component {
       profilepic: await toBase64(this.state.file),
     };
 
-    console.log("A form was submitted: " + JSON.stringify(data));
+    this.setState({ profilepic: await toBase64(this.state.file) })
+
+    // console.log("A form was submitted: " + JSON.stringify(data));
 
     fetch("https://www.bidells.com/app-processing-json", {
       method: "POST",
@@ -200,7 +123,7 @@ class referSettings extends Component {
     }
     return (
       <div className="outer-view">
-        <Header />
+        <Header userPic={this.state.profilepic} />
 
         <img
           src={Oval}
