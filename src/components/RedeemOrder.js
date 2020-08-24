@@ -41,8 +41,8 @@ class RedeemOrder extends Component {
                                     <Col md={9} className="mb-md-5 mb-4">
                                         <div className="heading-area">
                                             <div className="post_type">EXPERIENCE</div>
-                                            <h1>Your order is on it way!</h1>
-                                            <p>You should recieve a confirmation email from us soon.</p>
+                                            <h1>Your Order is On It’s Way</h1>
+                                            <p>Please Check Your Email, You Will Receive A Confirmation Mail From Us</p>
                                         </div>
                                     </Col>
 

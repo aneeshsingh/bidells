@@ -85,7 +85,7 @@ class CreateRefer extends Component {
                             <Col md={6} lg={5}>
                                 <div className="heading-area">
                                     <div className="post_type">REFERRAL</div>
-                                    <h1>Create your own</h1>
+                                    <h1>Create Your Own Bet</h1>
                                 </div>
                             </Col>
                             <Col md={6} lg={5} className="d-none d-md-block">

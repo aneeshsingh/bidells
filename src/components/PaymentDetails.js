@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 // import Button from 'react-bootstrap/Button';
 
 // Header
-import Header from './header/Header';
+import HeaderLogin from './header/HeaderLogin';
 
 // common
 import PaymentMethod from './payment/index';
@@ -21,7 +21,7 @@ import OvalRight from '../assets/Oval_dashboard_02.svg';
 function PaymentDetails() {
   return (
     <div className="outer-view">
-        <Header />
+        <HeaderLogin />
         
         <img src={Oval} className="ovel-bottom-left d-none d-lg-block" alt="ovel shape" />
         <img src={OvalRight} className="ovel-bottom-right d-block d-lg-none" alt="ovel shape" />
@@ -31,8 +31,8 @@ function PaymentDetails() {
                     <Row>
                         <Col md={10} lg={10}>
                             <div className="mb-4 pb-1">
-                                <h1>Please enter your payment details</h1>
-                                <p className="lead">Want to give us a try? Select subscriptions offer a 7 day free trial! You will not be charged until the end of your trial and can cancel at any time.</p>
+                                <h1>Please Enter Your Payment Details</h1>
+                                <p className="lead">Your Card Won’t Be Charged Until The End of The Free Trial. You Can Cancel Your Subscription Anytime</p>
                             </div>
                         </Col>
                         <Col md={12}>

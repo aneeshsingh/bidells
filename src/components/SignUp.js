@@ -235,12 +235,8 @@ class SignUp extends Component {
               <Row>
                 <Col md={10} lg={10}>
                   <div className="mb-4 pb-1">
-                    <h1>Lets get started!</h1>
-                    <p className="lead">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Cras est justo, ullamcorper et ipsum fringilla, convallis
-                      faucibus ex.
-                    </p>
+                    <h1>Lets get started!</h1>                    
+                    <p className="lead">Sign Up In Two Easy Steps. <br/>Enter Your Personal Information Below:</p>
                   </div>
                 </Col>
                 <Col md={12} lg={12}>

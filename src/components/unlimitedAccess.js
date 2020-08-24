@@ -27,12 +27,13 @@ function UnlimitedAccess() {
                     <Row>
                         <Col md={10} lg={10}>
                             <div className="mb-4 pb-1">
-                                <h1>Unlimited Access Cancel at any time</h1>
-                                <p className="lead">Want to give us a try? Select subscriptions offer a 7 day free trial! You will not be charged until the end of your trial and can cancel at any time.</p>
+                                <h1>Unlimited Access, Cancel Anytime</h1>
+                                <p className="lead">Try Our 7-Day Free Trial To Enjoy The Bidells Betting Experience. No Contracts, No Cancellation Fees, And No Commitments. You Can Cancel Anytime</p>
                             </div>
                         </Col>
                         <Col md={12} lg={12}>
                             <div className="mb-3">
+                                <h5 className="mb-4">Select A Subscription Package</h5>
                                 <Button variant="light" type="button" block className="form-btn text-normal d-flex align-items-center border-0 form-btn-skyblue">
                                     NO ads 
                                     <span className="ml-auto btn-price text-right">

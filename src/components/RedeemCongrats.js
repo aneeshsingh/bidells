@@ -39,7 +39,7 @@ function RedeemCongrats() {
                                 <div className="heading-area d-none d-md-block">
                                     <div className="post_type">EXPERIENCE</div>
                                     <h1>Congratulations!</h1>
-                                    <p>Your transaction was successful, we just need you to confirm a few more details.</p>
+                                    <p>Yay! Your Transaction Is Now Complete. Please Fill Up The Form For Confirmation</p>
                                 </div>
                                 <div className="heading-area d-block d-md-none">
                                     <div className="post_type">EXPERIENCE</div>

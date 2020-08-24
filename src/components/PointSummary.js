@@ -180,7 +180,7 @@ class PointSummary extends Component {
 
                     <Container fluid="md">
                         <Row className="align-items-center justify-content-between content-area mb-4">
-                            <Col md={8} lg={7}>
+                            <Col md={10} lg={8}>
                                 <div className="heading-area">
                                     <div className="post_type">REFERRAL</div>
                                     <h1>Points Summary</h1>

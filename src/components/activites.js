@@ -30,7 +30,7 @@ class activites extends Component {
         axios.get(`/?itemType=getAllUserActivity&userID=${Auth}`)
             .then(res => {
             const data = res.data;
-            console.log(Object.entries(data));
+            // console.log(Object.entries(data));
             const activites = Object.entries(data).map(([key, activity], index) => 
                 <div className="activites-strip align-items-center d-flex mb-4"  key={key}>
                     <div>
@@ -70,36 +70,35 @@ class activites extends Component {
                     <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
 
                     <Container fluid="md">
-                        <Row className="align-items-center content-area mb-md-5 mb-4">
-                            <Col md={6}>
-                                <div className="heading-area">
-                                    <div className="post_type">SHOP</div>
-                                    <h1>ACTIVITIES</h1>
-                                    <p>Doncaster Mile 2019 is one of the biggest races on the Australian autumn racing calendar.</p>
+                        <Row className="mb-md-5 mb-4">
+                            <Col md={8} lg={9} className="mb-2 pr-md-5">
+                                <Row className="content-area">
+                                    <Col md={8}>
+                                        <div className="heading-area">
+                                            <div className="post_type">SHOP</div>
+                                            <h1>Activities</h1>
+                                            <p>Stay Updated On All Events With Our Weekly Calendar. Take A Look At All The Upcoming Events</p>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <div className="pt-4">
+                                    {this.state.activites}
+                                </div>
+                            </Col>
+
+                            <Col md={4} lg={3} className="mb-md-2">
+                                <div className="ads-portFrame p-md-5 p-4">
+                                    <img src={Ads_03} alt="ads" />
+                                </div>
+
+                                <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
+                                    <img src={Ads_02} alt="ads" />
+                                </div>
+                                <div className="ads-frame mx-auto mt-4 d-block d-md-none">
+                                    <img src={Ads} alt="Ads Poster" />
                                 </div>
                             </Col>
                         </Row>
-
-                        <div className="pt-4">
-                            <Row className="justify-content-between">
-                                <Col md={8} lg={9} className="mb-2 pr-md-5">
-                                    {this.state.activites}
-                                </Col>
-                                
-                                <Col md={4} lg={3} className="mb-md-2">
-                                    <div className="ads-portFrame p-lg-5 p-sm-4 p-3">
-                                        <img src={Ads_03} alt="ads" />
-                                    </div>
-
-                                    <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
-                                        <img src={Ads_02} alt="ads" />
-                                    </div>
-                                    <div className="ads-frame mx-auto mt-4 d-block d-md-none">
-                                        <img src={Ads} alt="Ads Poster" />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </div>
                     </Container>
 
                 </div>

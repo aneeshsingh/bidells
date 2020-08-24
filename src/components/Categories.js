@@ -28,7 +28,7 @@ class Categories extends Component {
         axios.get(`/?itemType=categories`)
             .then(res => {
             const data = res.data.categories;
-            console.log(data);
+            // console.log(data);
 
             const categories = Object.entries(data).map(([key, category], index) => 
                 <Col md={4} lg={3} sm={4} xs={6} className="mb-2" key={key}>
@@ -62,8 +62,8 @@ class Categories extends Component {
                             <Row>
                                 <Col md={10} lg={10}>
                                     <div className="mb-4 pb-1">
-                                        <h1>We’re nearly there!</h1>
-                                        <p className="lead">We need to know a little bit more about you to create your personalised plan.</p>
+                                        <h1>We’re Nearly There</h1>
+                                        <p className="lead">Select Your Domain Of Interest</p>
                                     </div>
                                 </Col>
                                 <Col md={12} lg={12} className="mb-4">

@@ -48,21 +48,21 @@ class refer extends Component {
                     <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
 
                     <Container fluid="md">
-                        <Row className="align-items-center content-area mb-md-5 mb-4">
-                            <Col md={8} lg={6}>
-                                <div className="heading-area">
-                                    <div className="post_type">REFERRAL</div>
-                                    <h1>Refer a friend</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia lobortis tristique.</p>
-                                </div>
-                            </Col>
-                        </Row>
+                        <Row className="mb-md-5 mb-4">
+                            <Col md={8} lg={9} className="mb-2 pr-md-5">
+                                <Row className="content-area">
+                                    <Col lg={8}>
+                                        <div className="heading-area">
+                                            <div className="post_type">REFERRAL</div>
+                                            <h1>Refer A friend</h1>
+                                            <p>Refer Your Friends And Family To Win ----- Points. Share The Bidells Experience With Your Friends, Colleagues, Family And Neighbours. The More The Merrier.</p>
+                                        </div>
+                                    </Col>
+                                </Row>
 
-                        <div className="pt-4">
-                            <Row className="justify-content-between">
-                                <Col md={8} lg={9} className="mb-4 pr-md-5">
+                                <div className="pt-md-5 mb-5 pt-4">
                                     <Row>
-                                        <Col md={4} className="mb-4">
+                                        <Col xl={4} lg={5} md={12} sm={5} className="mb-4">
                                             <div className="referal-box li-grad">
                                                 <h5>Your referrer code</h5>
                                                 <div className="code">{this.state.referrer}</div>
@@ -70,7 +70,7 @@ class refer extends Component {
                                             </div>
                                         </Col>
 
-                                        <Col md={8} className="pl-md-5">
+                                        <Col xl={8} lg={7} md={12} sm={7} className="pl-lg-5 pl-sm-3">
                                             <h4>Share the code with your friends</h4>
 
                                             <div className="mt-md-3 mt-2">
@@ -85,21 +85,22 @@ class refer extends Component {
                                             </div>
                                         </Col>
                                     </Row>
-                                </Col>
-                                <Col md={4} lg={3} className="mb-md-2">
-                                    <div className="ads-portFrame p-md-5 p-sm-4 p-3">
-                                        <img src={Ads_03} alt="ads" />
-                                    </div>
+                                </div>
+                            </Col>
 
-                                    <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
-                                        <img src={Ads_02} alt="ads" />
-                                    </div>
-                                    <div className="ads-frame mx-auto mt-4 d-block d-md-none">
-                                        <img src={Ads} alt="Ads Poster" />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </div>
+                            <Col md={4} lg={3} className="mb-md-2">
+                                <div className="ads-portFrame p-md-5 p-sm-4 p-3">
+                                    <img src={Ads_03} alt="ads" />
+                                </div>
+
+                                <div className="ads-portFrame mt-md-5 mt-4 d-none d-md-block">
+                                    <img src={Ads_02} alt="ads" />
+                                </div>
+                                <div className="ads-frame mx-auto mt-4 d-block d-md-none">
+                                    <img src={Ads} alt="Ads Poster" />
+                                </div>
+                            </Col>
+                        </Row>
                     </Container>
 
                 </div>

@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 // Header
-import Header from './header/Header';
+import HeaderLogin from './header/HeaderLogin';
 
 // assets
 import BgImage from '../assets/personalDetals.jpg';
@@ -19,7 +19,7 @@ import OvalRight from '../assets/Oval_dashboard_02.svg';
 function PersonalDetails() {
   return (
     <div className="outer-view">
-        <Header />
+        <HeaderLogin />
         
         <img src={Oval} className="ovel-bottom-left d-none d-lg-block" alt="ovel shape" />
         <img src={OvalRight} className="ovel-bottom-right d-block d-lg-none" alt="ovel shape" />
@@ -29,8 +29,8 @@ function PersonalDetails() {
                     <Row>
                         <Col md={10} lg={10}>
                             <div className="mb-4 pb-1">
-                                <h1>We’re nearly there!</h1>
-                                <p className="lead">We need to know a little bit more about you to create your personalised plan.</p>
+                                <h1>We’re Nearly There</h1>
+                                <p className="lead">We Would Like To Know You Better</p>
                             </div>
                         </Col>
                         <Col md={12} lg={12} className="mb-4"> 

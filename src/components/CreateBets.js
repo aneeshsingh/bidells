@@ -37,7 +37,7 @@ function CreateBets() {
                         <div className="heading-area mb-4 mb-md-0">
                             <div className="post_type">REFERRAL</div>
                             <h1>Create your own</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed magna eros. Quisque eget lorem nec urna convallis posuere.</p>
+                            <p>Think Out Of The Box And Create A Customised Bet Of Your Choice. With This Feature Create Your Very Own Betting Event And Invite Others To Bid. Set Up Bets For Your Favourite TV Shows, Political Events, World Events Or Winners For The Award Season. Create A Bet, Invite Your Friends & Family, And Place A Wager On The Outcome. <strong>Simple And Fun</strong>.</p>
                         </div>
                     </Col>
                     <Col md={4} lg={4}>

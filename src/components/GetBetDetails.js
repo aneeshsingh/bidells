@@ -25,10 +25,16 @@ class singlePost extends Component {
         super(props);
         
         this.state = {
-            betDetails: [],
             playerDetails: [],
-            isfatching: false
+            isfatching: false,
+            betDetails: [],
+            betPlace: {},
+            currentBidAmount: 0,
+            error: null,
+            success : false
         }
+        
+        this.betPlaced = this.betPlaced.bind(this);
     }
     
     getProductDate(){
@@ -39,13 +45,23 @@ class singlePost extends Component {
         axios.get(`/?itemType=betDetails&betID=${Id}&userID=${Auth}`)
             .then(res => {
                 const data = res.data;
-                // console.log(data);
+                console.log('get', data);
                 // const betDetails = Object.entries(res.data);
                 const betDetails = data.bid_detail;
                 
                 const playerDetails = Object.entries(data.player_detail).map(([key, player], index) => 
                     <Col lg={6} className="mt-4" key={key}>
-                        <input type="radio" name="bets" hidden id={player.playerID} />
+                        <input type="radio" name="bets" hidden id={player.playerID}
+                            onChange={() =>
+                                this.setState({
+                                    betPlace : {
+                                        currentSelectedTeamID : player.playerID,
+                                        playerName : player.teamName,
+                                        odds : player.odds
+                                    }
+                                })
+                            }
+                         />
                         <label htmlFor={player.playerID} className="strip-bidell d-flex align-items-center">
                             <div className="flag-icon mr-xl-4 mr-sm-3 mr-2"><img src={player.image} alt="flag"/></div>
                             <div className="strip-content flex-grow-1">
@@ -84,9 +100,56 @@ class singlePost extends Component {
     componentDidMount() {
         this.getProductDate();
     }
+
+    betPlaced = (e) => {
+        e.preventDefault();
+        let Auth = localStorage.getItem('auth_bdGroup');
+        let Id = this.props.match.params.betId;
+
+        const bet = this.state.betPlace;
+
+        const data ={
+            itemType : 'betPlaced',
+            betID : Id,
+            currentUserID : Auth,
+            currentTime: new Date().toLocaleString(),
+            currentBid : this.state.currentBidAmount,
+
+            currentSelectedTeamID : bet.currentSelectedTeamID,
+            playerName : bet.playerName,
+            odds : bet.odds
+        } 
+
+        // console.log(data);
+        
+        if(bet.currentSelectedTeamID && this.state.currentBidAmount > 0){
+            axios.post(`/?itemType=${data.itemType}&betID=${data.betID}&currentSelectedTeamID=${data.currentSelectedTeamID}&currentUserID=${Auth}&currentBid=${data.currentBid}&playerName=${data.playerName}&odds=${data.odds}&currentTime=${data.currentTime}`, data)
+              .then((res) => {
+                const data = res;
+                console.log('post', data.data);
+                
+                this.setState({success: true})
+
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        }else{
+            if(!bet.currentSelectedTeamID){
+                this.setState({
+                    error : 'Please choose Player Bet'
+                });
+            }
+            if(!(this.state.currentBidAmount > 0)){
+                this.setState({
+                    error : 'Please enter bet amount'
+                });
+            }
+        }
+    
+    }
     
     render() {
-        // console.log(this.state)
         if(!this.state.isfatching){
             return(
                 <div className="preloader">
@@ -129,11 +192,29 @@ class singlePost extends Component {
 
                         <Row className="align-items-center">
                             <Col lg={6} className="mb-4">
-                                <div className="form-bet-amount d-flex align-items-center">
-                                    <input type="text" className="border-0 bg-transparent pl-0" placeholder="Enter your bet amount" />
-                                    {/* <span className="submitText">Enter your bet amount</span> */}
-                                    <Button><img src={SubmitArrow} alt="arrow"/></Button>
-                                </div>
+                                {
+                                    this.state.success ? 
+                                    <h3>Thank you! ${this.state.currentBidAmount} amount is successfully submitted.</h3>
+                                    :
+                                    <div className="form-bet-amount d-flex align-items-center">
+                                        <input 
+                                            type="text" 
+                                            className="border-0 bg-transparent pl-0" 
+                                            placeholder="Enter your bet amount" 
+                                            value={this.state.currentBidAmount > 0 ? this.state.currentBidAmount : ''}
+                                            onChange={(e) => this.setState({currentBidAmount : e.target.value })}
+                                        />
+                                        <Button onClick={this.betPlaced}><img src={SubmitArrow} alt="arrow"/></Button>
+                                    </div>
+                                }
+
+
+                                {
+                                   this.state.betPlace.currentSelectedTeamID && this.state.currentBidAmount > 0 ?
+                                   null
+                                   :
+                                   this.state.error && <p className="lead mt-2 text-danger"><strong>{this.state.error}</strong></p>
+                                }
                             </Col>
                             <Col lg={6} className="mb-lg-4">
                                 <div className="ads-frame mx-auto mt-auto">

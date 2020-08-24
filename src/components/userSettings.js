@@ -34,6 +34,8 @@ class referSettings extends Component {
       itemType: "updateUserDetailsJSON",
       file: null,
       redirect: false,
+      isfatching: false,
+      errors: {}
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -45,7 +47,7 @@ class referSettings extends Component {
       .get(`/?itemType=getUserDetails&userID=${Auth}`)
       .then((res) => {
         const data = res.data;
-        console.log(data);
+        // console.log(data);
 
         const profilepic = data.profilePicUrl || UserPic;
         // const profilepic = data.profilePicUrl;
@@ -53,6 +55,7 @@ class referSettings extends Component {
         const email = data.emailAddress;
         const phone = data.phoneNumber;
         const address = data.address;
+        const file = data.profilePicUrl || null;
 
         this.setState({
           profilepic,
@@ -60,6 +63,7 @@ class referSettings extends Component {
           email,
           phone,
           address,
+          file
         });
       })
       .catch((error) => {
@@ -81,13 +85,15 @@ class referSettings extends Component {
 
   async handleSubmit(e) {
     e.preventDefault();
+    
+    if (this.validateForm()){
 
-    const toBase64 = (file) =>
-      new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
+      const toBase64 = (file) =>
+        new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = (error) => reject(error);
       });
 
     const data = {
@@ -99,28 +105,110 @@ class referSettings extends Component {
       profilepic: await toBase64(this.state.file),
     };
 
-    this.setState({ profilepic: await toBase64(this.state.file) })
+    this.setState({ 
+      profilepic: await toBase64(this.state.file),
+      isfatching: true 
+    })
 
     // console.log("A form was submitted: " + JSON.stringify(data));
+    const _this = this;
 
-    fetch("https://www.bidells.com/app-processing-json", {
-      method: "POST",
-      // We convert the React state to JSON and send it as the POST body
-      mode: "cors",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then(function (response) {
-      console.log(response);
-      //return response.json();
+      fetch("https://www.bidells.com/app-processing-json", {
+        method: "POST",
+        // We convert the React state to JSON and send it as the POST body
+        mode: "cors",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+      .then( response => response.json() )
+      .then(function (response) {
+        console.log(response);
+        _this.setState({ 
+          isfatching: false 
+        })
+        //return response.json();
+      });
+      
+    }
+
+
+  }
+
+
+  validateForm() {
+    let fields = this.state;
+    let errors = {};
+    let formIsValid = true;
+   
+    // file
+    if (!fields.file.name) {
+      formIsValid = false;
+      errors["file"] = "*Please upload your picture.";
+    }
+    
+    // First Name error messages
+    if (!fields.name) {
+      formIsValid = false;
+      errors["name"] = "*Please enter your fullname.";
+    }
+
+    if (typeof fields.name !== "undefined") {
+      if (!fields.name.match(/^[a-zA-Z ]*$/)) {
+        formIsValid = false;
+        errors["name"] = "*Please enter alphabet characters only.";
+      }
+    }
+
+    // Email Address error messages
+    if (!fields.email) {
+      formIsValid = false;
+      errors["email"] = "*Please enter your email address.";
+    }
+
+    if (typeof fields.email !== "undefined") {
+      //regular expression for email validation
+      var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      if (!pattern.test(fields.email)) {
+        formIsValid = false;
+        errors["email"] = "*Please enter valid email address.";
+      }
+    }
+    
+    if (!fields.phone) {
+      formIsValid = false;
+      errors["phone"] = "*Please enter your phone no.";
+    }
+
+    // if (typeof fields.phone !== "undefined") {
+    //   if (!fields.phone.match(/^[0-9]{10}$/)) {
+    //     formIsValid = false;
+    //     errors["phone"] = "*Please enter valid phone no.";
+    //   }
+    // }
+
+
+    this.setState({
+      errors: errors
     });
+    return formIsValid;
   }
 
   render() {
+    // console.log(this.state.file)
+    if(this.state.isfatching){
+      return(
+          <div className="preloader">
+              <div className="lds-ripple"><div></div><div></div></div>
+          </div>
+      )
+  }
+
     if (this.state.redirect) {
       return <Redirect to="/" />;
     }
+
     return (
       <div className="outer-view">
         <Header userPic={this.state.profilepic} />
@@ -184,6 +272,7 @@ class referSettings extends Component {
                         />{" "}
                         Change Profile Picture
                       </Form.Label>
+                      <div className="error_msg">{this.state.errors.file}</div>
                     </Form.Group>
                     <input
                       type="hidden"
@@ -205,6 +294,7 @@ class referSettings extends Component {
                           this.setState({ name: e.target.value })
                         }
                       />
+                      <div className="error_msg">{this.state.errors.name}</div>
                     </Form.Group>
                     <Form.Group>
                       <Form.Control
@@ -217,6 +307,7 @@ class referSettings extends Component {
                           this.setState({ email: e.target.value })
                         }
                       />
+                      <div className="error_msg">{this.state.errors.email}</div>
                     </Form.Group>
                     <Form.Group>
                       <Form.Control
@@ -229,6 +320,7 @@ class referSettings extends Component {
                           this.setState({ phone: e.target.value })
                         }
                       />
+                      <div className="error_msg">{this.state.errors.phone}</div>
                     </Form.Group>
                     <Form.Group>
                       <Form.Control

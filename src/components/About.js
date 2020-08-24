@@ -32,28 +32,46 @@ class About extends Component {
     }
     render() {
         return (
-            <div className="outer-view">
-                <Header />
-                
-                <img src={Oval} className="ovel-bottom-left d-none d-lg-block" alt="ovel shape" />
-                <img src={OvalRight} className="ovel-bottom-right d-block d-lg-none" alt="ovel shape" />
-                <Container>
-                    <Row className="mh-100 content-area top_offset">
-                        <Col md={8}>
-                            <div className="mb-4">
-                                <h1>A little bit about us!</h1>
-                                <p className="lead">{this.state.about.post_content}</p>
-                            </div>
-                        </Col>
+          <div className="outer-view">
+            <Header />
 
-                        <Col md={4} className="d-none d-md-block">
-                            <div className="about_image text-center mb-4">
-                                <img src={this.state.about.image} alt="about" className="img-fluid" />
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+            <img
+              src={Oval}
+              className="ovel-bottom-left d-none d-lg-block"
+              alt="ovel shape"
+            />
+            <img
+              src={OvalRight}
+              className="ovel-bottom-right d-block d-lg-none"
+              alt="ovel shape"
+            />
+            <Container>
+              <Row className="mh-100 content-area top_offset">
+                <Col md={8}>
+                  <div className="mb-4">
+                    <h1>A little about us!</h1>
+                    {/* <div className="lead content-preformat" dangerouslySetInnerHTML={{ __html: this.state.about.post_content}} /> */}
+                    
+                    {this.state.about.post_content &&
+                    this.state.about.post_content
+                        .split("\n")
+                        .map((item, i) => <p className="lead" key={i}>{item}</p>)}
+                    
+                  </div>
+                </Col>
+
+                <Col md={4} className="d-none d-md-block">
+                  <div className="about_image text-center mb-4">
+                    <img
+                      src={this.state.about.image}
+                      alt="about"
+                      className="img-fluid"
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </div>
         );
     }
 }

@@ -30,14 +30,18 @@ class RedeemSingle extends Component {
         super(props);
         this.state = {
             ID: null,
-            quantity: 1,
+            counter: 1,
+            total: 0,
             redeem: [],
-            availQuantity: null,
-            total: null
+            totalCount: 0,
+            availQuantity: 0,
+            currentPoints: 0,
         };
 
         
         this.buyProduct = this.buyProduct.bind(this);
+        this.onIncrement = this.onIncrement.bind(this);
+        this.onDecrement = this.onDecrement.bind(this);
     }
 
     handleChange = (e) => {
@@ -57,12 +61,14 @@ class RedeemSingle extends Component {
         axios.get(`/?itemType=getProductInformation&productID=${Id}&userID=${Auth}`)
             .then(res => {
             const redeem = res.data;
-            console.log(redeem);
+            // console.log(redeem);
 
             this.setState({
                 redeem : redeem,
-                availQuantity : redeem.quantityAvailable,
-                total : redeem.points
+                total : parseInt(redeem.points),
+                totalCount : parseInt(redeem.points),
+                availQuantity : parseInt(redeem.quantityAvailable),
+                currentPoints : parseInt(Number(redeem.userCurrentPoints.replace(/,/g,'')) + 1)
             })
             
         }).catch((error) => {
@@ -74,41 +80,41 @@ class RedeemSingle extends Component {
         this.getLeadData();        
     }
 
-    increment = (e) =>{
-      if(this.state.quantity < this.state.availQuantity){
-        this.setState({ 
-          quantity: parseInt(this.state.quantity) + 1,
-          total : this.state.total * (parseInt(this.state.quantity) + 1)
-        })
+    onIncrement = () => {
+      this.setState(state => ({ 
+        counter: Math.min(state.counter + 1, state.availQuantity)
+      }));
+      
+      if(this.state.counter < this.state.availQuantity){
+        setTimeout(() => {
+          this.setState(state => ({ 
+            total: state.total + state.totalCount
+          }));
+        }, 100);
       }
+
     }
-  
-    decrement = (e) =>{
-      if(this.state.quantity < 2){
-        this.setState({ 
-          quantity: 1
-        })
-      }else {
-        this.setState({ 
-          quantity: parseInt(this.state.quantity) - 1,
-          total : this.state.total / (parseInt(this.state.quantity) - 1)
-        })
-      }
+   
+    onDecrement = () => {
+      this.setState(state => ({ 
+        counter: Math.max(state.counter - 1, 1),
+        total: Math.max(state.total - state.totalCount, state.totalCount)
+      }));
     }
 
     
 
-    buyProduct(e){
+    buyProduct = (e) => {
       e.preventDefault();
 
       let Auth = localStorage.getItem('auth_bdGroup');
 
       const data = {
-        quantity: this.state.quantity
+        counter: this.state.counter
       }
 
 
-      axios.get(`/?itemType=productPurchased&userID=${Auth}&quantity=${this.state.quantity}&productID=${this.state.ID}`, data)
+      axios.get(`/?itemType=productPurchased&userID=${Auth}&quantity=${this.state.counter}&productID=${this.state.ID}`, data)
         .then((res) => {
           const data = res;
           console.log(data.data);
@@ -119,7 +125,8 @@ class RedeemSingle extends Component {
     }
 
     render() {
-        console.log(this.state.quantity);
+      // console.log(this.state.counter, this.state.total, this.state.availQuantity);
+
         return (
           <div className="outer-view">
             <Header />
@@ -175,19 +182,19 @@ class RedeemSingle extends Component {
                                 <InputGroup.Prepend>
                                   <Button
                                     variant="minus"
-                                    onClick={this.decrement}
+                                    onClick={this.onDecrement}
                                   >
                                     <img src={Minus} alt="minus" />
                                   </Button>
                                 </InputGroup.Prepend>
                                 <Form.Control
-                                  value={this.state.quantity}
+                                  value={this.state.counter}
                                   onChange={(e) => this.handleChange(e)}
                                 />
                                 <InputGroup.Append>
                                   <Button
                                     variant="plus"
-                                    onClick={this.increment}
+                                    onClick={this.onIncrement}
                                   >
                                     <img src={Plus} alt="plus" />
                                   </Button>
@@ -209,7 +216,7 @@ class RedeemSingle extends Component {
 
                         <Col sm={12} md={10} className="mt-3">
                           {
-                              parseFloat(this.state.total).toLocaleString() <= this.state.redeem.userCurrentPoints 
+                              this.state.total < this.state.currentPoints 
                               ?                            
                               <Button
                                 type="submit"
@@ -236,7 +243,7 @@ class RedeemSingle extends Component {
                             }
 
                             {
-                              parseFloat(this.state.total).toLocaleString() >= this.state.redeem.userCurrentPoints 
+                              this.state.total >= this.state.currentPoints 
                               ?   
                               <p className="lead mt-4 text-danger "><strong>You have Less Points is you balance!</strong></p>
                              :

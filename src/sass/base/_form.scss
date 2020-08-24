@@ -257,7 +257,7 @@
             }
         }
 
-        .btn-arrow{
+        .btn-arrow, .btn{
             width: 115px;
             height: 70px;
             text-align: center;
@@ -285,7 +285,8 @@
         .search-icon{
             background-color: transparent !important;
             left: 30px; 
-            top: 18px;
+            bottom: 0;
+            top: 0;
         }
     }
 
