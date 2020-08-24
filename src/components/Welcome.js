@@ -140,7 +140,7 @@ class Welcome extends Component {
                                         <h1 className="display-1">{this.state.data.welcome_section ? this.state.data.welcome_section.title : ''}</h1>
                                         <p className="lead">{this.state.data.welcome_section ? this.state.data.welcome_section.desciption : ''}</p>
 
-                                        {Auth ? null :  <Link to='/sign-up' variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
+                                        {Auth ? null :  <Link to='/sign-up' block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
                                     </div>
                                 </Col>
                                 <Col md={6} lg={6}>
@@ -157,8 +157,8 @@ class Welcome extends Component {
                                         <h2 className="display-3">{this.state.data.open_account_section ? this.state.data.open_account_section.title : ''}</h2>
                                         <p className="lead">{this.state.data.open_account_section ? this.state.data.open_account_section.description : ''}</p>
 
-                                        {/* <Button variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button> */}
-                                        {Auth ? null :  <Link to='/sign-up' variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
+                                        {/* <Button variant="light" type="button" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button> */}
+                                        {Auth ? null :  <Link to='/sign-up' block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
                                     </div>
                                 </Col>
                             </Row>
@@ -174,8 +174,8 @@ class Welcome extends Component {
                                         <h2 className="display-3">{this.state.data.place_bet_section ? this.state.data.place_bet_section.title : ''}</h2>
                                         <p className="lead">{this.state.data.place_bet_section ? this.state.data.place_bet_section.description : ''}</p>
 
-                                        {/* <Button variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button> */}
-                                        {Auth ? null :  <Link to='/sign-up' variant="light" type="submit" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
+                                        {/* <Button variant="light" type="button" block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button> */}
+                                        {Auth ? null :  <Link to='/sign-up' block className="form-btn mt-md-5 mt-4 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
                                     </div>
                                 </Col>
                             </Row>
@@ -222,8 +222,8 @@ class Welcome extends Component {
                         <Container fluid="md">
                             <PostGrids />
                             
-                            {/* <Button variant="light" type="submit" block className="form-btn mt-md-5 mb-md-0 mb-5 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button> */}
-                            {Auth ? null :  <Link to='/sign-up' variant="light" type="submit" block className="form-btn mt-md-5 mb-md-0 mb-5 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
+                            {/* <Button variant="light" type="button" block className="form-btn mt-md-5 mb-md-0 mb-5 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Button> */}
+                            {Auth ? null :  <Link to='/sign-up' block className="form-btn mt-md-5 mb-md-0 mb-5 d-flex align-items-center border-0 form-btn-skyblue">SIGN-UP <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>}
                         </Container>
                     </section>
 
