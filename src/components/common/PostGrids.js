@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 // assets
-import User from '../../assets/post_user.png';
+import User from '../../assets/user_pic.png';
 
 class PostGrids extends Component {
     constructor(props) {
@@ -37,16 +37,30 @@ class PostGrids extends Component {
                     </div>
                     <div className="post_info d-flex align-items-center justify-content-between">
                         <span>24/5/2020</span>
-                        <span>230 Votes</span>
+                        <span>{bets.total_bets} Votes</span>
                     </div>
 
                     <div className="post_users pt-3 mt-auto d-flex align-items-center">
+                        {                            
+                            Object.entries(bets.users).map(([key, user], index) => {
+                                    const userLength = bets.users.length;
+                                    if(index < 5){
+                                        return <img src={user.profilePicUrl || User} alt="User" key={key} />
+                                    }else{
+                                        if(index < 6){
+                                            return <span key={key}>+{userLength - 5}</span>
+                                        }else{
+                                            return null
+                                        }
+                                    }
+                                }
+                            )
+                        }
+                        {/* <img src={User} alt="User" />
                         <img src={User} alt="User" />
                         <img src={User} alt="User" />
                         <img src={User} alt="User" />
-                        <img src={User} alt="User" />
-                        <img src={User} alt="User" />
-                        <span>+5</span>
+                        <span>+5</span> */}
                     </div>
                 </Link>
             </Col>

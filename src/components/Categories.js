@@ -9,6 +9,9 @@ import Button from 'react-bootstrap/Button';
 // Header
 import HeaderLogin from './header/HeaderLogin';
 
+// common
+import Category from './common/Category';
+
 // assets
 import BgImage from '../assets/call_of_duty.jpg';
 import Ads from '../assets/ads.png';
@@ -46,7 +49,7 @@ class Categories extends Component {
     }
 
     componentDidMount() {
-        this.getLeadData();
+        // this.getLeadData();
     }
 
     render() {
@@ -69,7 +72,8 @@ class Categories extends Component {
                                 <Col md={12} lg={12} className="mb-4">
                                     <Form>
                                         <Form.Row>
-                                            {this.state.categories}
+                                            {/* {this.state.categories} */}
+                                            <Category />
                                         </Form.Row>
                                     </Form>
                                 </Col>

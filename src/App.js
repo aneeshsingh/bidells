@@ -8,6 +8,8 @@ import {
 // Components
 import Login from './components/login';
 import SignUp from './components/SignUp';
+import ForgotPassword from './components/forgotPassword';
+import Verification from './components/verification';
 import About  from './components/About';
 import Welcome  from './components/Welcome';
 import UnlimitedAccess  from './components/unlimitedAccess';
@@ -21,6 +23,7 @@ import LeaderboardView  from './components/LeaderboardView';
 import GetResults  from './components/GetResults';
 import RedeemPoints  from './components/redeemPoints';
 import RedeemSingle  from './components/RedeemSingle';
+import BidellsPurchase  from './components/BidellsPurchase';
 import RedeemCongrats  from './components/RedeemCongrats';
 import RedeemOrder  from './components/RedeemOrder';
 import Activities  from './components/activites';
@@ -45,6 +48,13 @@ class App extends Component {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/forgot-password">
+            <ForgotPassword />
+          </Route>
+          {/* <Route path="/verification">
+            <Verification />
+          </Route> */}
+          <Route exact path="/verification" component={Verification} />
           <Route path="/sign-up">
             <SignUp />
           </Route>
@@ -80,6 +90,9 @@ class App extends Component {
             <RedeemPoints />
           </Route>
           <Route exact path="/redeem-single/:Id" component={RedeemSingle} />
+            {/* <RedeemSingle />
+          </Route> */}
+          <Route exact path="/bidells-purchase" component={BidellsPurchase} />
             {/* <RedeemSingle />
           </Route> */}
           <Route path="/redeem-congrats">

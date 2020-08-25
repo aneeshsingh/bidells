@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 // Header
 import HeaderLogin from './header/HeaderLogin';
 
-// common
+// payment
 import PaymentMethod from './payment/index';
 
 // assets

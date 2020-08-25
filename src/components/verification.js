@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from './instance/axios';
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -18,11 +18,10 @@ import Oval from '../assets/oval_01.svg';
 import OvalRight from '../assets/Oval_dashboard_02.svg';
 
 
-class login extends Component {
+class Verify extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
             password:'',
             redirect: false,
             error: ''
@@ -51,11 +50,10 @@ class login extends Component {
         // };
 
         const data = {
-            email: this.state.email,
             password: this.state.password
         };   
 
-        axios.post(`/?itemType=login&email=${data.email}&password=${data.password}&remember=true`, data)
+        axios.post(`/?itemType=login&password=${data.password}&remember=true`, data)
         .then(res => {
             const data = res.data;
             if(data.userID){
@@ -79,8 +77,9 @@ class login extends Component {
 
     render() {
         if (this.state.redirect) {
-            return <Redirect to="/get-all-bets" />;
+            return <Redirect to="/login" />;
         }
+
         return (
             <div className="outer-view">
                 <HeaderLogin />
@@ -93,28 +92,18 @@ class login extends Component {
                             <Row>
                                 <Col md={10} lg={10}>
                                     <div className="mb-4 pb-1">
-                                        <h1>Lets get started!</h1>
-                                        <p className="lead">Sign Up In Two Easy Steps. <br/>Enter Your Personal Information Below:</p>
+                                        <h1>Verification</h1>
+                                        <p className="lead">Please enter the verification code send to +6142342343242343244.</p>
                                     </div>
                                 </Col>
                                 <Col md={12} lg={12}>
                                     <Form onSubmit={this.handleSubmit}>
                                         <Form.Group>
-                                            <Form.Control type="email" autoComplete="true" className="form-shadow form-radius border-0" value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} placeholder="Email Address" />
-                                            <Form.Text className="text-danger">{this.state.error}</Form.Text>
-                                        </Form.Group>
-                                        <Form.Group>
                                             <Form.Control type="password" className="form-shadow form-radius border-0" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} placeholder="Password" />
+                                            {/* <Form.Text className="text-danger">{this.state.error}</Form.Text> */}
                                         </Form.Group>
-                                        <Form.Group className="text-right">
-                                            <Link to="/forgot-password" className="btn btn-reset btn-link">Forgot Password</Link>
-                                        </Form.Group>
-                                        <Button variant="light" type="submit" block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">SUBMIT <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+                                        <Button variant="light" type="submit" block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">Verify <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
                                     </Form>
-                                    
-                                    <div className="mt-4">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est justo, ullamcorper et ipsum fringilla, convallis faucibus ex.</p>
-                                    </div>
                                 </Col>
                             </Row>
                         </div>
@@ -133,4 +122,4 @@ class login extends Component {
     }
 }
 
-export default login;
+export default Verify;

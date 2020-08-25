@@ -34,7 +34,7 @@ const useOptions = () => {
     return options;
   };
 
-const CardForm = () => {
+const CardForm = (props) => {
   const stripe = useStripe();
   const elements = useElements();
   const options = useOptions();
@@ -81,7 +81,7 @@ const CardForm = () => {
             Pay
         </button> */}
         <Col md={10} lg={8}>
-            <Button variant="light" type="submit" disabled={!stripe} block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">SUBSCRIBE <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+      <Button variant="light" type="submit" disabled={!stripe} block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">{props.buttonText ? props.buttonText : 'SUBSCRIBE'} <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
         </Col>
       </Row>
     </form>

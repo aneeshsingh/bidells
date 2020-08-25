@@ -356,8 +356,14 @@
     }
 }
 
-input:checked + .label-box{
-    @include box-shadow(3px 6px 4px rgba(156,169,185,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
+input{
+    &:checked + .label-box{
+        @include box-shadow(3px 6px 4px rgba(156,169,185,0.5), inset 10px 10px 40px rgba(112,122,134,0.5), inset -10px -10px 40px rgba(255,255,255,0.5));
+    }
+    
+    &:read-only{
+        opacity: 0.6;
+    }
 }
 
 .react-tel-input{
@@ -450,5 +456,58 @@ input:checked + .label-box{
         padding-top: 5px;
         text-align: right;
         position: relative;
+    }
+
+    @include maxDevice(575px){
+        bottom: -15px;
+        font-size: 85%;
+        position: absolute;
+    }
+}
+
+.custom_check{
+    position: relative;
+    padding-left: 30px;
+    min-height: 25px;
+
+    input:checked + span{
+        &::after{
+            @include transform(rotate(-45deg) scale(1));
+        }
+    }
+
+    span{
+        cursor: pointer;
+        display: inline-block;
+
+        a{
+            text-decoration: underline;
+            color: $secondary;
+        }
+
+        &::before{
+            @include linear-gradient(136deg, #EBF3FA, #CBE0F7); 
+            border: 1px solid #cecece;
+            position: absolute;
+            border-radius: 4px;
+            height: 20px;
+            width: 20px;
+            content: "";
+            left: 0;
+            top: 5px;
+        }
+
+        &::after{
+            top: 11px;
+            left: 5px;
+            content: "";
+            width: 11px;
+            height: 5px;
+            position: absolute;
+            @include transition(all 0.35s ease-out);
+            @include transform(rotate(0deg) scale(0));
+            border-bottom: 2px solid $secondary-30;
+            border-left: 2px solid $secondary-30;
+        }
     }
 }

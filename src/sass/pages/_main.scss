@@ -76,6 +76,10 @@ h4{
 .top_offset{
     padding-top: 200px;
 
+    &.offset_sm{
+        padding-top: 140px;
+    }
+
     &.position-relative{
         position: static !important;
     }
@@ -357,9 +361,10 @@ h4{
         width: 100%;
 
         img{
-            margin-right: 5px;
-            // max-width: 45px;
-            width: 14%;
+            max-width: 14%;
+            min-height: 75%;
+            margin-right: 8px;
+            border-radius: 25px;
         }
 
         span{
@@ -368,7 +373,7 @@ h4{
             font-size: 16px;
             color: $gray-68;
             font-weight: 500;
-            padding: 3% 0 5%;
+            padding: 4% 0 5%;
             text-align: center;
             border-radius: 25px;
             background-color: $gray-20;
@@ -495,7 +500,14 @@ h4{
 .category{
     &_list{
         overflow: auto;
-        padding: 20px 0 38px;
+        // padding: 20px 0 38px;
+        padding: 20px 0 0;
+        margin-bottom: 60px;
+
+        @include maxDevice(1199px){
+            padding-top: 0;
+            margin-bottom: 20px;
+        }
 
         &::-webkit-scrollbar {
             width: 0px;
@@ -505,6 +517,28 @@ h4{
         @include maxDevice(991px){
             padding-top: 0;
             padding-bottom: 12px;
+        }
+
+        .row{
+            bottom: -12px;
+            overflow: auto;
+            position: relative;
+            padding-bottom: 32px;
+
+            & > div{
+                max-width: none;
+                flex: auto;
+
+                .form-choose{
+                    margin: 18px 10px 10px;
+
+                    label{
+                        height: 80px;
+                        padding-left: 30px;
+                        padding-right: 30px;
+                    }
+                }
+            }
         }
     }
 
@@ -722,13 +756,25 @@ h4{
     }
 }
 
-input:checked{
-    & + .strip-bidell .check-icon{
-        @include linear-gradient(136deg, #3C3C3C, #010101);
-        @include box-shadow(4px 4px 18px rgba(0,0,0,0.5), -4px -4px 18px rgba(82,82,82,0.5), inset 2px 2px 8px rgba(0,0,0,0.5), inset -2px -2px 8px rgba(60,60,60,0.5));
+input{
+    &:checked{
+        & + .strip-bidell .check-icon{
+            @include linear-gradient(136deg, #3C3C3C, #010101);
+            @include box-shadow(4px 4px 18px rgba(0,0,0,0.5), -4px -4px 18px rgba(82,82,82,0.5), inset 2px 2px 8px rgba(0,0,0,0.5), inset -2px -2px 8px rgba(60,60,60,0.5));
+    
+            img{
+                filter: brightness(10);
+            }
+        }
+    }
 
-        img{
-            filter: brightness(10);
+    &:disabled{
+        & + .strip-bidell .check-icon{
+            opacity: .6;
+        }
+
+        & + .strip-bidell{
+            cursor: auto;
         }
     }
 }

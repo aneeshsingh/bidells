@@ -8,11 +8,11 @@ import CardForm from './cardForm';
 
 const stripePromise = loadStripe("pk_test_51HD6rjBs0tLIdmO2IfHnaC8x7hAUSruv4iMlj2KtxEusOMz8sz93bb0B84eizIh3LlLKY6XzWWkWWYyG7szNWcxr00mmWoYIIp");
 
-const Payment = () => {
+const Payment = (props) => {
     return (
       <BrowserRouter>
         <Elements stripe={stripePromise}>
-          <CardForm />
+          <CardForm buttonText={props.buttonText} />
         </Elements>
       </BrowserRouter>
     );

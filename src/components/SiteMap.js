@@ -52,6 +52,7 @@ class SiteMap extends Component {
                                     <li><Link to="/create-bets">CreateBets</Link></li>
                                     <li><Link to="/point-summary">PointSummary</Link></li>
                                     <li><Link to="/create-refer">CreateRefer</Link></li>
+                                    <li><Link to="/bidells-single">Bidells Redeem Single</Link></li>
                                 </ol>
                             </Col>
                         </Row>

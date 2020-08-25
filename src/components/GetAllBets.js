@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+// import Button from 'react-bootstrap/Button';
 
 // Header
 import Header from './header/Header';
 
 // common
 import PostGrids from './common/PostGrids';
+import Category from './common/Category';
 
 // assets
 import Ovel_01 from '../assets/Oval_dashboard_01.svg';
 import Ovel_02 from '../assets/Oval_dashboard_02.svg';
-import News from '../assets/category-bg.png';
+// import News from '../assets/category-bg.png';
 import Ads from '../assets/ads.png';
 import Oval from '../assets/Ovalpmob-left.svg';
 import OvalRight from '../assets/Oval_dashboard_02.svg';
@@ -50,63 +52,14 @@ class GetAllBets extends Component {
                     <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
 
 
-                    <div className="category_list d-flex align-items-center mb-4">
-                        <Button href="#" className="category_item border-0 text-truncate">
+                    <div className="category_list d-flex align-items-center">
+                        <Row noGutters className="flex-nowrap w-100">
+                            <Category />
+                        </Row>
+                        {/* <Button href="#" className="category_item border-0 text-truncate">
                             <img src={News} className="category_image" alt="category" />
                             NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
-                        <Button href="#" className="category_item border-0 text-truncate">
-                            <img src={News} className="category_image" alt="category" />
-                            NEWS
-                        </Button>
+                        </Button> */}
                     </div>
 
                     <Container fluid="md">

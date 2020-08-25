@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from './instance/axios';
+import { Redirect } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -27,11 +28,14 @@ class singlePost extends Component {
         this.state = {
             playerDetails: [],
             isfatching: false,
+            isfatchingPoint: false,
             betDetails: [],
             betPlace: {},
             currentBidAmount: 0,
             error: null,
-            success : false
+            success : false,
+            redirect: false,
+            points: 0
         }
         
         this.betPlaced = this.betPlaced.bind(this);
@@ -61,12 +65,13 @@ class singlePost extends Component {
                                     }
                                 })
                             }
+                            disabled={betDetails.open_for_bidding === "true" ? false : true}
                          />
-                        <label htmlFor={player.playerID} className="strip-bidell d-flex align-items-center">
+                        <label htmlFor={player.playerID} className="strip-bidell d-flex align-items-center" title={betDetails.open_for_bidding === "false" ? "Bet is Not open for Bidding": null}>
                             <div className="flag-icon mr-xl-4 mr-sm-3 mr-2"><img src={player.image} alt="flag"/></div>
                             <div className="strip-content flex-grow-1">
                                 <h4>{player.teamName}</h4>
-                                <span className="d-none d-md-block">{player.winnings}</span>
+                                {/* <span className="d-none d-md-block">{player.winnings}</span> */}
                                 {/* <span className="d-none d-md-block">T: Nakagawa Masayuki</span> */}
                             </div>
                             <div className="ml-auto text-center bids">
@@ -93,12 +98,30 @@ class singlePost extends Component {
             this.setState({
                 isfatching: false
             })
+        });
+
+
+        // Points
+        axios.get(`/?itemType=getPoints&userID=${Auth}`)
+          .then(res => {
+          const points = res.data;
+          this.setState({ 
+              points : points.points,
+              isfatchingPoint: true 
+            });
         })
 
     }
 
     componentDidMount() {
         this.getProductDate();
+
+        let Auth = localStorage.getItem('auth_bdGroup');
+        if(!Auth){
+            this.setState({
+                redirect: true
+            })
+        }
     }
 
     betPlaced = (e) => {
@@ -150,7 +173,11 @@ class singlePost extends Component {
     }
     
     render() {
-        if(!this.state.isfatching){
+        if (this.state.redirect) {
+            return <Redirect to="/login" />;
+        }
+
+        if(!this.state.isfatching || !this.state.isfatchingPoint){
             return(
                 <div className="preloader">
                     <div className="lds-ripple"><div></div><div></div></div>
@@ -159,74 +186,142 @@ class singlePost extends Component {
         }
         
         return (
-            <div className="outer-view">
-                <Header />
-                
+          <div className="outer-view">
+            <Header />
 
-                <img src={Oval} className="oval-top-left d-block d-md-none" alt="ovel shape" />
-                <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" style={{ top: '0px' }} alt="ovel shape" />
-                <div className="top_offset position-relative">
-                    <img src={Ovel_01} className="place-oval-Lbottom" alt="ovel shape" />
+            <img
+              src={Oval}
+              className="oval-top-left d-block d-md-none"
+              alt="ovel shape"
+            />
+            <img
+              src={OvalRight}
+              className="ovel-bottom-right d-block d-md-none"
+              style={{ top: "0px" }}
+              alt="ovel shape"
+            />
+            <div className="top_offset position-relative">
+              <img
+                src={Ovel_01}
+                className="place-oval-Lbottom"
+                alt="ovel shape"
+              />
 
-                    <Container fluid="md">
-                        <Row className="align-items-end content-area mb-md-4">
-                            <Col lg={6} className="mb-3">
-                                <div className="heading-area">
-                                    <div className="post_type">{this.state.betDetails.sub_heading}</div>
-                                    <h1>{this.state.betDetails.title}</h1>
-                                    <p><strong className="d-block"></strong> {this.state.betDetails.description}</p>
-                                </div>
-                            </Col>
-                            <Col lg={6} className="mb-3">
-                                <div className="d-md-flex justify-content-between release-time">
-                                    <p>TIME OF THE GAME <strong>{this.state.betDetails.time_of_the_game}</strong></p>
-                                    <p>DATE OF THE GAME <strong>{this.state.betDetails.date_of_the_game}</strong></p>
-                                </div>
-                            </Col>
-                        </Row>
-                        
+              <Container fluid="md">
+                <Row className="align-items-end content-area mb-md-4">
+                  <Col lg={6} className="mb-3">
+                    <div className="heading-area">
+                      <div className="post_type">
+                        {this.state.betDetails.sub_heading}
+                      </div>
+                      <h1>{this.state.betDetails.title}</h1>
+                      <p>
+                        <strong className="d-block"></strong>{" "}
+                        {this.state.betDetails.description}
+                      </p>
+                    </div>
+                  </Col>
+                  <Col lg={6} className="mb-3">
+                    <div className="d-md-flex justify-content-between release-time">
+                      <p>
+                        TIME OF THE GAME{" "}
+                        <strong>
+                          {this.state.betDetails.time_of_the_game}
+                        </strong>
+                      </p>
+                      <p>
+                        DATE OF THE GAME{" "}
+                        <strong>
+                          {this.state.betDetails.date_of_the_game}
+                        </strong>
+                      </p>
+                    </div>
+                  </Col>
+                </Row>
 
-                        <Row className="mb-md-5 mb-4">
-                            {this.state.playerDetails}
-                        </Row>
+                <Row className="mb-md-5 mb-4">{this.state.playerDetails}</Row>
 
-                        <Row className="align-items-center">
-                            <Col lg={6} className="mb-4">
-                                {
-                                    this.state.success ? 
-                                    <h3>Thank you! ${this.state.currentBidAmount} amount is successfully submitted.</h3>
-                                    :
-                                    <div className="form-bet-amount d-flex align-items-center">
-                                        <input 
-                                            type="text" 
-                                            className="border-0 bg-transparent pl-0" 
-                                            placeholder="Enter your bet amount" 
-                                            value={this.state.currentBidAmount > 0 ? this.state.currentBidAmount : ''}
-                                            onChange={(e) => this.setState({currentBidAmount : e.target.value })}
-                                        />
-                                        <Button onClick={this.betPlaced}><img src={SubmitArrow} alt="arrow"/></Button>
-                                    </div>
-                                }
+                <Row className="align-items-center">
+                  <Col lg={6} className="mb-4">
+                    {this.state.success ? (
+                      <h3>
+                        Thank you! $
+                        {parseInt(this.state.currentBidAmount).toLocaleString()}{" "}
+                        amount is successfully submitted.
+                      </h3>
+                    ) : (
+                      <div className="form-bet-amount d-flex align-items-center">
+                        <input
+                          type="text"
+                          className="border-0 bg-transparent pl-0"
+                          placeholder="Enter your bet amount"
+                          value={
+                            this.state.currentBidAmount > 0
+                              ? this.state.currentBidAmount
+                              : ""
+                          }
+                          onChange={(e) =>
+                            this.setState({ currentBidAmount: e.target.value })
+                          }
+                          readOnly={
+                            this.state.betDetails.has_bet_placed === "true"
+                              ? true
+                              : false
+                          }
+                        />
+                        <Button
+                          variant=""
+                          disabled={
+                            (this.state.betDetails.has_bet_placed === "true"
+                              ? true
+                              : false) ||
+                              (this.state.currentBidAmount > parseInt(this.state.points.replace(/,/g,''))
+                              ? true
+                              : false)
+                          }
+                          onClick={this.betPlaced}
+                        >
+                          <img src={SubmitArrow} alt="arrow" />
+                        </Button>
+                      </div>
+                    )}
 
+                    {this.state.betPlace.currentSelectedTeamID &&
+                    this.state.currentBidAmount > 0
+                      ? null
+                      : this.state.error && (
+                          <p className="lead mt-2 text-danger">
+                            <strong>{this.state.error}</strong>
+                          </p>
+                        )}
 
-                                {
-                                   this.state.betPlace.currentSelectedTeamID && this.state.currentBidAmount > 0 ?
-                                   null
-                                   :
-                                   this.state.error && <p className="lead mt-2 text-danger"><strong>{this.state.error}</strong></p>
-                                }
-                            </Col>
-                            <Col lg={6} className="mb-lg-4">
-                                <div className="ads-frame mx-auto mt-auto">
-                                    <img src={Ads} alt="Ads Poster" />
-                                </div>
-                            </Col>
-                        </Row>
-                    </Container>
+                    {this.state.betDetails.has_bet_placed === "true" ? (
+                      <p className="lead mt-2 text-success">
+                        <strong>You have been Placed Bet Already!</strong>
+                      </p>
+                    ) : (
+                      ""
+                    )}
+                    
 
-                </div>
-                
+                    {(this.state.currentBidAmount > parseInt(this.state.points.replace(/,/g, ''))) ? (
+                      <p className="lead mt-2 text-danger">
+                        <strong>Please enter amount less then or equal to {this.state.points}</strong>
+                      </p>
+                    ) : (
+                      ""
+                    )}
+                    
+                  </Col>
+                  <Col lg={6} className="mb-lg-4">
+                    <div className="ads-frame mx-auto mt-auto">
+                      <img src={Ads} alt="Ads Poster" />
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
             </div>
+          </div>
         );
     }
 }

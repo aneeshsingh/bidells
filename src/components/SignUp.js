@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PhoneInput from "react-phone-input-2";
 import axios from "./instance/axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -29,7 +29,8 @@ class SignUp extends Component {
       errors: {},
       curTime: new Date().toLocaleString(),
       redirect: false,
-      alreadyHas: ''
+      alreadyHas: '',
+      checked: true
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -64,7 +65,7 @@ class SignUp extends Component {
       })
 
       axios
-      .get(
+      .post(
         `/?itemType=register&full-name=${
           this.state.fields.firstname + ' ' + this.state.fields.lastname
         }+&email=${this.state.fields.email}&phone=${this.state.phone}&password=${
@@ -75,15 +76,26 @@ class SignUp extends Component {
         const data = res.data;
         console.log(data);
         if(data.userID){
-            this.setState({
-                redirect: true
-            })
+            // this.setState({
+            //     redirect: true
+            // })
         }else{
           
           this.setState({
             alreadyHas: data.error
           })
         }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+      // verify API
+      axios
+      .post(`?itemType=verify&phone=+${this.state.phone}`)
+      .then((res) => {
+        const data = res.data;
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -213,7 +225,7 @@ class SignUp extends Component {
 
   render() {
     if (this.state.redirect) {
-        return <Redirect to="/login" />;
+        return <Redirect to="/verification" />;
     }
     return (
       <div className="outer-view">
@@ -231,7 +243,7 @@ class SignUp extends Component {
         />
         <Row noGutters className="mh-100">
           <Col sm={12} md={6}>
-            <div className="col-content content-area top_offset">
+            <div className="col-content content-area top_offset offset_sm">
               <Row>
                 <Col md={10} lg={10}>
                   <div className="mb-4 pb-1">
@@ -324,12 +336,39 @@ class SignUp extends Component {
                           <div className="error_msg">{this.state.errors.confirm_password}</div>
                         </Form.Group>
                       </Col>
+                      <Col sm={12}>
+                        <Form.Group>
+                          <Form.Control
+                            type="text"
+                            name="referral_code"
+                            className="form-shadow form-radius border-0"
+                            value={this.state.fields.referral_code || ''}
+                            onChange={this.handleChange}
+                            placeholder="Referral Code (Optional)"
+                          />
+                        </Form.Group>
+                      </Col>
+                      
+                      <Col sm={12}>
+                        <Form.Group>
+                          <label className="custom_check lead">
+                            <input 
+                              type="checkbox" 
+                              className="d-none" 
+                              checked={this.state.checked} 
+                              onChange={() => this.setState({ checked : !this.state.checked })}
+                            />
+                            <span>I hereby accept all <Link to="/">T’s an C’s</Link></span>
+                          </label>
+                        </Form.Group>
+                      </Col>
                     </Form.Row>
 
                     <Button
                       variant="light"
                       type="submit"
                       block
+                      disabled={this.state.checked ? false : true}
                       className="form-btn d-flex align-items-center border-0 form-btn-skyblue"
                     >
                       SUBMIT{" "}
@@ -337,7 +376,7 @@ class SignUp extends Component {
                     </Button>
                   </Form>
 
-                  <div className="mt-4">
+                  <div className="mt-4 d-none">
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Cras est justo, ullamcorper et ipsum fringilla, convallis
