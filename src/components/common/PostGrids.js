@@ -25,7 +25,7 @@ class PostGrids extends Component {
         axios.get(`/?itemType=premiumBets&userID=${Auth}`)
             .then(res => {
             const data = res.data;
-            console.log(Object.entries(data));
+            // console.log(Object.entries(data));
             const getBets = Object.entries(data).map(([key, bets], index) => 
                 <Col md={6} lg={4} xl={3} sm={6} className="mb-md-4 mb-3 pb-3" key={key}>
                 <Link to={'/get-bet-details/'+bets.postID} className="post_box d-flex flex-column h-100">

@@ -148,7 +148,7 @@
             @include box-shadow(5px 5px 20px rgba(156,169,185,0.5), -5px -5px 20px rgba(255,255,255,0.5));
         }
 
-        &:hover{
+        &:not([disabled]):hover{
             @include box-shadow(3px 6px 4px rgba(156,169,185,0.5));
             color: $secondary;
         }

@@ -11,6 +11,9 @@ import SignUp from './components/SignUp';
 import ForgotPassword from './components/forgotPassword';
 import Verification from './components/verification';
 import About  from './components/About';
+import Faq  from './components/faq';
+import Contact  from './components/contact';
+import PrivacyPolicy  from './components/privacyPolicy';
 import Welcome  from './components/Welcome';
 import UnlimitedAccess  from './components/unlimitedAccess';
 import PaymentDetails  from './components/PaymentDetails';
@@ -54,13 +57,24 @@ class App extends Component {
           {/* <Route path="/verification">
             <Verification />
           </Route> */}
-          <Route exact path="/verification" component={Verification} />
+          <Route path="/verification" component={Verification} />
           <Route path="/sign-up">
             <SignUp />
           </Route>
+
           <Route path="/about">
             <About />
           </Route>
+          <Route path="/faq">
+            <Faq />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/privacy-policy">
+            <PrivacyPolicy />
+          </Route>
+          
           <Route path="/unlimited-access">
             <UnlimitedAccess />
           </Route>
@@ -90,11 +104,9 @@ class App extends Component {
             <RedeemPoints />
           </Route>
           <Route exact path="/redeem-single/:Id" component={RedeemSingle} />
-            {/* <RedeemSingle />
-          </Route> */}
+
           <Route exact path="/bidells-purchase" component={BidellsPurchase} />
-            {/* <RedeemSingle />
-          </Route> */}
+          
           <Route path="/redeem-congrats">
             <RedeemCongrats />
           </Route>

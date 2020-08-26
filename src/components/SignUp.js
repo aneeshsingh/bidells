@@ -74,11 +74,11 @@ class SignUp extends Component {
       )
       .then((res) => {
         const data = res.data;
-        console.log(data);
+        // console.log(data);
         if(data.userID){
-            // this.setState({
-            //     redirect: true
-            // })
+            this.setState({
+                redirect: true
+            })
         }else{
           
           this.setState({
@@ -92,18 +92,16 @@ class SignUp extends Component {
 
       // verify API
       axios
-      .post(`?itemType=verify&phone=+${this.state.phone}`)
+      .get(`/?itemType=verify&phone=${this.state.phone}`)
       .then((res) => {
-        const data = res.data;
-        console.log(data);
+        // const data = res.data;
+        // console.log(data);
       })
       .catch((error) => {
         console.log(error);
       });
 
-    }
-    
-
+    } 
 
   }
   
@@ -174,12 +172,12 @@ class SignUp extends Component {
       errors["password"] = "*Please enter your password.";
     }
 
-    if (typeof fields["password"] !== "undefined") {
-      if (!fields["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
-        formIsValid = false;
-        errors["password"] = "*Please enter secure and strong password.";
-      }
-    }
+    // if (typeof fields["password"] !== "undefined") {
+    //   if (!fields["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
+    //     formIsValid = false;
+    //     errors["password"] = "*Please enter secure and strong password.";
+    //   }
+    // }
     
     // Confirm Password error messages
     if (!fields["confirm_password"]) {
@@ -225,7 +223,10 @@ class SignUp extends Component {
 
   render() {
     if (this.state.redirect) {
-        return <Redirect to="/verification" />;
+        return <Redirect to={{
+          pathname: '/verification',
+          state: { phonenumber: this.state.phone }
+        }} />;
     }
     return (
       <div className="outer-view">
@@ -351,7 +352,7 @@ class SignUp extends Component {
                       
                       <Col sm={12}>
                         <Form.Group>
-                          <label className="custom_check lead">
+                          <label className={'custom_check lead ' + (this.state.checked ? '' : 'text-danger')}>
                             <input 
                               type="checkbox" 
                               className="d-none" 

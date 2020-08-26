@@ -56,6 +56,7 @@ class singlePost extends Component {
                 const playerDetails = Object.entries(data.player_detail).map(([key, player], index) => 
                     <Col lg={6} className="mt-4" key={key}>
                         <input type="radio" name="bets" hidden id={player.playerID}
+                            checked={betDetails.currentTeamPlayerSelection === player.playerID ? true : false}
                             onChange={() =>
                                 this.setState({
                                     betPlace : {
@@ -65,7 +66,7 @@ class singlePost extends Component {
                                     }
                                 })
                             }
-                            disabled={betDetails.open_for_bidding === "true" ? false : true}
+                            disabled={(betDetails.open_for_bidding === "true" && betDetails.currentTeamPlayerSelection === player.playerID) ? false : true}
                          />
                         <label htmlFor={player.playerID} className="strip-bidell d-flex align-items-center" title={betDetails.open_for_bidding === "false" ? "Bet is Not open for Bidding": null}>
                             <div className="flag-icon mr-xl-4 mr-sm-3 mr-2"><img src={player.image} alt="flag"/></div>
@@ -143,10 +144,10 @@ class singlePost extends Component {
             odds : bet.odds
         } 
 
-        // console.log(data);
+        console.log(data);
         
         if(bet.currentSelectedTeamID && this.state.currentBidAmount > 0){
-            axios.post(`/?itemType=${data.itemType}&betID=${data.betID}&currentSelectedTeamID=${data.currentSelectedTeamID}&currentUserID=${Auth}&currentBid=${data.currentBid}&playerName=${data.playerName}&odds=${data.odds}&currentTime=${data.currentTime}`, data)
+            axios.post(`/?itemType=${data.itemType}&betID=${data.betID}&currentSelectedTeamID=${data.currentSelectedTeamID}&currentUserID=${Auth}&currentBid=${data.currentBid}&playerName=${data.playerName}&odds=${data.odds}&currentTime=${data.currentTime}`)
               .then((res) => {
                 const data = res;
                 console.log('post', data.data);
@@ -304,7 +305,8 @@ class singlePost extends Component {
                     )}
                     
 
-                    {(this.state.currentBidAmount > parseInt(this.state.points.replace(/,/g, ''))) ? (
+                    {
+                      (this.state.currentBidAmount > parseInt(this.state.points.replace(/,/g, '')) && (this.state.betDetails.has_bet_placed === "false")) ? (
                       <p className="lead mt-2 text-danger">
                         <strong>Please enter amount less then or equal to {this.state.points}</strong>
                       </p>

@@ -22,7 +22,7 @@ class Verify extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            password:'',
+            code:'',
             redirect: false,
             error: ''
         };
@@ -32,12 +32,7 @@ class Verify extends Component {
     }
 
     componentDidMount(){
-        let Auth = localStorage.getItem('auth_bdGroup');
-        if(Auth){
-            this.setState({
-                redirect: true
-            })
-        }
+        console.log(this.props.location.state.phonenumber)
     }
     
 
@@ -49,25 +44,18 @@ class Verify extends Component {
         //   password: this.state.password ? this.state.password : this.state.data.password
         // };
 
-        const data = {
-            password: this.state.password
-        };   
+      
 
-        axios.post(`/?itemType=login&password=${data.password}&remember=true`, data)
+        axios.get(`/?itemType=verifyCode&phone=${this.props.location.state.phonenumber}&code=${this.state.code}`)
         .then(res => {
             const data = res.data;
-            if(data.userID){
-                localStorage.setItem('auth_bdGroup', data.userID);
+            if(data){
                 this.setState({
                     redirect: true
                 })
-            }else{
-                this.setState({
-                    error: data.error_string
-                })
             }
+        //   console.log(data);
 
-          console.log(res);
         }).catch((error) => {
             console.log(error)
         });
@@ -93,13 +81,13 @@ class Verify extends Component {
                                 <Col md={10} lg={10}>
                                     <div className="mb-4 pb-1">
                                         <h1>Verification</h1>
-                                        <p className="lead">Please enter the verification code send to +6142342343242343244.</p>
+                                        <p className="lead">Please enter the verification code send to +{this.props.location.state.phonenumber}.</p>
                                     </div>
                                 </Col>
                                 <Col md={12} lg={12}>
                                     <Form onSubmit={this.handleSubmit}>
                                         <Form.Group>
-                                            <Form.Control type="password" className="form-shadow form-radius border-0" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} placeholder="Password" />
+                                            <Form.Control type="text" className="form-shadow form-radius border-0" value={this.state.code} onChange={(e) => this.setState({code: e.target.value})} placeholder="Enter Code here" />
                                             {/* <Form.Text className="text-danger">{this.state.error}</Form.Text> */}
                                         </Form.Group>
                                         <Button variant="light" type="submit" block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">Verify <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>

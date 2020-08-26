@@ -1,9 +1,11 @@
 import React from 'react';
+import {
+    Link
+  } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 
@@ -41,7 +43,7 @@ function CreateBets() {
                         </div>
                     </Col>
                     <Col md={4} lg={4}>
-                        <Button href="#" block className="form-btn border-0 rounded text-uppercase">CREATE A NEW BET</Button>
+                        <Link to="/create-refer" className="form-btn btn btn-block border-0 rounded text-uppercase">CREATE A NEW BET</Link>
                     </Col>
                 </Row>
 

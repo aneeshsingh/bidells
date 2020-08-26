@@ -1235,6 +1235,52 @@ input{
     }
 }
 
+.accordion{
+    .card{
+        @include linear-gradient((136deg, #EBF3FA, #CBE0F7));
+        @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
+        margin-bottom: 25px;
+        border: 0;
+
+        @include maxDevice(479px){
+            margin-bottom: 15px;
+        }
+
+        &-header{
+            border: 0;
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.15;
+            color: $secondary;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba($secondary-30, .1);
+            @include linear-gradient((136deg, #EBF3FA, #CBE0F7));
+
+            @include maxDevice(479px){
+                font-size: 20px;
+                padding: 15px;
+            }
+        }
+
+        &-body{
+            font-weight: 400;
+            color: $secondary-30;
+
+            @include maxDevice(479px){
+                padding: 15px 15px 25px;
+            }
+
+            &.lead{
+                font-size: 24px;
+
+                @include maxDevice(479px){
+                    font-size: 20px;
+                }
+            }
+        }
+    }    
+}
+
 .custom{
     &-switch{
         padding-left: 0;
@@ -1311,6 +1357,27 @@ input{
 svg{
     line[stroke="#e0e0e0"]{
         display: none !important;
+    }
+}
+
+.contact{
+    &-info{
+        width: 100%;
+        margin: auto;
+        max-width: 330px;
+        padding: 40px 30px;
+        border-radius: 19px;
+        @include box-shadow(10px 10px 40px rgba(156,169,185,.5), -10px -10px 40px rgba(255,255,255,0.5));
+
+        @include maxDevice(767px){
+            padding: 30px 25px;
+        }
+        
+        @include maxDevice(1440px){
+            .h3, h3{
+                font-size: 1.55rem;   
+            }
+        }
     }
 }
 

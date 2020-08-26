@@ -10,7 +10,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
-import Chart from 'react-apexcharts';
+// common
+import Chart from './common/lineBar';
 
 // Header
 import Header from './header/Header';
@@ -28,86 +29,11 @@ class Leaderboard extends Component {
 
         this.state = {
             redirect: false,
-            height: '250', 
-            getLeads: [],
-            series: [{
-                name: "Leads",
-                data: [100, 260, 423, 390, 200]
-            }],
-            options: {
-                chart: {
-                    type: 'line',
-                    zoom: {
-                        enabled: false
-                    },
-                    toolbar: {
-                        show: false
-                    }
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                stroke: {
-                    curve: 'smooth'
-                },
-                title: {
-                    enabled: false
-                },
-                grid: {
-                    show: false
-                },
-                tooltip: {
-                    theme: 'dark',
-                },
-                xaxis: {
-                    labels: {
-                        show: false
-                    },
-                    tooltip:{
-                        enabled: false
-                    },
-                    crosshairs: {
-                        show: false
-                    },
-                    categories: ['1/11/2020', '2/11/2020', '3/11/2020', '4/11/2020', '5/11/2020'],
-                },
-                yaxis: {
-                    labels: {
-                        show: false
-                    }
-                },
-                colors: ['#FE3A21'],
-                fill: {
-                    type: 'gradient',
-                    gradient: {
-                        gradientToColors: [ '#FC7B45'],
-                        shadeIntensity: 1,
-                        opacityFrom: 1,
-                        opacityTo: 1,
-                        stops: [0, 200, 100, 100]
-                    }
-                },
-                markers: {
-                    size: 6,
-                    colors: ["#FE3A21"],
-                    strokeColors: "transparent",
-                    strokeWidth: 0,
-                    hover:{
-                        size: 10
-                    }
-                },
-                legend: {
-                    show: false
-                }
-          },    
+            getLeads: []    
         };
     }
 
     componentWillMount(){
-        if(window.innerWidth < 991){
-            this.setState({height: '160'});
-        }
-
         let Auth = localStorage.getItem('auth_bdGroup');
         if(!Auth){
             this.setState({
@@ -122,7 +48,7 @@ class Leaderboard extends Component {
         axios.get(`/?itemType=getAllLeaderboards&userID=${Auth}`)
             .then(res => {
             const data = res.data;
-            // console.log(data);
+            console.log(data);
             if(!data.error){
                 const getLeads = Object.entries(data).map(([key, lead], index) => 
                     <Link to={'/leaderboard-view/'+lead.leaderboard_id} className="lead-strip li-grad d-flex flex-wrap align-items-center mb-4" key={key}>
@@ -183,7 +109,8 @@ class Leaderboard extends Component {
                                         AVERAGE POSITION
                                     </div>
 
-                                    <Chart options={this.state.options} series={this.state.series} height={this.state.height} />
+                                    {/* <Chart options={this.state.options} series={this.state.series} height={this.state.height} /> */}
+                                    <Chart height='220' />
                                 </div>
                             </Col>
                         </Row>

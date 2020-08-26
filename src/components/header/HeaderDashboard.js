@@ -51,6 +51,7 @@ class HeaderDashboard extends Component {
                             <Nav.Link href="/redeem-points">Shop</Nav.Link>
                             <Nav.Link href="/activities">Activity</Nav.Link>
                             <Nav.Link href="/refer">Refer a friend</Nav.Link>
+                            <Nav.Link href="/create-bets">Create your own</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

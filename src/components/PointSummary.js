@@ -5,7 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import Chart from 'react-apexcharts';
+// common
+import Chart from './common/lineBar';
 
 // Header
 import Header from './header/Header';
@@ -22,80 +23,9 @@ class PointSummary extends Component {
         super(props);
 
         this.state = {
-            height: '300', 
             description: '',
             totalPoints: '',
-            getUserActivity: [],
-            series: [{
-                name: "Points",
-                data: [100, 70, 85, 95, 65, 70, 65, 40, 30, 65, 45, 95, 95, 45, 50, 40, 20, 75, 25, 75]
-            }],
-            options: {
-                chart: {
-                type: 'line',
-                zoom: {
-                    enabled: false
-                },
-                toolbar: {
-                    show: false
-                }
-                },
-                dataLabels: {
-                enabled: false
-                },
-                stroke: {
-                curve: 'smooth'
-                },
-                title: {
-                    enabled: false
-                },
-                grid: {
-                    show: false
-                },
-                tooltip: {
-                    theme: 'dark',
-                },
-                xaxis: {
-                    labels: {
-                        show: false
-                    },
-                    tooltip:{
-                        enabled: false
-                    },
-                    crosshairs: {
-                        show: false
-                    },
-                    categories: ['1/11/2020', '2/11/2020', '3/11/2020', '4/11/2020', '5/11/2020', '6/11/2020', '7/11/2020', '8/11/2020', '9/11/2020', '10/11/2020', '11/11/2020', '12/11/2020', '13/11/2020', '14/11/2020', '15/11/2020', '16/11/2020', '17/11/2020', '18/11/2020', '19/11/2020', '20/11/2020'],
-                },
-                yaxis: {
-                    labels: {
-                        show: false
-                    }
-                },
-                colors: ['#FE3A21'],
-                fill: {
-                    type: 'gradient',
-                    gradient: {
-                        gradientToColors: [ '#FC7B45'],
-                        shadeIntensity: 1,
-                        opacityFrom: 1,
-                        opacityTo: 1,
-                        stops: [0, 200, 100, 100]
-                    }
-                },
-                markers: {
-                    size: 6,
-                    colors: ["#FE3A21"],
-                    strokeColors: "transparent",
-                    strokeWidth: 0,
-                    hover:{
-                        size: 10
-                    }
-                },
-                legend: {
-                    show: false
-                }
-            },    
+            getUserActivity: []    
         };
     }
 
@@ -125,32 +55,15 @@ class PointSummary extends Component {
             )
 
 
-            // bet Points
-            const getBetsPoints = [];
-            data.get_all_bets_placed.map((point) => {
-                return getBetsPoints.push(parseInt(point.points_bet));
-            });
+            
 
-            // bet date
-            const getBetsDate = [];
-            data.get_all_bets_placed.map((date) => {
-                return getBetsDate.push(date.bet_date);
-            });
+            
 
-            console.log(getBetsPoints);
 
             this.setState({
                 getUserActivity,
                 description,
-                totalPoints,
-                series: [{
-                    data: getBetsPoints
-                }],
-                options: {
-                    xaxis: {
-                        categories: getBetsDate
-                    }
-                }
+                totalPoints
             })
             
         }).catch((error) => {
@@ -160,14 +73,9 @@ class PointSummary extends Component {
 
     componentWillMount(){
         this.getLeadData();
-
-        if(window.innerWidth < 991){
-            this.setState({height: '160'});
-        }
     }
 
     render() {
-        console.log(this.state.series.data);
 
         return (
             <div className="outer-view">
@@ -196,7 +104,8 @@ class PointSummary extends Component {
                                         <strong>{this.state.totalPoints}</strong>
                                         Total Points
                                     </div>
-                                    <Chart options={this.state.options} series={this.state.series} height={this.state.height} />
+                                    {/* <Chart options={this.state.options} series={this.state.series} height={this.state.height} /> */}
+                                    <Chart height='300' />
                                 </div>
                             </Col>
                         </Row>

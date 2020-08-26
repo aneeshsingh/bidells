@@ -55,7 +55,7 @@ class login extends Component {
             password: this.state.password
         };   
 
-        axios.post(`/?itemType=login&email=${data.email}&password=${data.password}&remember=true`, data)
+        axios.post(`/?itemType=login&email=${data.email}&password=${data.password}&remember=true`)
         .then(res => {
             const data = res.data;
             if(data.userID){
@@ -69,7 +69,7 @@ class login extends Component {
                 })
             }
 
-          console.log(res);
+        //   console.log(res);
         }).catch((error) => {
             console.log(error)
         });
