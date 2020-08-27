@@ -10,10 +10,6 @@ import Login from './components/login';
 import SignUp from './components/SignUp';
 import ForgotPassword from './components/forgotPassword';
 import Verification from './components/verification';
-import About  from './components/About';
-import Faq  from './components/faq';
-import Contact  from './components/contact';
-import PrivacyPolicy  from './components/privacyPolicy';
 import Welcome  from './components/Welcome';
 import UnlimitedAccess  from './components/unlimitedAccess';
 import PaymentDetails  from './components/PaymentDetails';
@@ -37,6 +33,15 @@ import PointSummary  from './components/PointSummary';
 import CreateRefer  from './components/CreateRefer';
 import SiteMap  from './components/SiteMap';
 import Footer from './components/footer/Footer';
+
+// information
+import Faq  from './components/faq';
+import About  from './components/About';
+import Contact  from './components/contact';
+import Devices  from './components/Devices';
+import PrivacyPolicy  from './components/privacyPolicy';
+import TermsConditions  from './components/termsConditions';
+import ImportantInformation  from './components/importantInformation';
 
 class App extends Component {
   componentDidUpdate(prevProps) {
@@ -73,6 +78,15 @@ class App extends Component {
           </Route>
           <Route path="/privacy-policy">
             <PrivacyPolicy />
+          </Route>
+          <Route path="/terms-and-conditions">
+            <TermsConditions />
+          </Route>
+          <Route path="/important-information">
+            <ImportantInformation />
+          </Route>
+          <Route path="/devices">
+            <Devices />
           </Route>
           
           <Route path="/unlimited-access">

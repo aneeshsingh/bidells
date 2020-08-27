@@ -53,6 +53,13 @@ class SiteMap extends Component {
                                     <li><Link to="/point-summary">PointSummary</Link></li>
                                     <li><Link to="/create-refer">CreateRefer</Link></li>
                                     <li><Link to="/bidells-single">Bidells Redeem Single</Link></li>
+                                    <li><Link to="/faq">Faq</Link></li>
+                                    <li><Link to="/about">About</Link></li>
+                                    <li><Link to="/contact">Contact</Link></li>
+                                    <li><Link to="/devices">Devices</Link></li>
+                                    <li><Link to="/privacy-policy">PrivacyPolicy</Link></li>
+                                    <li><Link to="/terms-and-conditions">TermsConditions</Link></li>
+                                    <li><Link to="/important-information">ImportantInformation</Link></li>
                                 </ol>
                             </Col>
                         </Row>

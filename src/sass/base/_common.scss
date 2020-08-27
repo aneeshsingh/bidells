@@ -224,6 +224,10 @@ strong{
 	}
 }
 
+.rounded-2x{
+	border-radius: 25px;
+}
+
 button.btn{
 	line-height: normal;
 }
@@ -245,6 +249,28 @@ h1, h2, h3, h4, h5, h6, .h3{
 	color: $secondary;
 }
 
+ol, ul{
+	@include maxDevice(575px){
+		padding-left: 20px;
+	}
+	ol, ul{
+		margin-bottom: 35px;
+		margin-top: 15px;
+
+		@include maxDevice(575px){
+			margin-bottom: 20px;
+			padding-left: 15px;
+			margin-top: 10px;
+		}
+	}
+}
+
+ol{
+	ol{
+		list-style-type: upper-roman;
+	}
+}
+
 .text-normal{
 	text-transform: none !important;
 }
@@ -253,6 +279,10 @@ h1, h2, h3, h4, h5, h6, .h3{
 	a{
 		color: inherit !important;
 	}
+}
+
+.text-secondary{
+	color: $secondary !important;
 }
 
 .nowrap{

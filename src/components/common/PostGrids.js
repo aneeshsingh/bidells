@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 
 // assets
 import User from '../../assets/user_pic.png';
+import Ads_03 from '../../assets/ads_04.png';  
 
 class PostGrids extends Component {
     constructor(props) {
@@ -21,49 +22,65 @@ class PostGrids extends Component {
     }
     getBetsData(){
         let Auth = localStorage.getItem('auth_bdGroup');
-
+        // let count = 5;
         axios.get(`/?itemType=premiumBets&userID=${Auth}`)
             .then(res => {
             const data = res.data;
             // console.log(Object.entries(data));
             const getBets = Object.entries(data).map(([key, bets], index) => 
-                <Col md={6} lg={4} xl={3} sm={6} className="mb-md-4 mb-3 pb-3" key={key}>
-                <Link to={'/get-bet-details/'+bets.postID} className="post_box d-flex flex-column h-100">
-                    <img src={bets.game_logo} className="post_horseIcon" alt="horse" />
-                    <div className="post_type text-uppercase">{bets.game_type}</div>
-                    <h2>{bets.title}</h2>
-                    <div className="post_text">
-                         {bets.subHeading}
-                    </div>
-                    <div className="post_info d-flex align-items-center justify-content-between">
-                        <span>24/5/2020</span>
-                        <span>{bets.total_bets} Votes</span>
-                    </div>
+                <>
+                    <Col md={6} lg={4} xl={3} sm={6} className="mb-md-4 mb-3 pb-3" key={key}>
+                        <Link to={'/get-bet-details/'+bets.postID} className="post_box d-flex flex-column h-100">
+                            <img src={bets.game_logo} className="post_horseIcon" alt="horse" />
+                            <div className="post_type text-uppercase">{bets.game_type}</div>
+                            <h2>{bets.title}</h2>
+                            <div className="post_text">
+                                {bets.subHeading}
+                            </div>
+                            <div className="post_info d-flex align-items-center justify-content-between">
+                                <span>24/5/2020</span>
+                                <span>{bets.total_bets} Votes</span>
+                            </div>
 
-                    <div className="post_users pt-3 mt-auto d-flex align-items-center">
-                        {                            
-                            Object.entries(bets.users).map(([key, user], index) => {
-                                    const userLength = bets.users.length;
-                                    if(index < 5){
-                                        return <img src={user.profilePicUrl || User} alt="User" key={key} />
-                                    }else{
-                                        if(index < 6){
-                                            return <span key={key}>+{userLength - 5}</span>
-                                        }else{
-                                            return null
+                            <div className="post_users pt-3 mt-auto d-flex align-items-center">
+                                {                            
+                                    Object.entries(bets.users).map(([key, user], index) => {
+                                            const userLength = bets.users.length;
+                                            if(index < 5){
+                                                return <img src={user.profilePicUrl || User} alt="User" key={key} />
+                                            }else{
+                                                if(index < 6){
+                                                    return <span key={key}>+{userLength - 5}</span>
+                                                }else{
+                                                    return null
+                                                }
+                                            }
                                         }
-                                    }
+                                    )
                                 }
+                                {/* <img src={User} alt="User" />
+                                <img src={User} alt="User" />
+                                <img src={User} alt="User" />
+                                <img src={User} alt="User" />
+                                <span>+5</span> */}
+                            </div>
+                        </Link>
+                    </Col>
+
+                    {(() => {
+                        if( (index * 6) % (index + 3) ){
+                            return(
+                                <Col md={6} lg={4} xl={3} sm={6} className="mb-md-4 mb-3 pb-3">
+                                    <div className="ads-portFrame p-md-4 p-3">
+                                        <img src={Ads_03} alt="ads" />
+                                    </div>
+                                </Col>
                             )
+                        }else{
+                            return null
                         }
-                        {/* <img src={User} alt="User" />
-                        <img src={User} alt="User" />
-                        <img src={User} alt="User" />
-                        <img src={User} alt="User" />
-                        <span>+5</span> */}
-                    </div>
-                </Link>
-            </Col>
+                    })()}
+                </>
              )
 
             this.setState({
@@ -93,7 +110,7 @@ class PostGrids extends Component {
         }
         
         return (
-            <Row>
+            <Row className="bets_grid">
                 {this.state.getBets}
             </Row>
         );

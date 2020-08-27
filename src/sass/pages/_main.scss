@@ -98,12 +98,44 @@ h4{
 }
 
 .content-area{
-    p.lead{
+    a{
+        text-decoration: underline;
+        word-break: break-word;
+    }
+    li{
+        margin-bottom: 15px;
+        font-weight: 400;
+
+        @include maxDevice(575px){
+            margin-bottom: 10px;
+        }
+
+        strong{
+            font-weight: bold;
+        }
+
+        li{
+            font-size: 0.88em;
+        }
+    }
+    .lead, li{
         font-size: 24px;
 
         @include maxDevice(767px){
             font-size: 20px;
         }
+    }
+}
+
+.information-content{
+    h3{
+        font-size: 1.4em;
+        margin-top: 40px;
+        margin-bottom: 15px;
+    }
+    h4{
+        margin-top: 32px;
+        margin-bottom: 15px;
     }
 }
 
@@ -494,6 +526,13 @@ h4{
             display: block;
             margin: auto;
         }
+    }
+}
+
+.bets_grid{
+    .ads-portFrame{        
+        max-width: 400px;
+        border-radius: 30px;
     }
 }
 
@@ -1237,9 +1276,10 @@ input{
 
 .accordion{
     .card{
-        @include linear-gradient((136deg, #EBF3FA, #CBE0F7));
         @include box-shadow(10px 10px 40px rgba(156,169,185,0.5), -10px -10px 40px rgba(255,255,255,0.5));
-        margin-bottom: 25px;
+        @include linear-gradient((136deg, #EBF3FA, #CBE0F7));
+        border-radius: 25px !important;
+        margin-bottom: 20px;
         border: 0;
 
         @include maxDevice(479px){
@@ -1248,17 +1288,47 @@ input{
 
         &-header{
             border: 0;
+            padding: 0px;
             font-size: 22px;
             font-weight: 600;
             line-height: 1.15;
             color: $secondary;
-            padding: 15px 20px;
+            position: relative;
             border-bottom: 1px solid rgba($secondary-30, .1);
             @include linear-gradient((136deg, #EBF3FA, #CBE0F7));
 
             @include maxDevice(479px){
                 font-size: 20px;
-                padding: 15px;
+            }
+
+            &-btn{
+                cursor: pointer;
+                padding: 20px 50px 20px 20px;
+
+                @include maxDevice(479px){
+                    padding: 18px 30px 18px 15px;
+                }
+
+                &.up{
+                    .card-arrow{
+                        @include rotate(180deg);
+                    }
+                }
+            }
+        }
+
+        &-arrow{
+            @include transition(all .35s linear);
+            position: absolute;
+            margin: auto;
+            right: 25px;
+            width: 20px;
+            bottom: 0;
+            top: 0;
+
+            @include maxDevice(479px){
+                right: 15px;
+                width: 16px;
             }
         }
 
@@ -1318,6 +1388,26 @@ input{
             }
         }
 
+    }
+}
+
+.info_box{
+    padding: 35px 30px;
+    border-radius: 20px;
+    @include box-shadow(10px 10px 40px rgba(156,169,185,.5), -10px -10px 40px rgba(255,255,255,0.5));
+
+    @include maxDevice(767px){
+        padding: 20px 15px;
+    }
+
+    h3{
+        margin-top: 0;
+        margin-bottom: 25px;
+
+        @include maxDevice(767px){
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
     }
 }
 

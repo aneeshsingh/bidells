@@ -127,7 +127,7 @@ class Welcome extends Component {
         let Auth = localStorage.getItem('auth_bdGroup');
 
         return (
-            <div className="outer-view">
+            <div className="outer-view welcome-outer">
                 <img src={OvalRight} className="ovel-bottom-right d-block d-md-none" alt="ovel shape" />
                 <Header />
                 <div className="top_offset">

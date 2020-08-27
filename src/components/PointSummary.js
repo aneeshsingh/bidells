@@ -118,7 +118,7 @@ class PointSummary extends Component {
                                     
                                 </Col>
                                 <Col md={4} lg={3} className="mb-md-2">
-                                        <div className="ads-portFrame d-none d-md-block">
+                                    <div className="ads-portFrame d-none d-md-block">
                                         <img src={Ads_02} alt="ads" />
                                     </div>
                                     <div className="ads-frame mx-auto mt-4 d-block d-md-none">
