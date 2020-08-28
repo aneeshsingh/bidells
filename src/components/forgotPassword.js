@@ -88,7 +88,7 @@ class ForgotPassword extends Component {
                 <img src={OvalRight} className="ovel-bottom-right d-block d-lg-none" alt="ovel shape" />
                 <Row noGutters className="mh-100">
                     <Col sm={12} md={6}>
-                        <div className="col-content content-area top_offset">
+                        <div className="col-content top_offset">
                             <Row>
                                 <Col md={10} lg={10}>
                                     <div className="mb-4 pb-1">

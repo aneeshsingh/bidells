@@ -44,7 +44,7 @@ class SiteMap extends Component {
                                     <li><Link to="/get-results">Get Results</Link></li>
                                     <li><Link to="/redeem-points">RedeemPoints</Link></li>
                                     <li><Link to="/redeem-single">RedeemSingle</Link></li>
-                                    <li><Link to="/redeem-congrats">RedeemCongrats</Link></li>
+                                    <li><Link to="/congratulation">RedeemCongrats</Link></li>
                                     <li><Link to="/redeem-order">RedeemOrder</Link></li>
                                     <li><Link to="/activities">Activities</Link></li>
                                     <li><Link to="/refer">Refer</Link></li>
@@ -52,7 +52,7 @@ class SiteMap extends Component {
                                     <li><Link to="/create-bets">CreateBets</Link></li>
                                     <li><Link to="/point-summary">PointSummary</Link></li>
                                     <li><Link to="/create-refer">CreateRefer</Link></li>
-                                    <li><Link to="/bidells-single">Bidells Redeem Single</Link></li>
+                                    <li><Link to="/bidells-purchase">Bidells Redeem Single</Link></li>
                                     <li><Link to="/faq">Faq</Link></li>
                                     <li><Link to="/about">About</Link></li>
                                     <li><Link to="/contact">Contact</Link></li>

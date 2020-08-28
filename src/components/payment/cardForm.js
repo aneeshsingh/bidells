@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import useResponsiveFontSize from "../common/useResponsiveFontSize";
 
@@ -36,6 +36,9 @@ const useOptions = () => {
 
 const CardForm = (props) => {
   const stripe = useStripe();
+  const [paymentRequest, setPaymentRequest] = useState(null);
+  const [notAvailable, setNotAvailable] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState(null);
   const elements = useElements();
   const options = useOptions();
 
@@ -47,6 +50,28 @@ const CardForm = (props) => {
       // form submission until Stripe.js has loaded.
       return;
     }
+
+    const pr = stripe.paymentRequest({
+      country: 'US',
+      currency: 'usd',
+      total: {
+        label: 'Demo total',
+        amount: 100,
+      },
+    });
+
+    pr.on('paymentmethod', async (event) => {
+      setPaymentMethod(event.paymentMethod);
+      event.complete('success');
+    });
+
+    pr.canMakePayment().then((canMakePaymentRes) => {
+      if (canMakePaymentRes) {
+        setPaymentRequest(pr);
+      } else {
+        setNotAvailable(true);
+      }
+    });
 
     const payload = await stripe.createPaymentMethod({
       type: "card",
@@ -81,7 +106,12 @@ const CardForm = (props) => {
             Pay
         </button> */}
         <Col md={10} lg={8}>
-      <Button variant="light" type="submit" disabled={!stripe} block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">{props.buttonText ? props.buttonText : 'SUBSCRIBE'} <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+          <Button variant="light" type="submit" disabled={!stripe} block className="form-btn d-flex align-items-center border-0 form-btn-skyblue">{props.buttonText ? props.buttonText : 'SUBSCRIBE'} <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+        </Col>
+        <Col>
+        {notAvailable && 'Not Avaialble'}
+        {paymentMethod && <div>Got PaymentMethod: {paymentMethod.id}</div>}
+        {paymentRequest && <div>Got paymentRequest</div>}
         </Col>
       </Row>
     </form>

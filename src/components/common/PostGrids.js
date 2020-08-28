@@ -16,6 +16,7 @@ class PostGrids extends Component {
         super(props);
         
         this.state = {
+            countAds : 2,
             getBets: [],
             isfatching: false
         }
@@ -27,62 +28,72 @@ class PostGrids extends Component {
             .then(res => {
             const data = res.data;
             // console.log(Object.entries(data));
-            const getBets = Object.entries(data).map(([key, bets], index) => 
-                <>
-                    <Col md={6} lg={4} xl={3} sm={6} className="mb-md-4 mb-3 pb-3" key={key}>
-                        <Link to={'/get-bet-details/'+bets.postID} className="post_box d-flex flex-column h-100">
-                            <img src={bets.game_logo} className="post_horseIcon" alt="horse" />
-                            <div className="post_type text-uppercase">{bets.game_type}</div>
-                            <h2>{bets.title}</h2>
-                            <div className="post_text">
-                                {bets.subHeading}
-                            </div>
-                            <div className="post_info d-flex align-items-center justify-content-between">
-                                <span>24/5/2020</span>
-                                <span>{bets.total_bets} Votes</span>
-                            </div>
+            const getBets = Object.entries(data).map(([key, bets], index) => {
+                this.setState({
+                    countAds: this.state.countAds + 2
+                })
+                return(
+                    <>
+                        <Col md={6} lg={4} xl={3} sm={6} className="mb-md-4 mb-3 pb-3" key={key}>
+                            <Link to={'/get-bet-details/'+bets.postID} className="post_box d-flex flex-column h-100">
+                                <img src={bets.game_logo} className="post_horseIcon" alt="horse" />
+                                <div className="post_type text-uppercase">{bets.game_type}</div>
+                                <h2>{bets.title}</h2>
+                                <div className="post_text">
+                                    {bets.subHeading}
+                                </div>
+                                <div className="post_info d-flex align-items-center justify-content-between">
+                                    <span>24/5/2020</span>
+                                    <span>{bets.total_bets} Votes</span>
+                                </div>
 
-                            <div className="post_users pt-3 mt-auto d-flex align-items-center">
-                                {                            
-                                    Object.entries(bets.users).map(([key, user], index) => {
-                                            const userLength = bets.users.length;
-                                            if(index < 5){
-                                                return <img src={user.profilePicUrl || User} alt="User" key={key} />
-                                            }else{
-                                                if(index < 6){
-                                                    return <span key={key}>+{userLength - 5}</span>
+                                <div className="post_users pt-3 mt-auto d-flex align-items-center">
+                                    {                            
+                                        Object.entries(bets.users).map(([key, user], index) => {
+                                                const userLength = bets.users.length;
+                                                if(index < 5){
+                                                    return <img src={user.profilePicUrl || User} alt="User" key={key} />
                                                 }else{
-                                                    return null
+                                                    if(index < 6){
+                                                        return <span key={key}>+{userLength - 5}</span>
+                                                    }else{
+                                                        return null
+                                                    }
                                                 }
                                             }
-                                        }
-                                    )
-                                }
-                                {/* <img src={User} alt="User" />
-                                <img src={User} alt="User" />
-                                <img src={User} alt="User" />
-                                <img src={User} alt="User" />
-                                <span>+5</span> */}
-                            </div>
-                        </Link>
-                    </Col>
+                                        )
+                                    }
+                                    {/* <img src={User} alt="User" />
+                                    <img src={User} alt="User" />
+                                    <img src={User} alt="User" />
+                                    <img src={User} alt="User" />
+                                    <span>+5</span> */}
+                                </div>
+                            </Link>
+                        </Col>
 
-                    {(() => {
-                        if( (index * 6) % (index + 3) ){
-                            return(
-                                <Col md={6} lg={4} xl={3} sm={6} className="mb-md-4 mb-3 pb-3">
-                                    <div className="ads-portFrame p-md-4 p-3">
-                                        <img src={Ads_03} alt="ads" />
-                                    </div>
-                                </Col>
-                            )
-                        }else{
-                            return null
-                        }
-                    })()}
-                </>
-             )
+                        {(() => {
+                            if( (index * 6) % (index + 3) ){
+                            // let countAds = 2;
+                            // if( index === countAds ){
+                            //     countAds += 2;
+                                return (
+                                    <Col md={6} lg={4} xl={3} sm={6} className="mb-md-4 mb-3 pb-3" key={key*85}>
+                                        <div className="ads-portFrame p-md-4 p-3">
+                                            <img src={Ads_03} alt="ads" />
+                                        </div>
+                                    </Col>
+                                )
+                            }else{
+                                return null
+                            }
 
+                            
+                        })()}
+                    </>
+                )
+            })
+             
             this.setState({
                 getBets,
                 isfatching: true

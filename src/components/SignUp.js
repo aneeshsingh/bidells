@@ -244,7 +244,7 @@ class SignUp extends Component {
         />
         <Row noGutters className="mh-100">
           <Col sm={12} md={6}>
-            <div className="col-content content-area top_offset offset_sm">
+            <div className="col-content top_offset offset_sm">
               <Row>
                 <Col md={10} lg={10}>
                   <div className="mb-4 pb-1">

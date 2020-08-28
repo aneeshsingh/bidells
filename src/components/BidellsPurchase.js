@@ -29,13 +29,9 @@ class BidellsPurchase extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ID: null,
             counter: 1000,
-            total: 0,
-            redeem: [],
-            totalCount: 0,
-            availQuantity: 0,
-            currentPoints: 0,
+            total: 9.99,
+            redeem: []
         };
 
         
@@ -51,29 +47,24 @@ class BidellsPurchase extends Component {
     }
 
     getLeadData(){
-        let Auth = localStorage.getItem('auth_bdGroup');
-        let Id = this.props.match.params.Id;
+        // let Auth = localStorage.getItem('auth_bdGroup');
 
-        this.setState({
-          ID : Id
-        })
+        // axios.get(`/?itemType=getProductInformation&productID=${Id}&userID=${Auth}`)
+        //     .then(res => {
+        //     const redeem = res.data;
+        //     // console.log(redeem);
 
-        axios.get(`/?itemType=getProductInformation&productID=${Id}&userID=${Auth}`)
-            .then(res => {
-            const redeem = res.data;
-            // console.log(redeem);
-
-            this.setState({
-                redeem : redeem,
-                total : parseInt(redeem.points),
-                totalCount : parseInt(redeem.points),
-                availQuantity : parseInt(redeem.quantityAvailable),
-                currentPoints : parseInt(Number(redeem.userCurrentPoints.replace(/,/g,'')) + 1)
-            })
+        //     this.setState({
+        //         redeem : redeem,
+        //         total : parseInt(redeem.points),
+        //         totalCount : parseInt(redeem.points),
+        //         availQuantity : parseInt(redeem.quantityAvailable),
+        //         currentPoints : parseInt(Number(redeem.userCurrentPoints.replace(/,/g,'')) + 1)
+        //     })
             
-        }).catch((error) => {
-            console.log(error)
-        })
+        // }).catch((error) => {
+        //     console.log(error)
+        // })
     }
 
     componentDidMount() {
@@ -82,13 +73,15 @@ class BidellsPurchase extends Component {
 
     onIncrement = () => {
       this.setState(state => ({ 
-        counter: state.counter + 1000
+        counter: state.counter + 1000,
+        total: state.total + 9.99
       }));
     }
    
     onDecrement = () => {
       this.setState(state => ({ 
-        counter: Math.max(state.counter - 1000, 1000)
+        counter: Math.max(state.counter - 1000, 1000),
+        total: Math.max(state.total - 10, 9.99)
       }));
     }
 
@@ -99,12 +92,12 @@ class BidellsPurchase extends Component {
 
       let Auth = localStorage.getItem('auth_bdGroup');
 
-      const data = {
-        counter: this.state.counter
-      }
+      // const data = {
+      //   counter: this.state.counter
+      // }
 
 
-      axios.get(`/?itemType=productPurchased&userID=${Auth}&quantity=${this.state.counter}&productID=${this.state.ID}`, data)
+      axios.get(`/?itemType=productPurchased&userID=${Auth}&quantity=${this.state.counter}&productID=${this.state.ID}`)
         .then((res) => {
           const data = res;
           console.log(data.data);
@@ -115,7 +108,7 @@ class BidellsPurchase extends Component {
     }
 
     render() {
-      // console.log(this.state.counter, this.state.total, this.state.availQuantity);
+      console.log(this.state.counter, this.state.total, this.state.availQuantity);
 
         return (
           <div className="outer-view">
@@ -198,7 +191,7 @@ class BidellsPurchase extends Component {
                             <div className="box-grid-info py-2">
                               <span className="mb-4 d-block">Total</span>
                               <strong>
-                                $100.00
+                                ${this.state.total.toFixed(2)}
                               </strong>
                             </div>
                           </div>

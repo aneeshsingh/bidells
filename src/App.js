@@ -119,11 +119,14 @@ class App extends Component {
           </Route>
           <Route exact path="/redeem-single/:Id" component={RedeemSingle} />
 
-          <Route exact path="/bidells-purchase" component={BidellsPurchase} />
+          {/* <Route exact path="/bidells-purchase" component={BidellsPurchase} /> */}
           
-          <Route path="/redeem-congrats">
-            <RedeemCongrats />
+          <Route path="/bidells-purchase">
+            <BidellsPurchase />
           </Route>
+          
+          <Route path="/congratulation" component={RedeemCongrats} />
+
           <Route path="/redeem-order">
             <RedeemOrder />
           </Route>

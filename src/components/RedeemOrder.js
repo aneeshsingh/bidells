@@ -7,7 +7,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 // Header
 import Header from './header/HeaderPost';
@@ -50,25 +49,16 @@ class RedeemOrder extends Component {
                                         <Form>
                                             <Row>
                                                 <Col lg={4} className="mb-3">
-                                                    <Form.Group>
-                                                        <input type="radio" name="orderStatus" id="recieved" className="d-none" />
-                                                        <Form.Label className="label-box text-center text-lg-left" htmlFor="recieved"><strong>1</strong> We have recieved your order</Form.Label>
-                                                    </Form.Group>
+                                                    <div className="label-box label-box-normal mb-3 text-center text-lg-left"><strong>1</strong> We have recieved your order</div>
                                                 </Col>
                                                 <Col lg={4} className="mb-3">
-                                                    <Form.Group>
-                                                        <input type="radio" name="orderStatus" id="dispatched" className="d-none" />
-                                                        <Form.Label className="label-box text-center text-lg-left" htmlFor="dispatched"><strong>2</strong> Your order has been dispatched</Form.Label>
-                                                    </Form.Group>
+                                                    <div className="label-box label-box-normal mb-3 text-center text-lg-left"><strong>2</strong> Your order has been dispatched</div>
                                                 </Col>
                                                 <Col lg={4} className="mb-3">
-                                                    <Form.Group>
-                                                        <input type="radio" name="orderStatus" id="delivered" className="d-none" />
-                                                        <Form.Label className="label-box text-center text-lg-left" htmlFor="delivered"><strong>3</strong> Your order has been delivered</Form.Label>
-                                                    </Form.Group>
+                                                    <div className="label-box label-box-normal mb-3 text-center text-lg-left"><strong>3</strong> Your order has been delivered</div>
                                                 </Col>
                                             </Row>
-                                            <Button variant="light" type="submit" block className="form-btn mb-5 d-flex align-items-center border-0 form-btn-skyblue">CONTINUE BIDDING <img className="ml-auto" src={arrowRight} alt="arrow" /></Button>
+                                            <Link to="/get-all-bets" className="form-btn mb-5 d-flex align-items-center border-0 form-btn-skyblue btn btn-light btn-block">CONTINUE BIDDING <img className="ml-auto" src={arrowRight} alt="arrow" /></Link>
                                         </Form>
                                     </Col>
                                 </Row>

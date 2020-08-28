@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from './instance/axios';
+import { Redirect } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -36,6 +37,9 @@ class RedeemSingle extends Component {
             totalCount: 0,
             availQuantity: 0,
             currentPoints: 0,
+            message: '',
+            redirect: false,
+            orderID : null
         };
 
         
@@ -109,15 +113,23 @@ class RedeemSingle extends Component {
 
       let Auth = localStorage.getItem('auth_bdGroup');
 
-      const data = {
-        counter: this.state.counter
-      }
+      // const data = {
+      //   counter: this.state.counter
+      // }
 
 
-      axios.get(`/?itemType=productPurchased&userID=${Auth}&quantity=${this.state.counter}&productID=${this.state.ID}`, data)
+      axios.get(`/?itemType=productPurchased&userID=${Auth}&quantity=${this.state.counter}&productID=${this.state.ID}`)
         .then((res) => {
           const data = res;
           console.log(data.data);
+
+          if(data.data.order_id){
+            this.setState({
+                redirect: true, 
+                message: data.data.message,
+                orderID: data.data.order_id
+            })
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -125,7 +137,12 @@ class RedeemSingle extends Component {
     }
 
     render() {
-      // console.log(this.state.counter, this.state.total, this.state.availQuantity);
+      if (this.state.redirect) {
+        return <Redirect to={{
+          pathname: '/congratulation',
+          state: { order_id: this.state.orderID }
+        }} />;
+      }
 
         return (
           <div className="outer-view">
@@ -244,6 +261,13 @@ class RedeemSingle extends Component {
 
                             {
                               this.state.total >= this.state.currentPoints 
+                              ?   
+                              <p className="lead mt-4 text-danger "><strong>You have Less Points is you balance!</strong></p>
+                             :
+                              null
+                            }                            
+                            {
+                              this.state.message 
                               ?   
                               <p className="lead mt-4 text-danger "><strong>You have Less Points is you balance!</strong></p>
                              :

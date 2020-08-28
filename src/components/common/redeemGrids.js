@@ -26,7 +26,7 @@ class redeemGrids extends Component {
             // console.log(Object.entries(data));
             const products = Object.entries(data).map(([key, product], index) => 
                 <Col md={6} lg={4} sm={6} className="mb-4 pb-md-3" key={key}>
-                    <Link to={'/redeem-single/'+product.productID} className="post_box redeem_box d-flex py-4 h-100">
+                    <Link to={index === 0 ? product.productID : '/redeem-single/'+product.productID} className="post_box redeem_box d-flex py-4 h-100">
                         <img src={product.productLogo} className="post_logo" alt={product.productType} />
                         <div className="m-auto w-100">
                             <div className="post_type">{product.productType}</div>
