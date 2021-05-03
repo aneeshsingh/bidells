@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from './instance/axios';
+// import axios from './instance/axios';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -90,7 +90,7 @@ class BidellsPurchase extends Component {
     buyProduct = (e) => {
       e.preventDefault();
 
-      let Auth = localStorage.getItem('auth_bdGroup');
+      // let Auth = localStorage.getItem('auth_bdGroup');
 
       // const data = {
       //   counter: this.state.counter
