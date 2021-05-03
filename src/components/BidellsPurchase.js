@@ -97,14 +97,14 @@ class BidellsPurchase extends Component {
       // }
 
 
-      axios.get(`/?itemType=productPurchased&userID=${Auth}&quantity=${this.state.counter}&productID=${this.state.ID}`)
-        .then((res) => {
-          const data = res;
-          console.log(data.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });    
+      // axios.get(`/?itemType=productPurchased&userID=${Auth}&quantity=${this.state.counter}&productID=${this.state.ID}`)
+      //   .then((res) => {
+      //     const data = res;
+      //     console.log(data.data);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });    
     }
 
     render() {

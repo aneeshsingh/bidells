@@ -256,11 +256,12 @@ class referSettings extends Component {
                         type="file"
                         id="profilePic"
                         className="d-none"
-                        accept="image/png, image/jpeg"
+                        accept="image/jpeg"
                         onChange={(e) =>
                           this.setState({ file: e.target.files[0] })
                         }
                       />
+                      {/* accept="image/png, image/jpeg" */}
                       <Form.Label
                         htmlFor="profilePic"
                         className="form-shadow text-truncate form-control form-control-label form-radius py-0 d-flex align-items-center border-0"

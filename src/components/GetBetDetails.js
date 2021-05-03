@@ -241,7 +241,7 @@ class singlePost extends Component {
                 </Row>
 
                 <Row className="mb-md-5 mb-4">{this.state.playerDetails}</Row>
-
+ 
                 <Row className="align-items-center">
                   <Col lg={6} className="mb-4">
                     {this.state.success ? (
